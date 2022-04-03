@@ -1,31 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-
-namespace Mediatek86.bdd
+﻿namespace Mediatek86.bdd
 {
+    using MySql.Data.MySqlClient;
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// Defines the <see cref="BddMySql" />.
+    /// </summary>
     public class BddMySql
     {
         /// <summary>
-        /// Unique instance de la classe
+        /// Unique instance de la classe.
         /// </summary>
         private static BddMySql instance = null;
-        
+
         /// <summary>
-        /// objet de connexion à la BDD à partir d'une chaîne de connexion
+        /// objet de connexion à la BDD à partir d'une chaîne de connexion.
         /// </summary>
         private readonly MySqlConnection connection;
 
         /// <summary>
-        /// objet contenant le résultat d'une requête "select" (curseur)
+        /// objet contenant le résultat d'une requête "select" (curseur).
         /// </summary>
         private MySqlDataReader reader;
 
         /// <summary>
-        /// Constructeur privé pour créer la connexion à la BDD et l'ouvrir
+        /// Prevents a default instance of the <see cref="BddMySql"/> class from being created.
         /// </summary>
-        /// <param name="stringConnect">chaine de connexion</param>
+        /// <param name="stringConnect">chaine de connexion.</param>
         private BddMySql(string stringConnect)
         {
             try
@@ -40,10 +43,10 @@ namespace Mediatek86.bdd
         }
 
         /// <summary>
-        /// Crée une instance unique de la classe
+        /// Crée une instance unique de la classe.
         /// </summary>
-        /// <param name="stringConnect">chaine de connexion</param>
-        /// <returns>instance unique de la classe</returns>
+        /// <param name="stringConnect">chaine de connexion.</param>
+        /// <returns>instance unique de la classe.</returns>
         public static BddMySql GetInstance(string stringConnect)
         {
             if (instance is null)
@@ -54,13 +57,14 @@ namespace Mediatek86.bdd
         }
 
         /// <summary>
-        /// Exécute une requête type "select" et valorise le curseur
+        /// Exécute une requête type "select" et valorise le curseur.
         /// </summary>
-        /// <param name="stringQuery">requête select</param>
+        /// <param name="stringQuery">requête select.</param>
+        /// <param name="parameters">The parameters<see cref="Dictionary{string, object}"/>.</param>
         public void ReqSelect(string stringQuery, Dictionary<string, object> parameters)
         {
             MySqlCommand command;
-            
+
             try
             {
                 command = new MySqlCommand(stringQuery, connection);
@@ -85,9 +89,9 @@ namespace Mediatek86.bdd
         }
 
         /// <summary>
-        /// Tente de lire la ligne suivante du curseur
+        /// Tente de lire la ligne suivante du curseur.
         /// </summary>
-        /// <returns>false si fin de curseur atteinte</returns>
+        /// <returns>false si fin de curseur atteinte.</returns>
         public bool Read()
         {
             if (reader is null)
@@ -105,10 +109,10 @@ namespace Mediatek86.bdd
         }
 
         /// <summary>
-        /// Retourne le contenu d'un champ dont le nom est passé en paramètre
+        /// Retourne le contenu d'un champ dont le nom est passé en paramètre.
         /// </summary>
-        /// <param name="nameField">nom du champ</param>
-        /// <returns>valeur du champ</returns>
+        /// <param name="nameField">nom du champ.</param>
+        /// <returns>valeur du champ.</returns>
         public object Field(string nameField)
         {
             if (reader is null)
@@ -126,10 +130,10 @@ namespace Mediatek86.bdd
         }
 
         /// <summary>
-        /// Exécution d'une requête autre que "select"
+        /// Exécution d'une requête autre que "select".
         /// </summary>
-        /// <param name="stringQuery">requête autre que select</param>
-        /// <param name="parameters">dictionnire contenant les parametres</param>
+        /// <param name="stringQuery">requête autre que select.</param>
+        /// <param name="parameters">dictionnire contenant les parametres.</param>
         public void ReqUpdate(string stringQuery, Dictionary<string, object> parameters)
         {
             MySqlCommand command;
@@ -158,7 +162,7 @@ namespace Mediatek86.bdd
         }
 
         /// <summary>
-        /// Fermeture du curseur
+        /// Fermeture du curseur.
         /// </summary>
         public void Close()
         {
@@ -169,8 +173,9 @@ namespace Mediatek86.bdd
         }
 
         /// <summary>
-        /// Pas d'accès à la BDD : arrêt de l'application
+        /// Pas d'accès à la BDD : arrêt de l'application.
         /// </summary>
+        /// <param name="e">The e<see cref="Exception"/>.</param>
         private void ErreurGraveBddNonAccessible(Exception e)
         {
             MessageBox.Show("Base de données non accessibles", "Erreur grave");

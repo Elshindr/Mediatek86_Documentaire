@@ -14,6 +14,10 @@
     <Deterministic>true</Deterministic>
     <CodeAnalysisRuleSet>.sonarlint\mediatek86_documentairecsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+<!-- Project is not a test project -->
+<SonarQubeTestProject>false</SonarQubeTestProject>
+</PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
