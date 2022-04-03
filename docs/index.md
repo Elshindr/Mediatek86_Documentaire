@@ -31,10 +31,12 @@ L’application bureau de MediaTek86 est écrite en C#. Actuellement, elle perme
   <a href="https://github.com/Elshindr/Mediatek86_Documentaire/blob/main/docs/Ressources%20Documentaires/Script_BD_mediatek86.sql">
   <img src="https://elshindr.github.io/Mediatek86_Documentaire/assets/Bouton3.PNG" alt="Script SQL"/></a>
    
-  <a href="https://github.com/Elshindr/Mediatek86_Documentaire/blob/main/docs/Documentation%20Technique/html/index.html">
+
+  
+  <a href="https://elshindr.github.io/Mediatek86_Documentaire/Documentation Technique/html/index.html">
   <img src="https://elshindr.github.io/Mediatek86_Documentaire/assets/Bouton4.PNG" alt="Documentation Technique"/></a>
   
-  <a href="https://github.com/Elshindr/Mediatek86_Documentaire/blob/main/docs/Ressources%20Documentaires/Annexe-7-2-modele-fiche-descriptive.docx">
+  <a href="https://github.com/Elshindr/Mediatek86_Documentaire/blob/main/docs/Ressources%20Documentaires/Rapport_BureauC%23_MediatekGestion.odt">
   <img src="https://elshindr.github.io/Mediatek86_Documentaire/assets/Bouton5.PNG" alt="Compte Rendu D'activité"/></a>
   
   <a href="https://trello.com/b/AwSSuR1D/gestionmediatek86">
