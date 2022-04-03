@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace Mediatek86.modele
 {
+    /// <summary>
+    /// Classe public récupérant les informations de la base de données mediatek86
+    /// </summary>
     public static class Dao
     {
 
