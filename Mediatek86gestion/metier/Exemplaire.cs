@@ -4,7 +4,7 @@ namespace Mediatek86.metier
 {
     public class Exemplaire
     {
-        public Exemplaire(int numero, DateTime dateAchat, string photo,string idEtat, string idDocument)
+        public Exemplaire(int numero, DateTime dateAchat, string photo, string idEtat, string idDocument)
         {
             this.Numero = numero;
             this.DateAchat = dateAchat;

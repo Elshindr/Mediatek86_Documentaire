@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using Mediatek86.controleur;
 using Mediatek86.metier;
-using Mediatek86.controleur;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Mediatek86.vue
 {
@@ -16,6 +16,7 @@ namespace Mediatek86.vue
         private readonly Controle controle;
         const string ETATNEUF = "00001";
 
+        private readonly BindingSource bdgLivresCmdListe = new BindingSource();
         private readonly BindingSource bdgLivresListe = new BindingSource();
         private readonly BindingSource bdgDvdListe = new BindingSource();
         private readonly BindingSource bdgGenres = new BindingSource();
@@ -23,6 +24,8 @@ namespace Mediatek86.vue
         private readonly BindingSource bdgRayons = new BindingSource();
         private readonly BindingSource bdgRevuesListe = new BindingSource();
         private readonly BindingSource bdgExemplairesListe = new BindingSource();
+
+        private List<Commande> lesCmdLivre = new List<Commande>();
         private List<Livre> lesLivres = new List<Livre>();
         private List<Dvd> lesDvd = new List<Dvd>();
         private List<Revue> lesRevues = new List<Revue>();
@@ -36,6 +39,107 @@ namespace Mediatek86.vue
             InitializeComponent();
             this.controle = controle;
         }
+
+        #region LivresCommandes
+
+        //-----------------------------------------------------------
+        // ONGLET "COMMANDES D'UN LIVRE"
+        //-----------------------------------------------------------
+
+        /// <summary>
+        /// Recherche et affichage du livre dont on a saisi le numéro.
+        /// Si non trouvé, affichage d'un MessageBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnLivresCmdNumRecherche_Click(object sender, EventArgs e)
+        {
+            if (!txbLivresNumCmdRecherche.Text.Equals(""))
+            {
+
+                Livre livre = lesLivres.Find(x => x.Id.Equals(txbLivresNumCmdRecherche.Text));
+
+                if (livre != null)
+                {
+                    AfficheLivresCmdInfos(livre);
+                }
+                else
+                {
+                    MessageBox.Show("numéro introuvable");
+                    txbLivresNumCmdRecherche.Text = "";
+                }
+            }
+
+        }
+
+
+        /// <summary>
+        /// Affichage des informations du livre sélectionné
+        /// </summary>
+        /// <param name="livre"></param>
+        private void AfficheLivresCmdInfos(Livre livre)
+        {
+            txbLivresCmdAuteur.Text = livre.Auteur;
+            txbLivresCmdCollection.Text = livre.Collection;
+            pcbLivresCmdImage.Text = livre.Image;
+            txbLivresCmdIsbn.Text = livre.Isbn;
+            txbLivresCmdNumero.Text = livre.Id;
+            txbLivresCmdGenre.Text = livre.Genre;
+            txbLivresCmdPublic.Text = livre.Public;
+            txbLivresCmdRayon.Text = livre.Rayon;
+            txbLivresCmdTitre.Text = livre.Titre;
+            string image = livre.Image;
+            try
+            {
+                pcbLivresCmdImage.Image = Image.FromFile(image);
+            }
+            catch
+            {
+                pcbLivresCmdImage.Image = null;
+            }
+            string idDocument = txbLivresCmdNumero.Text;
+            lesCmdLivre = controle.GetAllCommandesLivre(idDocument);
+            RemplirLivresCmdListe(lesCmdLivre);
+
+        }
+
+        /// <summary>
+        /// Remplit le dategrid avec la liste reçue en paramètre
+        /// </summary>
+        private void RemplirLivresCmdListe(List<Commande> commandes)
+        {
+            bdgLivresCmdListe.DataSource = commandes;
+            dgvLivresCmdListe.DataSource = bdgLivresCmdListe;
+            dgvLivresCmdListe.Columns["id"].Visible = false;
+            dgvLivresCmdListe.Columns["idSuivi"].Visible = false;
+            dgvLivresCmdListe.Columns["idLivreDvd"].Visible = false;
+
+            dgvLivresCmdListe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvLivresCmdListe.Columns["dateCommande"].DisplayIndex = 0;
+            dgvLivresCmdListe.Columns["montant"].DisplayIndex = 1;
+            dgvLivresCmdListe.Columns["nbExemplaire"].DisplayIndex = 2;
+            dgvLivresCmdListe.Columns["label"].DisplayIndex = 3;
+
+        }
+
+
+        /// <summary>
+        /// Vide les zones d'affichage des informations du livre
+        /// </summary>
+        private void VideLivresCmdInfos()
+        {
+            txbLivresAuteur.Text = "";
+            txbLivresCollection.Text = "";
+            txbLivresImage.Text = "";
+            txbLivresIsbn.Text = "";
+            txbLivresNumero.Text = "";
+            txbLivresGenre.Text = "";
+            txbLivresPublic.Text = "";
+            txbLivresRayon.Text = "";
+            txbLivresTitre.Text = "";
+            pcbLivresImage.Image = null;
+        }
+        #endregion
 
 
         #region modules communs
@@ -173,14 +277,14 @@ namespace Mediatek86.vue
             txbRevuesGenre.Text = revue.Genre;
             txbRevuesPublic.Text = revue.Public;
             txbRevuesRayon.Text = revue.Rayon;
-            txbRevuesTitre.Text = revue.Titre;     
+            txbRevuesTitre.Text = revue.Titre;
             string image = revue.Image;
             try
             {
                 pcbRevuesImage.Image = Image.FromFile(image);
             }
-            catch 
-            { 
+            catch
+            {
                 pcbRevuesImage.Image = null;
             }
         }
@@ -376,9 +480,7 @@ namespace Mediatek86.vue
 
         #endregion
 
-
         #region Livres
-
         //-----------------------------------------------------------
         // ONGLET "LIVRES"
         //-----------------------------------------------------------
@@ -470,7 +572,7 @@ namespace Mediatek86.vue
             else
             {
                 // si la zone de saisie est vide et aucun élément combo sélectionné, réaffichage de la liste complète
-                if (cbxLivresGenres.SelectedIndex < 0 && cbxLivresPublics.SelectedIndex < 0 && cbxLivresRayons.SelectedIndex < 0 
+                if (cbxLivresGenres.SelectedIndex < 0 && cbxLivresPublics.SelectedIndex < 0 && cbxLivresRayons.SelectedIndex < 0
                     && txbLivresNumRecherche.Text.Equals(""))
                 {
                     RemplirLivresListeComplete();
@@ -492,13 +594,13 @@ namespace Mediatek86.vue
             txbLivresGenre.Text = livre.Genre;
             txbLivresPublic.Text = livre.Public;
             txbLivresRayon.Text = livre.Rayon;
-            txbLivresTitre.Text = livre.Titre;      
+            txbLivresTitre.Text = livre.Titre;
             string image = livre.Image;
             try
             {
                 pcbLivresImage.Image = Image.FromFile(image);
             }
-            catch 
+            catch
             {
                 pcbLivresImage.Image = null;
             }
@@ -695,7 +797,6 @@ namespace Mediatek86.vue
 
         #endregion
 
-
         #region Dvd
         //-----------------------------------------------------------
         // ONGLET "DVD"
@@ -805,7 +906,7 @@ namespace Mediatek86.vue
             txbDvdRealisateur.Text = dvd.Realisateur;
             txbDvdSynopsis.Text = dvd.Synopsis;
             txbDvdImage.Text = dvd.Image;
-            txbDvdDuree.Text = dvd.Duree.ToString() ;
+            txbDvdDuree.Text = dvd.Duree.ToString();
             txbDvdNumero.Text = dvd.Id;
             txbDvdGenre.Text = dvd.Genre;
             txbDvdPublic.Text = dvd.Public;
@@ -816,7 +917,7 @@ namespace Mediatek86.vue
             {
                 pcbDvdImage.Image = Image.FromFile(image);
             }
-            catch 
+            catch
             {
                 pcbDvdImage.Image = null;
             }
@@ -1097,13 +1198,13 @@ namespace Mediatek86.vue
             txbReceptionRevueGenre.Text = revue.Genre;
             txbReceptionRevuePublic.Text = revue.Public;
             txbReceptionRevueRayon.Text = revue.Rayon;
-            txbReceptionRevueTitre.Text = revue.Titre;         
+            txbReceptionRevueTitre.Text = revue.Titre;
             string image = revue.Image;
             try
             {
                 pcbReceptionRevueImage.Image = Image.FromFile(image);
             }
-            catch 
+            catch
             {
                 pcbReceptionRevueImage.Image = null;
             }
@@ -1176,12 +1277,12 @@ namespace Mediatek86.vue
             {
                 filePath = openFileDialog.FileName;
             }
-            txbReceptionExemplaireImage.Text = filePath;         
+            txbReceptionExemplaireImage.Text = filePath;
             try
             {
                 pcbReceptionExemplaireImage.Image = Image.FromFile(filePath);
             }
-            catch 
+            catch
             {
                 pcbReceptionExemplaireImage.Image = null;
             }
@@ -1213,7 +1314,8 @@ namespace Mediatek86.vue
                     {
                         MessageBox.Show("numéro de publication déjà existant", "Erreur");
                     }
-                }catch
+                }
+                catch
                 {
                     MessageBox.Show("le numéro de parution doit être numérique", "Information");
                     txbReceptionExemplaireNumero.Text = "";
@@ -1278,5 +1380,25 @@ namespace Mediatek86.vue
 
         #endregion
 
+
+        private void tabOngletsApplication_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbLivresNumRecherche_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

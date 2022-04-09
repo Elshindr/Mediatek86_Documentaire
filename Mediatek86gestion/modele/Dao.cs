@@ -1,8 +1,7 @@
-﻿using Mediatek86.metier;
-using System.Collections.Generic;
-using Mediatek86.bdd;
+﻿using Mediatek86.bdd;
+using Mediatek86.metier;
 using System;
-using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Mediatek86.modele
 {
@@ -16,7 +15,56 @@ namespace Mediatek86.modele
         private static readonly string userid = "root";
         private static readonly string password = "";
         private static readonly string database = "mediatek86";
-        private static readonly string connectionString = "server="+server+";user id="+userid+";password="+password+";database="+database+";SslMode=none";
+        private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
+
+
+
+
+        /// <summary>
+        /// Retourne toutes les commandes livres à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Livre</returns>
+        public static List<Commande> GetAllCommandesLivre(string idDocument)
+        {
+
+            List<Commande> lesCmdLivres = new List<Commande>();
+            string req = "Select c.id, c.dateCommande, c.montant, c.idSuivi, s.label, cd.nbExemplaire, cd.idLivreDvd";
+            req += " from commande c join suivi s on c.idSuivi = s.idSuivi";
+            req += " join commandedocument cd on c.id = cd.id";
+            req += " where cd.idLivreDvd = @iddoc";
+            req += " order by c.dateCommande DESC;";
+
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+              {
+                 { "@iddoc", idDocument}
+              };
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, parameters);
+
+
+
+            while (curs.Read())
+            {
+                string idCommande = (string)curs.Field("id");
+                DateTime dateCommande = (DateTime)curs.Field("dateCommande");
+                double montant = (double)curs.Field("montant");
+
+                int idSuivi = (int)curs.Field("idSuivi");
+                string label = (string)curs.Field("label");
+
+                string idLivreDvd = (string)curs.Field("idLivreDvd");
+                int nbExemplaire = (int)curs.Field("nbExemplaire");
+
+                Commande commande = new Commande(idCommande, idLivreDvd, nbExemplaire, dateCommande, montant, idSuivi.ToString(), label);
+                lesCmdLivres.Add(commande);
+            }
+            curs.Close();
+
+            return lesCmdLivres;
+        }
+
 
         /// <summary>
         /// Retourne tous les genres à partir de la BDD
@@ -113,7 +161,7 @@ namespace Mediatek86.modele
                 string genre = (string)curs.Field("genre");
                 string lepublic = (string)curs.Field("public");
                 string rayon = (string)curs.Field("rayon");
-                Livre livre = new Livre(id, titre, image, isbn, auteur, collection, idgenre, genre, 
+                Livre livre = new Livre(id, titre, image, isbn, auteur, collection, idgenre, genre,
                     idpublic, lepublic, idrayon, rayon);
                 lesLivres.Add(livre);
             }
@@ -260,7 +308,9 @@ namespace Mediatek86.modele
                 curs.ReqUpdate(req, parameters);
                 curs.Close();
                 return true;
-            }catch{
+            }
+            catch
+            {
                 return false;
             }
         }

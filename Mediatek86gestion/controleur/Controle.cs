@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Mediatek86.metier;
 using Mediatek86.modele;
-using Mediatek86.metier;
 using Mediatek86.vue;
+using System.Collections.Generic;
 
 
 namespace Mediatek86.controleur
@@ -15,6 +15,7 @@ namespace Mediatek86.controleur
         private readonly List<Categorie> lesPublics;
         private readonly List<Categorie> lesGenres;
 
+
         /// <summary>
         /// Ouverture de la fenêtre
         /// </summary>
@@ -26,9 +27,23 @@ namespace Mediatek86.controleur
             lesGenres = Dao.GetAllGenres();
             lesRayons = Dao.GetAllRayons();
             lesPublics = Dao.GetAllPublics();
+
+
             FrmMediatek frmMediatek = new FrmMediatek(this);
             frmMediatek.ShowDialog();
         }
+
+
+        /// <summary>
+        /// getter sur la liste commande d'un livre
+        /// </summary>
+        /// <returns>Collection d'objets Livre</returns>
+        public List<Commande> GetAllCommandesLivre(string idDocumentlivreDvd)
+        {
+            return Dao.GetAllCommandesLivre(idDocumentlivreDvd);
+        }
+
+
 
         /// <summary>
         /// getter sur la liste des genres
