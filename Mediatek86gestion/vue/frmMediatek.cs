@@ -16,6 +16,7 @@ namespace Mediatek86.vue
         private readonly Controle controle;
         const string ETATNEUF = "00001";
 
+
         private readonly BindingSource bdgLivresCmdListe = new BindingSource();
         private readonly BindingSource bdgLivresListe = new BindingSource();
         private readonly BindingSource bdgDvdListe = new BindingSource();
@@ -74,7 +75,7 @@ namespace Mediatek86.vue
 
 
         /// <summary>
-        /// Affichage des informations du livre sélectionné
+        /// Affichage des informations du livre sélectionné dans l'onglet des commandes
         /// </summary>
         /// <param name="livre"></param>
         private void AfficheLivresCmdInfos(Livre livre)
@@ -106,6 +107,7 @@ namespace Mediatek86.vue
         /// <summary>
         /// Remplit le dategrid avec la liste reçue en paramètre
         /// </summary>
+        /// <param name="commandes">Liste des commandes du document</param>
         private void RemplirLivresCmdListe(List<Commande> commandes)
         {
             bdgLivresCmdListe.DataSource = commandes;
@@ -119,6 +121,51 @@ namespace Mediatek86.vue
             dgvLivresCmdListe.Columns["montant"].DisplayIndex = 1;
             dgvLivresCmdListe.Columns["nbExemplaire"].DisplayIndex = 2;
             dgvLivresCmdListe.Columns["label"].DisplayIndex = 3;
+
+        }
+
+        /// <summary>
+        /// Methode Evenement sur le clique du bouton valider dans l'onglet Commande de livre 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnValiderCmdLivre_Click(object sender, EventArgs e)
+        {
+            if (!txbLivresNewCmdNumero.Text.Equals("") && numLivresNewCmdMontant.Value != 0 && numLivresNewCmdNbExemplaire.Value != 0)
+            {
+                try
+                {
+                    string idCommande = controle.GetLastIdCommande().ToString();
+                    string idLivre = txbLivresNewCmdNumero.Text;
+
+                    DateTime dateCommande = dtpnumLivresNewCmdDate.Value;
+                    int nbExemplaire = (int)numLivresNewCmdNbExemplaire.Value;
+                    double montant = (double)numLivresNewCmdMontant.Value;
+
+                    string idDocument = txbReceptionRevueNumero.Text;
+                    Commande commande = new Commande(idCommande, idLivre, nbExemplaire, dateCommande, montant, "1", "en cours");
+
+                    if (controle.CreerCommande(commande))
+                    {
+                        VideReceptionExemplaireInfos();
+                        afficheReceptionExemplairesRevue();
+                    }
+                    else
+                    {
+                        MessageBox.Show("numéro de publication déjà existant", "Erreur");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("le numéro de parution doit être numérique", "Information");
+                    txbLivresNewCmdNumero.Text = "";
+                    txbLivresNewCmdNumero.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("numéro de parution obligatoire", "Information");
+            }
 
         }
 
@@ -161,7 +208,6 @@ namespace Mediatek86.vue
         }
 
         #endregion
-
 
         #region Revues
         //-----------------------------------------------------------
@@ -1400,5 +1446,7 @@ namespace Mediatek86.vue
         {
 
         }
+
+
     }
 }

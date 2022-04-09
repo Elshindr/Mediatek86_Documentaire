@@ -18,7 +18,90 @@ namespace Mediatek86.modele
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
 
+        public static int GetLastIdCommande()
+        {
+            int maxId = 1;
 
+            string req = "select MAX(id) from commande;";
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, null);
+
+            while (curs.Read())
+            {
+                maxId += Int32.Parse((string)curs.Field("id"));
+
+            }
+            curs.Close();
+
+
+            return maxId;
+        }
+
+
+        /// <summary>
+        /// Methode d'insertion d'une nouvelle commande dans la table commande, puis dans commandedocument 
+        /// </summary>
+        /// <param name="commande"></param>
+        /// <returns></returns>
+        public static bool CreerCommande(Commande commande)
+        {
+            try
+            {
+                string req = "insert into commande values (@id, @dateCommande, @montant, @idSuivi) ";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@id", commande.Id},
+                    { "@dateCommande", commande.DateCommande},
+                    { "@montant", commande.Montant},
+                    { "@idSuivi", commande.IdSuivi}
+                };
+                BddMySql curs = BddMySql.GetInstance(connectionString);
+                curs.ReqUpdate(req, parameters);
+                curs.Close();
+
+
+                string req1 = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd)  ";
+                Dictionary<string, object> parameters1 = new Dictionary<string, object>
+                {
+                    { "@id", commande.Id},
+                    { "@nbExemplaire", commande.NbExemplaire},
+                    { "@idLivreDvd", commande.IdLivreDvd}
+                };
+                BddMySql curs1 = BddMySql.GetInstance(connectionString);
+                curs1.ReqUpdate(req1, parameters1);
+                curs1.Close();
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Retourne tous les suivis à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets de Suivi</returns>
+        public static List<Suivi> GetAllSuivis()
+        {
+            List<Suivi> lesSuivis = new List<Suivi>();
+            string req = "Select * from suivi order by label";
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, null);
+
+            while (curs.Read())
+            {
+
+                Suivi suivi = new Suivi(((int)curs.Field("idSuivi")).ToString(), (string)curs.Field("label"));
+                lesSuivis.Add(suivi);
+            }
+            curs.Close();
+            return lesSuivis;
+        }
 
         /// <summary>
         /// Retourne toutes les commandes livres à partir de la BDD
@@ -28,7 +111,7 @@ namespace Mediatek86.modele
         {
 
             List<Commande> lesCmdLivres = new List<Commande>();
-            string req = "Select c.id, c.dateCommande, c.montant, c.idSuivi, s.label, cd.nbExemplaire, cd.idLivreDvd";
+            string req = "Select c.id, c.dateCommande, c.montant, c.idSuivi, cd.nbExemplaire, cd.idLivreDvd, s.label";
             req += " from commande c join suivi s on c.idSuivi = s.idSuivi";
             req += " join commandedocument cd on c.id = cd.id";
             req += " where cd.idLivreDvd = @iddoc";
@@ -53,7 +136,6 @@ namespace Mediatek86.modele
 
                 int idSuivi = (int)curs.Field("idSuivi");
                 string label = (string)curs.Field("label");
-
                 string idLivreDvd = (string)curs.Field("idLivreDvd");
                 int nbExemplaire = (int)curs.Field("nbExemplaire");
 

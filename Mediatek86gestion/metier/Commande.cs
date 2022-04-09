@@ -1,15 +1,21 @@
 ﻿using System;
 
+
 namespace Mediatek86.metier
 {
     public class Commande : CommandeDocument
     {
 
-        private readonly DateTime dateCommande;
-        private readonly double montant;
-        private readonly string idSuivi;
-        private readonly string label;
-
+        /// <summary>
+        /// Constructeur de la Classe Commande
+        /// </summary>
+        /// <param name="idCommande"></param>
+        /// <param name="idLivreDvd"></param>
+        /// <param name="nbExemplaire"></param>
+        /// <param name="dateCommande"></param>
+        /// <param name="montant"></param>
+        /// <param name="idSuivi"></param>
+        /// <param name="label"></param>
         public Commande(string idCommande, string idLivreDvd, int nbExemplaire, DateTime dateCommande, double montant, string idSuivi, string label)
         : base(idCommande, idLivreDvd, nbExemplaire)
         {
@@ -23,5 +29,6 @@ namespace Mediatek86.metier
         public double Montant { get; set; }
         public string IdSuivi { get; set; }
         public string Label { get; set; }
+
     }
 }

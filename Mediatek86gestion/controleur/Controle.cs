@@ -14,10 +14,12 @@ namespace Mediatek86.controleur
         private readonly List<Categorie> lesRayons;
         private readonly List<Categorie> lesPublics;
         private readonly List<Categorie> lesGenres;
-
+        private readonly List<Suivi> lesSuivis;
 
         /// <summary>
-        /// Ouverture de la fenêtre
+        /// Constructeur de la classe Controle
+        /// Ouverture de la fenêtre 
+        /// Recupération des différents libelles
         /// </summary>
         public Controle()
         {
@@ -27,13 +29,33 @@ namespace Mediatek86.controleur
             lesGenres = Dao.GetAllGenres();
             lesRayons = Dao.GetAllRayons();
             lesPublics = Dao.GetAllPublics();
-
+            lesSuivis = Dao.GetAllSuivis();
 
             FrmMediatek frmMediatek = new FrmMediatek(this);
             frmMediatek.ShowDialog();
         }
 
 
+
+        /// <summary>
+        /// Methode de controle de création d'une commande
+        /// </summary>
+        /// <param name="commande"></param>
+        /// <returns>True si la commande est executée</returns>
+        public bool CreerCommande(Commande commande)
+        {
+            return Dao.CreerCommande(commande);
+        }
+
+        /// <summary>
+        /// Methode de controle de récupération de id Max de la table commande
+        /// </summary>
+        /// <returns></returns>
+        public int GetLastIdCommande()
+        {
+
+            return Dao.GetLastIdCommande();
+        }
         /// <summary>
         /// getter sur la liste commande d'un livre
         /// </summary>
@@ -43,6 +65,15 @@ namespace Mediatek86.controleur
             return Dao.GetAllCommandesLivre(idDocumentlivreDvd);
         }
 
+
+        /// <summary>
+        /// getter sur la liste des genres
+        /// </summary>
+        /// <returns>Collection d'objets Genre</returns>
+        public List<Suivi> GetAllSuivis()
+        {
+            return lesSuivis;
+        }
 
 
         /// <summary>

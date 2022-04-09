@@ -1,6 +1,6 @@
 ﻿namespace Mediatek86.metier
 {
-    public class CommandeDocument
+    public abstract class CommandeDocument
     {
         private string id;
         private string idLivreDvd;
