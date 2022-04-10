@@ -26,7 +26,7 @@ namespace Mediatek86.vue
         private readonly BindingSource bdgRevuesListe = new BindingSource();
         private readonly BindingSource bdgExemplairesListe = new BindingSource();
 
-        private List<Commande> lesCmdLivre = new List<Commande>();
+        private List<Commande> lesCmdLivres = new List<Commande>();
         private List<Livre> lesLivres = new List<Livre>();
         private List<Dvd> lesDvd = new List<Dvd>();
         private List<Revue> lesRevues = new List<Revue>();
@@ -48,26 +48,40 @@ namespace Mediatek86.vue
         //-----------------------------------------------------------
 
         /// <summary>
-        /// Recherche et affichage du livre dont on a saisi le numéro.
+        /// Evenement sur le clic d'entrée dans l'onglet commande de livre
+        /// Bloque l'accés à la saisie d'une nouvelle commmande
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabCmdLivre_Enter(object sender, EventArgs e)
+        {
+            videCmdLivresInfos();
+            accesNewCmdLivresGroupBox(false);
+        }
+
+
+        /// <summary>
+        /// Evenement de clic sur le bouton de recherche
+        /// Permet l'affichage du livre dont le numéro est saisi.
         /// Si non trouvé, affichage d'un MessageBox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnLivresCmdNumRecherche_Click(object sender, EventArgs e)
+        private void BtnCmdLivresNumRecherche_Click(object sender, EventArgs e)
         {
-            if (!txbLivresNumCmdRecherche.Text.Equals(""))
+            if (!txbCmdLivresNumRecherche.Text.Equals(""))
             {
 
-                Livre livre = lesLivres.Find(x => x.Id.Equals(txbLivresNumCmdRecherche.Text));
+                Livre livre = lesLivres.Find(x => x.Id.Equals(txbCmdLivresNumRecherche.Text));
 
                 if (livre != null)
                 {
-                    AfficheLivresCmdInfos(livre);
+                    afficheCmdLivresInfos(livre);
                 }
                 else
                 {
                     MessageBox.Show("numéro introuvable");
-                    txbLivresNumCmdRecherche.Text = "";
+                    txbCmdLivresNumRecherche.Text = "";
                 }
             }
 
@@ -75,46 +89,115 @@ namespace Mediatek86.vue
 
 
         /// <summary>
-        /// Affichage des informations du livre sélectionné dans l'onglet des commandes
+        /// Evenement sur le changement de valeur saisie dans le champs de recherche de numero de livre dans l'onglet Commande de livre
+        /// Bloque l'accès au bloc de commande de livres
+        /// Vide les champs des infos
         /// </summary>
-        /// <param name="livre"></param>
-        private void AfficheLivresCmdInfos(Livre livre)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txbCmdLivresNumRecherche_TextChanged(object sender, EventArgs e)
         {
-            txbLivresCmdAuteur.Text = livre.Auteur;
-            txbLivresCmdCollection.Text = livre.Collection;
-            pcbLivresCmdImage.Text = livre.Image;
-            txbLivresCmdIsbn.Text = livre.Isbn;
-            txbLivresCmdNumero.Text = livre.Id;
-            txbLivresCmdGenre.Text = livre.Genre;
-            txbLivresCmdPublic.Text = livre.Public;
-            txbLivresCmdRayon.Text = livre.Rayon;
-            txbLivresCmdTitre.Text = livre.Titre;
-            string image = livre.Image;
-            try
+            accesNewCmdLivresGroupBox(false);
+            videNewCmdLivresInfos();
+        }
+
+
+        /// <summary>
+        /// Evenement sur le clique du bouton valider une nouvelle commande 
+        /// dans l'onglet Commande de livre 
+        /// Appelle Methode d'insertion de la nouvelle commande
+        /// Vide l'affichage de la nouvelle commande 
+        /// Met à jour la liste des commandes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnNewCmdLivresValider_Click(object sender, EventArgs e)
+        {
+            if (numNewCmdLivresMontant.Value != 0 && numNewCmdLivresNbExemplaire.Value != 0)
             {
-                pcbLivresCmdImage.Image = Image.FromFile(image);
+                try
+                {
+                    string strId = "0000";
+                    string strMaxId = controle.GetLastIdCommande().ToString();
+                    int lenMaxId = strMaxId.Length;
+
+                    string idCommande = strId.Remove(0, lenMaxId) + strMaxId;
+                    string idLivre = txbCmdLivresNumRecherche.Text;
+
+                    DateTime dateCommande = dtpNewCmdLivresDate.Value;
+                    int nbExemplaire = (int)numNewCmdLivresNbExemplaire.Value;
+                    double montant = (double)numNewCmdLivresMontant.Value;
+
+                    string idDocument = txbCmdLivresNumRecherche.Text;
+                    Commande commande = new Commande(idCommande, idLivre, nbExemplaire, dateCommande, montant, "1", "en cours");
+
+                    if (controle.CreerCommande(commande))
+                    {
+                        lesCmdLivres = controle.GetAllCommandesLivre(idDocument);
+                        remplirCmdLivresListe(lesCmdLivres);
+                        videNewCmdLivresInfos();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur dans la creation de commande", "Erreur");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur");
+                    numNewCmdLivresNbExemplaire.Focus();
+                }
             }
-            catch
+            else
             {
-                pcbLivresCmdImage.Image = null;
+                MessageBox.Show("Montant et nombre d'exemplaires doivent être différents de 0", "Information");
             }
-            string idDocument = txbLivresCmdNumero.Text;
-            lesCmdLivre = controle.GetAllCommandesLivre(idDocument);
-            RemplirLivresCmdListe(lesCmdLivre);
 
         }
 
+
         /// <summary>
-        /// Remplit le dategrid avec la liste reçue en paramètre
+        /// Methode d'affichage des informations du livre sélectionné dans l'onglet des commandes de livre
+        /// </summary>
+        /// <param name="livre"></param>
+        private void afficheCmdLivresInfos(Livre livre)
+        {
+            txbCmdLivresAuteur.Text = livre.Auteur;
+            txbCmdLivresCollection.Text = livre.Collection;
+            pcbCmdLivresImage.Text = livre.Image;
+            txbCmdLivresIsbn.Text = livre.Isbn;
+            txbCmdLivresNumRecherche.Text = livre.Id;
+            txbCmdLivresGenre.Text = livre.Genre;
+            txbCmdLivresPublic.Text = livre.Public;
+            txbCmdLivresRayon.Text = livre.Rayon;
+            txbCmdLivresTitre.Text = livre.Titre;
+            string image = livre.Image;
+            try
+            {
+                pcbCmdLivresImage.Image = Image.FromFile(image);
+            }
+            catch
+            {
+                pcbCmdLivresImage.Image = null;
+            }
+            string idDocument = txbCmdLivresNumRecherche.Text;
+            lesCmdLivres = controle.GetAllCommandesLivre(idDocument);
+            remplirCmdLivresListe(lesCmdLivres);
+            accesNewCmdLivresGroupBox(true);
+        }
+
+        /// <summary>
+        /// Methode qui remplit le datagridview avec la liste des commandes de livre reçue en paramètre
         /// </summary>
         /// <param name="commandes">Liste des commandes du document</param>
-        private void RemplirLivresCmdListe(List<Commande> commandes)
+        private void remplirCmdLivresListe(List<Commande> commandes)
         {
             bdgLivresCmdListe.DataSource = commandes;
             dgvLivresCmdListe.DataSource = bdgLivresCmdListe;
-            dgvLivresCmdListe.Columns["id"].Visible = false;
+            dgvLivresCmdListe.Columns["id"].Visible = true;
             dgvLivresCmdListe.Columns["idSuivi"].Visible = false;
-            dgvLivresCmdListe.Columns["idLivreDvd"].Visible = false;
+            dgvLivresCmdListe.Columns["idLivreDvd"].Visible = true;
 
             dgvLivresCmdListe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvLivresCmdListe.Columns["dateCommande"].DisplayIndex = 0;
@@ -124,67 +207,49 @@ namespace Mediatek86.vue
 
         }
 
+
         /// <summary>
-        /// Methode Evenement sur le clique du bouton valider dans l'onglet Commande de livre 
+        /// Methode qui permet ou bloque l'accès à la gestion de prise de commandes de livres
+        /// et vide les objets graphiques
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnValiderCmdLivre_Click(object sender, EventArgs e)
+        /// <param name="acces"></param>
+        private void accesNewCmdLivresGroupBox(bool acces)
         {
-            if (!txbLivresNewCmdNumero.Text.Equals("") && numLivresNewCmdMontant.Value != 0 && numLivresNewCmdNbExemplaire.Value != 0)
-            {
-                try
-                {
-                    string idCommande = controle.GetLastIdCommande().ToString();
-                    string idLivre = txbLivresNewCmdNumero.Text;
-
-                    DateTime dateCommande = dtpnumLivresNewCmdDate.Value;
-                    int nbExemplaire = (int)numLivresNewCmdNbExemplaire.Value;
-                    double montant = (double)numLivresNewCmdMontant.Value;
-
-                    string idDocument = txbReceptionRevueNumero.Text;
-                    Commande commande = new Commande(idCommande, idLivre, nbExemplaire, dateCommande, montant, "1", "en cours");
-
-                    if (controle.CreerCommande(commande))
-                    {
-                        VideReceptionExemplaireInfos();
-                        afficheReceptionExemplairesRevue();
-                    }
-                    else
-                    {
-                        MessageBox.Show("numéro de publication déjà existant", "Erreur");
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("le numéro de parution doit être numérique", "Information");
-                    txbLivresNewCmdNumero.Text = "";
-                    txbLivresNewCmdNumero.Focus();
-                }
-            }
-            else
-            {
-                MessageBox.Show("numéro de parution obligatoire", "Information");
-            }
-
+            videNewCmdLivresInfos();
+            gpbNewCmdLivres.Enabled = acces;
         }
 
+        /// <summary>
+        /// Methode qui vide les zones d'affichage des informations du bloc de commandes de livres
+        /// </summary>
+        private void videNewCmdLivresInfos()
+        {
+            numNewCmdLivresNbExemplaire.Value = 0;
+            numNewCmdLivresMontant.Value = 0;
+            dtpNewCmdLivresDate.Value = DateTime.Now;
+        }
 
         /// <summary>
-        /// Vide les zones d'affichage des informations du livre
+        /// Methode qui vide les zones d'affichage des informations du bloc de livre à commander
+        /// Vide le datagridview associé
+        /// Bloque l'accès aux prises de commandes.
         /// </summary>
-        private void VideLivresCmdInfos()
+        private void videCmdLivresInfos()
         {
-            txbLivresAuteur.Text = "";
-            txbLivresCollection.Text = "";
-            txbLivresImage.Text = "";
-            txbLivresIsbn.Text = "";
-            txbLivresNumero.Text = "";
-            txbLivresGenre.Text = "";
-            txbLivresPublic.Text = "";
-            txbLivresRayon.Text = "";
-            txbLivresTitre.Text = "";
-            pcbLivresImage.Image = null;
+            txbCmdLivresNumRecherche.Text = "";
+            txbCmdLivresIsbn.Text = "";
+            txbCmdLivresTitre.Text = "";
+            txbCmdLivresAuteur.Text = "";
+            txbCmdLivresCollection.Text = "";
+            txbCmdLivresGenre.Text = "";
+            txbCmdLivresPublic.Text = "";
+            txbCmdLivresRayon.Text = "";
+            txbCmdLivresImage.Text = "";
+            pcbCmdLivresImage.Image = null;
+
+            // Vide le datagridview
+            lesCmdLivres = new List<Commande>();
+            remplirCmdLivresListe(lesCmdLivres);
         }
         #endregion
 

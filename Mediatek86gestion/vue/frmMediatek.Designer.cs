@@ -29,21 +29,21 @@ namespace Mediatek86.vue
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabOngletsApplication = new System.Windows.Forms.TabControl();
             this.tabLivres = new System.Windows.Forms.TabPage();
             this.grpLivresInfos = new System.Windows.Forms.GroupBox();
@@ -193,26 +193,30 @@ namespace Mediatek86.vue
             this.label55 = new System.Windows.Forms.Label();
             this.btnReceptionRechercher = new System.Windows.Forms.Button();
             this.tabCmdLivre = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numLivresNewCmdNbExemplaire = new System.Windows.Forms.NumericUpDown();
+            this.gpbNewCmdLivres = new System.Windows.Forms.GroupBox();
+            this.dtpNewCmdLivresDate = new System.Windows.Forms.DateTimePicker();
+            this.label70 = new System.Windows.Forms.Label();
+            this.numNewCmdLivresMontant = new System.Windows.Forms.NumericUpDown();
+            this.numNewCmdLivresNbExemplaire = new System.Windows.Forms.NumericUpDown();
             this.button2 = new System.Windows.Forms.Button();
             this.label67 = new System.Windows.Forms.Label();
-            this.txbLivresNewCmdNumero = new System.Windows.Forms.TextBox();
             this.label68 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.dgvLivresCmdListe = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txbLivresCmdIsbn = new System.Windows.Forms.TextBox();
-            this.txbLivresCmdImage = new System.Windows.Forms.TextBox();
-            this.txbLivresCmdRayon = new System.Windows.Forms.TextBox();
-            this.txbLivresCmdPublic = new System.Windows.Forms.TextBox();
-            this.txbLivresCmdGenre = new System.Windows.Forms.TextBox();
-            this.txbLivresCmdCollection = new System.Windows.Forms.TextBox();
-            this.txbLivresCmdAuteur = new System.Windows.Forms.TextBox();
-            this.txbLivresCmdTitre = new System.Windows.Forms.TextBox();
-            this.txbLivresCmdNumero = new System.Windows.Forms.TextBox();
+            this.txbCmdLivresIsbn = new System.Windows.Forms.TextBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.dgvLivresCmdListe = new System.Windows.Forms.DataGridView();
+            this.txbCmdLivresImage = new System.Windows.Forms.TextBox();
+            this.txbCmdLivresRayon = new System.Windows.Forms.TextBox();
+            this.btnDocNumCmdRecherche = new System.Windows.Forms.Button();
+            this.txbCmdLivresPublic = new System.Windows.Forms.TextBox();
+            this.txbCmdLivresGenre = new System.Windows.Forms.TextBox();
+            this.txbCmdLivresNumRecherche = new System.Windows.Forms.TextBox();
+            this.txbCmdLivresCollection = new System.Windows.Forms.TextBox();
+            this.txbCmdLivresAuteur = new System.Windows.Forms.TextBox();
+            this.txbCmdLivresTitre = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
-            this.pcbLivresCmdImage = new System.Windows.Forms.PictureBox();
+            this.pcbCmdLivresImage = new System.Windows.Forms.PictureBox();
             this.label59 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
@@ -220,15 +224,8 @@ namespace Mediatek86.vue
             this.label63 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.btnDocNumCmdRecherche = new System.Windows.Forms.Button();
-            this.label58 = new System.Windows.Forms.Label();
-            this.txbLivresNumCmdRecherche = new System.Windows.Forms.TextBox();
             this.tabCmdDvd = new System.Windows.Forms.TabPage();
             this.tabCmdRevue = new System.Windows.Forms.TabPage();
-            this.numLivresNewCmdMontant = new System.Windows.Forms.NumericUpDown();
-            this.label70 = new System.Windows.Forms.Label();
-            this.dtpnumLivresNewCmdDate = new System.Windows.Forms.DateTimePicker();
             this.tabOngletsApplication.SuspendLayout();
             this.tabLivres.SuspendLayout();
             this.grpLivresInfos.SuspendLayout();
@@ -253,12 +250,12 @@ namespace Mediatek86.vue
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceptionExemplairesListe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbReceptionRevueImage)).BeginInit();
             this.tabCmdLivre.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numLivresNewCmdNbExemplaire)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLivresCmdListe)).BeginInit();
+            this.gpbNewCmdLivres.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numNewCmdLivresMontant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numNewCmdLivresNbExemplaire)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbLivresCmdImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numLivresNewCmdMontant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLivresCmdListe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbCmdLivresImage)).BeginInit();
             this.SuspendLayout();
             // 
             // tabOngletsApplication
@@ -674,36 +671,36 @@ namespace Mediatek86.vue
             this.dgvLivresListe.AllowUserToDeleteRows = false;
             this.dgvLivresListe.AllowUserToResizeColumns = false;
             this.dgvLivresListe.AllowUserToResizeRows = false;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLivresListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLivresListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLivresListe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLivresListe.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLivresListe.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLivresListe.Location = new System.Drawing.Point(12, 185);
             this.dgvLivresListe.Margin = new System.Windows.Forms.Padding(4);
             this.dgvLivresListe.MultiSelect = false;
             this.dgvLivresListe.Name = "dgvLivresListe";
             this.dgvLivresListe.ReadOnly = true;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLivresListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLivresListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLivresListe.RowHeadersVisible = false;
             this.dgvLivresListe.RowHeadersWidth = 51;
             this.dgvLivresListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1127,36 +1124,36 @@ namespace Mediatek86.vue
             this.dgvDvdListe.AllowUserToDeleteRows = false;
             this.dgvDvdListe.AllowUserToResizeColumns = false;
             this.dgvDvdListe.AllowUserToResizeRows = false;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDvdListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDvdListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDvdListe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDvdListe.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDvdListe.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDvdListe.Location = new System.Drawing.Point(12, 185);
             this.dgvDvdListe.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDvdListe.MultiSelect = false;
             this.dgvDvdListe.Name = "dgvDvdListe";
             this.dgvDvdListe.ReadOnly = true;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDvdListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDvdListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDvdListe.RowHeadersVisible = false;
             this.dgvDvdListe.RowHeadersWidth = 51;
             this.dgvDvdListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1580,36 +1577,36 @@ namespace Mediatek86.vue
             this.dgvRevuesListe.AllowUserToDeleteRows = false;
             this.dgvRevuesListe.AllowUserToResizeColumns = false;
             this.dgvRevuesListe.AllowUserToResizeRows = false;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRevuesListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRevuesListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvRevuesListe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRevuesListe.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRevuesListe.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvRevuesListe.Location = new System.Drawing.Point(12, 185);
             this.dgvRevuesListe.Margin = new System.Windows.Forms.Padding(4);
             this.dgvRevuesListe.MultiSelect = false;
             this.dgvRevuesListe.Name = "dgvRevuesListe";
             this.dgvRevuesListe.ReadOnly = true;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRevuesListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRevuesListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvRevuesListe.RowHeadersVisible = false;
             this.dgvRevuesListe.RowHeadersWidth = 51;
             this.dgvRevuesListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1837,36 +1834,36 @@ namespace Mediatek86.vue
             this.dgvReceptionExemplairesListe.AllowUserToDeleteRows = false;
             this.dgvReceptionExemplairesListe.AllowUserToResizeColumns = false;
             this.dgvReceptionExemplairesListe.AllowUserToResizeRows = false;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReceptionExemplairesListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReceptionExemplairesListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvReceptionExemplairesListe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReceptionExemplairesListe.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReceptionExemplairesListe.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvReceptionExemplairesListe.Location = new System.Drawing.Point(200, 272);
             this.dgvReceptionExemplairesListe.Margin = new System.Windows.Forms.Padding(4);
             this.dgvReceptionExemplairesListe.MultiSelect = false;
             this.dgvReceptionExemplairesListe.Name = "dgvReceptionExemplairesListe";
             this.dgvReceptionExemplairesListe.ReadOnly = true;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReceptionExemplairesListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReceptionExemplairesListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvReceptionExemplairesListe.RowHeadersVisible = false;
             this.dgvReceptionExemplairesListe.RowHeadersWidth = 51;
             this.dgvReceptionExemplairesListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -2081,12 +2078,8 @@ namespace Mediatek86.vue
             // 
             // tabCmdLivre
             // 
-            this.tabCmdLivre.Controls.Add(this.groupBox2);
-            this.tabCmdLivre.Controls.Add(this.dgvLivresCmdListe);
+            this.tabCmdLivre.Controls.Add(this.gpbNewCmdLivres);
             this.tabCmdLivre.Controls.Add(this.groupBox1);
-            this.tabCmdLivre.Controls.Add(this.btnDocNumCmdRecherche);
-            this.tabCmdLivre.Controls.Add(this.label58);
-            this.tabCmdLivre.Controls.Add(this.txbLivresNumCmdRecherche);
             this.tabCmdLivre.Location = new System.Drawing.Point(4, 22);
             this.tabCmdLivre.Name = "tabCmdLivre";
             this.tabCmdLivre.Padding = new System.Windows.Forms.Padding(3);
@@ -2094,148 +2087,127 @@ namespace Mediatek86.vue
             this.tabCmdLivre.TabIndex = 5;
             this.tabCmdLivre.Text = "Commande Livre";
             this.tabCmdLivre.UseVisualStyleBackColor = true;
+            this.tabCmdLivre.Enter += new System.EventHandler(this.tabCmdLivre_Enter);
             // 
-            // groupBox2
+            // gpbNewCmdLivres
             // 
-            this.groupBox2.Controls.Add(this.dtpnumLivresNewCmdDate);
-            this.groupBox2.Controls.Add(this.label70);
-            this.groupBox2.Controls.Add(this.numLivresNewCmdMontant);
-            this.groupBox2.Controls.Add(this.numLivresNewCmdNbExemplaire);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.label67);
-            this.groupBox2.Controls.Add(this.txbLivresNewCmdNumero);
-            this.groupBox2.Controls.Add(this.label68);
-            this.groupBox2.Controls.Add(this.label69);
-            this.groupBox2.Location = new System.Drawing.Point(9, 546);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(343, 219);
-            this.groupBox2.TabIndex = 22;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Nouvelle Commande";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            this.gpbNewCmdLivres.Controls.Add(this.dtpNewCmdLivresDate);
+            this.gpbNewCmdLivres.Controls.Add(this.label70);
+            this.gpbNewCmdLivres.Controls.Add(this.numNewCmdLivresMontant);
+            this.gpbNewCmdLivres.Controls.Add(this.numNewCmdLivresNbExemplaire);
+            this.gpbNewCmdLivres.Controls.Add(this.button2);
+            this.gpbNewCmdLivres.Controls.Add(this.label67);
+            this.gpbNewCmdLivres.Controls.Add(this.label68);
+            this.gpbNewCmdLivres.Location = new System.Drawing.Point(9, 520);
+            this.gpbNewCmdLivres.Margin = new System.Windows.Forms.Padding(4);
+            this.gpbNewCmdLivres.Name = "gpbNewCmdLivres";
+            this.gpbNewCmdLivres.Padding = new System.Windows.Forms.Padding(4);
+            this.gpbNewCmdLivres.Size = new System.Drawing.Size(514, 245);
+            this.gpbNewCmdLivres.TabIndex = 22;
+            this.gpbNewCmdLivres.TabStop = false;
+            this.gpbNewCmdLivres.Text = "Nouvelle commande pour ce livre";
+            this.gpbNewCmdLivres.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // numLivresNewCmdNbExemplaire
+            // dtpNewCmdLivresDate
             // 
-            this.numLivresNewCmdNbExemplaire.Location = new System.Drawing.Point(200, 74);
-            this.numLivresNewCmdNbExemplaire.Maximum = new decimal(new int[] {
+            this.dtpNewCmdLivresDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNewCmdLivresDate.Location = new System.Drawing.Point(200, 117);
+            this.dtpNewCmdLivresDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpNewCmdLivresDate.Name = "dtpNewCmdLivresDate";
+            this.dtpNewCmdLivresDate.Size = new System.Drawing.Size(132, 22);
+            this.dtpNewCmdLivresDate.TabIndex = 26;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(8, 117);
+            this.label70.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(126, 17);
+            this.label70.TabIndex = 25;
+            this.label70.Text = "Date Commande";
+            // 
+            // numNewCmdLivresMontant
+            // 
+            this.numNewCmdLivresMontant.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numNewCmdLivresMontant.Location = new System.Drawing.Point(200, 80);
+            this.numNewCmdLivresMontant.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numLivresNewCmdNbExemplaire.Name = "numLivresNewCmdNbExemplaire";
-            this.numLivresNewCmdNbExemplaire.Size = new System.Drawing.Size(132, 22);
-            this.numLivresNewCmdNbExemplaire.TabIndex = 23;
+            this.numNewCmdLivresMontant.Name = "numNewCmdLivresMontant";
+            this.numNewCmdLivresMontant.Size = new System.Drawing.Size(132, 22);
+            this.numNewCmdLivresMontant.TabIndex = 24;
+            // 
+            // numNewCmdLivresNbExemplaire
+            // 
+            this.numNewCmdLivresNbExemplaire.Location = new System.Drawing.Point(200, 38);
+            this.numNewCmdLivresNbExemplaire.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numNewCmdLivresNbExemplaire.Name = "numNewCmdLivresNbExemplaire";
+            this.numNewCmdLivresNbExemplaire.Size = new System.Drawing.Size(132, 22);
+            this.numNewCmdLivresNbExemplaire.TabIndex = 23;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(6, 184);
+            this.button2.Location = new System.Drawing.Point(11, 210);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(329, 27);
+            this.button2.Size = new System.Drawing.Size(495, 27);
             this.button2.TabIndex = 17;
             this.button2.Text = "Valider la commande";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnValiderCmdLivre_Click);
+            this.button2.Click += new System.EventHandler(this.btnNewCmdLivresValider_Click);
             // 
             // label67
             // 
             this.label67.AutoSize = true;
             this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label67.Location = new System.Drawing.Point(8, 117);
+            this.label67.Location = new System.Drawing.Point(8, 81);
             this.label67.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(66, 17);
             this.label67.TabIndex = 4;
             this.label67.Text = "Montant";
             // 
-            // txbLivresNewCmdNumero
-            // 
-            this.txbLivresNewCmdNumero.Location = new System.Drawing.Point(200, 34);
-            this.txbLivresNewCmdNumero.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresNewCmdNumero.Name = "txbLivresNewCmdNumero";
-            this.txbLivresNewCmdNumero.Size = new System.Drawing.Size(132, 22);
-            this.txbLivresNewCmdNumero.TabIndex = 3;
-            // 
             // label68
             // 
             this.label68.AutoSize = true;
             this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label68.Location = new System.Drawing.Point(8, 75);
+            this.label68.Location = new System.Drawing.Point(8, 39);
             this.label68.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(168, 17);
             this.label68.TabIndex = 2;
             this.label68.Text = "Nombre d\'exemplaires";
             // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label69.Location = new System.Drawing.Point(8, 34);
-            this.label69.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(105, 17);
-            this.label69.TabIndex = 0;
-            this.label69.Text = "Numero Livre";
-            // 
-            // dgvLivresCmdListe
-            // 
-            this.dgvLivresCmdListe.AllowUserToAddRows = false;
-            this.dgvLivresCmdListe.AllowUserToDeleteRows = false;
-            this.dgvLivresCmdListe.AllowUserToResizeColumns = false;
-            this.dgvLivresCmdListe.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLivresCmdListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgvLivresCmdListe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLivresCmdListe.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dgvLivresCmdListe.Location = new System.Drawing.Point(16, 362);
-            this.dgvLivresCmdListe.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvLivresCmdListe.MultiSelect = false;
-            this.dgvLivresCmdListe.Name = "dgvLivresCmdListe";
-            this.dgvLivresCmdListe.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLivresCmdListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.dgvLivresCmdListe.RowHeadersVisible = false;
-            this.dgvLivresCmdListe.RowHeadersWidth = 51;
-            this.dgvLivresCmdListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLivresCmdListe.Size = new System.Drawing.Size(1144, 164);
-            this.dgvLivresCmdListe.TabIndex = 21;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txbLivresCmdIsbn);
-            this.groupBox1.Controls.Add(this.txbLivresCmdImage);
-            this.groupBox1.Controls.Add(this.txbLivresCmdRayon);
-            this.groupBox1.Controls.Add(this.txbLivresCmdPublic);
-            this.groupBox1.Controls.Add(this.txbLivresCmdGenre);
-            this.groupBox1.Controls.Add(this.txbLivresCmdCollection);
-            this.groupBox1.Controls.Add(this.txbLivresCmdAuteur);
-            this.groupBox1.Controls.Add(this.txbLivresCmdTitre);
-            this.groupBox1.Controls.Add(this.txbLivresCmdNumero);
+            this.groupBox1.Controls.Add(this.txbCmdLivresIsbn);
+            this.groupBox1.Controls.Add(this.label66);
+            this.groupBox1.Controls.Add(this.label58);
+            this.groupBox1.Controls.Add(this.dgvLivresCmdListe);
+            this.groupBox1.Controls.Add(this.txbCmdLivresImage);
+            this.groupBox1.Controls.Add(this.txbCmdLivresRayon);
+            this.groupBox1.Controls.Add(this.btnDocNumCmdRecherche);
+            this.groupBox1.Controls.Add(this.txbCmdLivresPublic);
+            this.groupBox1.Controls.Add(this.txbCmdLivresGenre);
+            this.groupBox1.Controls.Add(this.txbCmdLivresNumRecherche);
+            this.groupBox1.Controls.Add(this.txbCmdLivresCollection);
+            this.groupBox1.Controls.Add(this.txbCmdLivresAuteur);
+            this.groupBox1.Controls.Add(this.txbCmdLivresTitre);
             this.groupBox1.Controls.Add(this.label57);
-            this.groupBox1.Controls.Add(this.pcbLivresCmdImage);
+            this.groupBox1.Controls.Add(this.pcbCmdLivresImage);
             this.groupBox1.Controls.Add(this.label59);
             this.groupBox1.Controls.Add(this.label60);
             this.groupBox1.Controls.Add(this.label61);
@@ -2243,123 +2215,198 @@ namespace Mediatek86.vue
             this.groupBox1.Controls.Add(this.label63);
             this.groupBox1.Controls.Add(this.label64);
             this.groupBox1.Controls.Add(this.label65);
-            this.groupBox1.Controls.Add(this.label66);
-            this.groupBox1.Location = new System.Drawing.Point(15, 52);
+            this.groupBox1.Location = new System.Drawing.Point(9, 18);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1145, 302);
+            this.groupBox1.Size = new System.Drawing.Size(1145, 494);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Informations détaillées";
+            this.groupBox1.Text = "Commandes de livres";
             // 
-            // txbLivresCmdIsbn
+            // txbCmdLivresIsbn
             // 
-            this.txbLivresCmdIsbn.Location = new System.Drawing.Point(588, 25);
-            this.txbLivresCmdIsbn.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresCmdIsbn.Name = "txbLivresCmdIsbn";
-            this.txbLivresCmdIsbn.ReadOnly = true;
-            this.txbLivresCmdIsbn.Size = new System.Drawing.Size(132, 22);
-            this.txbLivresCmdIsbn.TabIndex = 32;
+            this.txbCmdLivresIsbn.Location = new System.Drawing.Point(200, 59);
+            this.txbCmdLivresIsbn.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresIsbn.Name = "txbCmdLivresIsbn";
+            this.txbCmdLivresIsbn.ReadOnly = true;
+            this.txbCmdLivresIsbn.Size = new System.Drawing.Size(132, 22);
+            this.txbCmdLivresIsbn.TabIndex = 36;
             // 
-            // txbLivresCmdImage
+            // label66
             // 
-            this.txbLivresCmdImage.Location = new System.Drawing.Point(200, 240);
-            this.txbLivresCmdImage.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresCmdImage.Name = "txbLivresCmdImage";
-            this.txbLivresCmdImage.ReadOnly = true;
-            this.txbLivresCmdImage.Size = new System.Drawing.Size(520, 22);
-            this.txbLivresCmdImage.TabIndex = 31;
+            this.label66.AutoSize = true;
+            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label66.Location = new System.Drawing.Point(8, 61);
+            this.label66.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(95, 17);
+            this.label66.TabIndex = 35;
+            this.label66.Text = "Code ISBN :";
             // 
-            // txbLivresCmdRayon
+            // label58
             // 
-            this.txbLivresCmdRayon.Location = new System.Drawing.Point(200, 209);
-            this.txbLivresCmdRayon.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresCmdRayon.Name = "txbLivresCmdRayon";
-            this.txbLivresCmdRayon.ReadOnly = true;
-            this.txbLivresCmdRayon.Size = new System.Drawing.Size(275, 22);
-            this.txbLivresCmdRayon.TabIndex = 30;
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(8, 312);
+            this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(105, 17);
+            this.label58.TabIndex = 34;
+            this.label58.Text = "Commandes :";
             // 
-            // txbLivresCmdPublic
+            // dgvLivresCmdListe
             // 
-            this.txbLivresCmdPublic.Location = new System.Drawing.Point(200, 178);
-            this.txbLivresCmdPublic.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresCmdPublic.Name = "txbLivresCmdPublic";
-            this.txbLivresCmdPublic.ReadOnly = true;
-            this.txbLivresCmdPublic.Size = new System.Drawing.Size(275, 22);
-            this.txbLivresCmdPublic.TabIndex = 29;
+            this.dgvLivresCmdListe.AllowUserToAddRows = false;
+            this.dgvLivresCmdListe.AllowUserToDeleteRows = false;
+            this.dgvLivresCmdListe.AllowUserToResizeColumns = false;
+            this.dgvLivresCmdListe.AllowUserToResizeRows = false;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLivresCmdListe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvLivresCmdListe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLivresCmdListe.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvLivresCmdListe.Location = new System.Drawing.Point(200, 312);
+            this.dgvLivresCmdListe.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvLivresCmdListe.MultiSelect = false;
+            this.dgvLivresCmdListe.Name = "dgvLivresCmdListe";
+            this.dgvLivresCmdListe.ReadOnly = true;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLivresCmdListe.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvLivresCmdListe.RowHeadersVisible = false;
+            this.dgvLivresCmdListe.RowHeadersWidth = 51;
+            this.dgvLivresCmdListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLivresCmdListe.Size = new System.Drawing.Size(926, 164);
+            this.dgvLivresCmdListe.TabIndex = 33;
             // 
-            // txbLivresCmdGenre
+            // txbCmdLivresImage
             // 
-            this.txbLivresCmdGenre.Location = new System.Drawing.Point(200, 148);
-            this.txbLivresCmdGenre.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresCmdGenre.Name = "txbLivresCmdGenre";
-            this.txbLivresCmdGenre.ReadOnly = true;
-            this.txbLivresCmdGenre.Size = new System.Drawing.Size(275, 22);
-            this.txbLivresCmdGenre.TabIndex = 28;
+            this.txbCmdLivresImage.Location = new System.Drawing.Point(200, 277);
+            this.txbCmdLivresImage.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresImage.Name = "txbCmdLivresImage";
+            this.txbCmdLivresImage.ReadOnly = true;
+            this.txbCmdLivresImage.Size = new System.Drawing.Size(520, 22);
+            this.txbCmdLivresImage.TabIndex = 31;
             // 
-            // txbLivresCmdCollection
+            // txbCmdLivresRayon
             // 
-            this.txbLivresCmdCollection.Location = new System.Drawing.Point(200, 117);
-            this.txbLivresCmdCollection.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresCmdCollection.Name = "txbLivresCmdCollection";
-            this.txbLivresCmdCollection.ReadOnly = true;
-            this.txbLivresCmdCollection.Size = new System.Drawing.Size(520, 22);
-            this.txbLivresCmdCollection.TabIndex = 27;
+            this.txbCmdLivresRayon.Location = new System.Drawing.Point(200, 246);
+            this.txbCmdLivresRayon.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresRayon.Name = "txbCmdLivresRayon";
+            this.txbCmdLivresRayon.ReadOnly = true;
+            this.txbCmdLivresRayon.Size = new System.Drawing.Size(275, 22);
+            this.txbCmdLivresRayon.TabIndex = 30;
             // 
-            // txbLivresCmdAuteur
+            // btnDocNumCmdRecherche
             // 
-            this.txbLivresCmdAuteur.Location = new System.Drawing.Point(200, 86);
-            this.txbLivresCmdAuteur.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresCmdAuteur.Name = "txbLivresCmdAuteur";
-            this.txbLivresCmdAuteur.ReadOnly = true;
-            this.txbLivresCmdAuteur.Size = new System.Drawing.Size(275, 22);
-            this.txbLivresCmdAuteur.TabIndex = 26;
+            this.btnDocNumCmdRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDocNumCmdRecherche.Location = new System.Drawing.Point(386, 20);
+            this.btnDocNumCmdRecherche.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDocNumCmdRecherche.Name = "btnDocNumCmdRecherche";
+            this.btnDocNumCmdRecherche.Size = new System.Drawing.Size(128, 27);
+            this.btnDocNumCmdRecherche.TabIndex = 18;
+            this.btnDocNumCmdRecherche.Text = "Rechercher";
+            this.btnDocNumCmdRecherche.UseVisualStyleBackColor = true;
+            this.btnDocNumCmdRecherche.Click += new System.EventHandler(this.BtnCmdLivresNumRecherche_Click);
             // 
-            // txbLivresCmdTitre
+            // txbCmdLivresPublic
             // 
-            this.txbLivresCmdTitre.Location = new System.Drawing.Point(200, 55);
-            this.txbLivresCmdTitre.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresCmdTitre.Name = "txbLivresCmdTitre";
-            this.txbLivresCmdTitre.ReadOnly = true;
-            this.txbLivresCmdTitre.Size = new System.Drawing.Size(520, 22);
-            this.txbLivresCmdTitre.TabIndex = 25;
+            this.txbCmdLivresPublic.Location = new System.Drawing.Point(200, 215);
+            this.txbCmdLivresPublic.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresPublic.Name = "txbCmdLivresPublic";
+            this.txbCmdLivresPublic.ReadOnly = true;
+            this.txbCmdLivresPublic.Size = new System.Drawing.Size(275, 22);
+            this.txbCmdLivresPublic.TabIndex = 29;
             // 
-            // txbLivresCmdNumero
+            // txbCmdLivresGenre
             // 
-            this.txbLivresCmdNumero.Location = new System.Drawing.Point(200, 25);
-            this.txbLivresCmdNumero.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresCmdNumero.Name = "txbLivresCmdNumero";
-            this.txbLivresCmdNumero.ReadOnly = true;
-            this.txbLivresCmdNumero.Size = new System.Drawing.Size(132, 22);
-            this.txbLivresCmdNumero.TabIndex = 24;
+            this.txbCmdLivresGenre.Location = new System.Drawing.Point(200, 185);
+            this.txbCmdLivresGenre.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresGenre.Name = "txbCmdLivresGenre";
+            this.txbCmdLivresGenre.ReadOnly = true;
+            this.txbCmdLivresGenre.Size = new System.Drawing.Size(275, 22);
+            this.txbCmdLivresGenre.TabIndex = 28;
+            // 
+            // txbCmdLivresNumRecherche
+            // 
+            this.txbCmdLivresNumRecherche.Location = new System.Drawing.Point(200, 25);
+            this.txbCmdLivresNumRecherche.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresNumRecherche.Name = "txbCmdLivresNumRecherche";
+            this.txbCmdLivresNumRecherche.Size = new System.Drawing.Size(147, 22);
+            this.txbCmdLivresNumRecherche.TabIndex = 16;
+            this.txbCmdLivresNumRecherche.TextChanged += new System.EventHandler(this.txbCmdLivresNumRecherche_TextChanged);
+            // 
+            // txbCmdLivresCollection
+            // 
+            this.txbCmdLivresCollection.Location = new System.Drawing.Point(200, 154);
+            this.txbCmdLivresCollection.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresCollection.Name = "txbCmdLivresCollection";
+            this.txbCmdLivresCollection.ReadOnly = true;
+            this.txbCmdLivresCollection.Size = new System.Drawing.Size(520, 22);
+            this.txbCmdLivresCollection.TabIndex = 27;
+            // 
+            // txbCmdLivresAuteur
+            // 
+            this.txbCmdLivresAuteur.Location = new System.Drawing.Point(200, 123);
+            this.txbCmdLivresAuteur.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresAuteur.Name = "txbCmdLivresAuteur";
+            this.txbCmdLivresAuteur.ReadOnly = true;
+            this.txbCmdLivresAuteur.Size = new System.Drawing.Size(275, 22);
+            this.txbCmdLivresAuteur.TabIndex = 26;
+            // 
+            // txbCmdLivresTitre
+            // 
+            this.txbCmdLivresTitre.Location = new System.Drawing.Point(200, 92);
+            this.txbCmdLivresTitre.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresTitre.Name = "txbCmdLivresTitre";
+            this.txbCmdLivresTitre.ReadOnly = true;
+            this.txbCmdLivresTitre.Size = new System.Drawing.Size(520, 22);
+            this.txbCmdLivresTitre.TabIndex = 25;
             // 
             // label57
             // 
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label57.Location = new System.Drawing.Point(8, 148);
+            this.label57.Location = new System.Drawing.Point(8, 185);
             this.label57.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(63, 17);
             this.label57.TabIndex = 22;
             this.label57.Text = "Genre :";
             // 
-            // pcbLivresCmdImage
+            // pcbCmdLivresImage
             // 
-            this.pcbLivresCmdImage.Location = new System.Drawing.Point(747, 23);
-            this.pcbLivresCmdImage.Margin = new System.Windows.Forms.Padding(4);
-            this.pcbLivresCmdImage.Name = "pcbLivresCmdImage";
-            this.pcbLivresCmdImage.Size = new System.Drawing.Size(379, 258);
-            this.pcbLivresCmdImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcbLivresCmdImage.TabIndex = 21;
-            this.pcbLivresCmdImage.TabStop = false;
+            this.pcbCmdLivresImage.Location = new System.Drawing.Point(747, 23);
+            this.pcbCmdLivresImage.Margin = new System.Windows.Forms.Padding(4);
+            this.pcbCmdLivresImage.Name = "pcbCmdLivresImage";
+            this.pcbCmdLivresImage.Size = new System.Drawing.Size(379, 258);
+            this.pcbCmdLivresImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbCmdLivresImage.TabIndex = 21;
+            this.pcbCmdLivresImage.TabStop = false;
             // 
             // label59
             // 
             this.label59.AutoSize = true;
             this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label59.Location = new System.Drawing.Point(8, 178);
+            this.label59.Location = new System.Drawing.Point(8, 215);
             this.label59.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(62, 17);
@@ -2370,7 +2417,7 @@ namespace Mediatek86.vue
             // 
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(8, 209);
+            this.label60.Location = new System.Drawing.Point(8, 246);
             this.label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(64, 17);
@@ -2381,7 +2428,7 @@ namespace Mediatek86.vue
             // 
             this.label61.AutoSize = true;
             this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label61.Location = new System.Drawing.Point(8, 55);
+            this.label61.Location = new System.Drawing.Point(8, 92);
             this.label61.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(52, 17);
@@ -2403,7 +2450,7 @@ namespace Mediatek86.vue
             // 
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(8, 86);
+            this.label63.Location = new System.Drawing.Point(8, 123);
             this.label63.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(87, 17);
@@ -2414,7 +2461,7 @@ namespace Mediatek86.vue
             // 
             this.label64.AutoSize = true;
             this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.Location = new System.Drawing.Point(8, 240);
+            this.label64.Location = new System.Drawing.Point(8, 277);
             this.label64.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(150, 17);
@@ -2425,54 +2472,12 @@ namespace Mediatek86.vue
             // 
             this.label65.AutoSize = true;
             this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label65.Location = new System.Drawing.Point(8, 117);
+            this.label65.Location = new System.Drawing.Point(8, 154);
             this.label65.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(89, 17);
             this.label65.TabIndex = 10;
             this.label65.Text = "Collection :";
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.Location = new System.Drawing.Point(476, 25);
-            this.label66.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(95, 17);
-            this.label66.TabIndex = 7;
-            this.label66.Text = "Code ISBN :";
-            // 
-            // btnDocNumCmdRecherche
-            // 
-            this.btnDocNumCmdRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDocNumCmdRecherche.Location = new System.Drawing.Point(428, 17);
-            this.btnDocNumCmdRecherche.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDocNumCmdRecherche.Name = "btnDocNumCmdRecherche";
-            this.btnDocNumCmdRecherche.Size = new System.Drawing.Size(128, 27);
-            this.btnDocNumCmdRecherche.TabIndex = 18;
-            this.btnDocNumCmdRecherche.Text = "Rechercher";
-            this.btnDocNumCmdRecherche.UseVisualStyleBackColor = true;
-            this.btnDocNumCmdRecherche.Click += new System.EventHandler(this.BtnLivresCmdNumRecherche_Click);
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(17, 22);
-            this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(239, 17);
-            this.label58.TabIndex = 17;
-            this.label58.Text = "Saisir un numéro de document :";
-            // 
-            // txbLivresNumCmdRecherche
-            // 
-            this.txbLivresNumCmdRecherche.Location = new System.Drawing.Point(302, 18);
-            this.txbLivresNumCmdRecherche.Margin = new System.Windows.Forms.Padding(4);
-            this.txbLivresNumCmdRecherche.Name = "txbLivresNumCmdRecherche";
-            this.txbLivresNumCmdRecherche.Size = new System.Drawing.Size(88, 22);
-            this.txbLivresNumCmdRecherche.TabIndex = 16;
             // 
             // tabCmdDvd
             // 
@@ -2492,43 +2497,6 @@ namespace Mediatek86.vue
             this.tabCmdRevue.TabIndex = 6;
             this.tabCmdRevue.Text = "Commande Revue";
             this.tabCmdRevue.UseVisualStyleBackColor = true;
-            // 
-            // numLivresNewCmdMontant
-            // 
-            this.numLivresNewCmdMontant.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numLivresNewCmdMontant.Location = new System.Drawing.Point(200, 116);
-            this.numLivresNewCmdMontant.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.numLivresNewCmdMontant.Name = "numLivresNewCmdMontant";
-            this.numLivresNewCmdMontant.Size = new System.Drawing.Size(132, 22);
-            this.numLivresNewCmdMontant.TabIndex = 24;
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.Location = new System.Drawing.Point(8, 153);
-            this.label70.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(126, 17);
-            this.label70.TabIndex = 25;
-            this.label70.Text = "Date Commande";
-            // 
-            // dtpnumLivresNewCmdDate
-            // 
-            this.dtpnumLivresNewCmdDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpnumLivresNewCmdDate.Location = new System.Drawing.Point(200, 153);
-            this.dtpnumLivresNewCmdDate.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpnumLivresNewCmdDate.Name = "dtpnumLivresNewCmdDate";
-            this.dtpnumLivresNewCmdDate.Size = new System.Drawing.Size(132, 22);
-            this.dtpnumLivresNewCmdDate.TabIndex = 26;
             // 
             // FrmMediatek
             // 
@@ -2571,15 +2539,14 @@ namespace Mediatek86.vue
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceptionExemplairesListe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbReceptionRevueImage)).EndInit();
             this.tabCmdLivre.ResumeLayout(false);
-            this.tabCmdLivre.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numLivresNewCmdNbExemplaire)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLivresCmdListe)).EndInit();
+            this.gpbNewCmdLivres.ResumeLayout(false);
+            this.gpbNewCmdLivres.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numNewCmdLivresMontant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numNewCmdLivresNbExemplaire)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbLivresCmdImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numLivresNewCmdMontant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLivresCmdListe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbCmdLivresImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2737,21 +2704,18 @@ namespace Mediatek86.vue
         private System.Windows.Forms.TabPage tabCmdLivre;
         private System.Windows.Forms.TabPage tabCmdRevue;
         private System.Windows.Forms.Button btnDocNumCmdRecherche;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.TextBox txbLivresNumCmdRecherche;
+        private System.Windows.Forms.TextBox txbCmdLivresNumRecherche;
         private System.Windows.Forms.TabPage tabCmdDvd;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txbLivresCmdIsbn;
-        private System.Windows.Forms.TextBox txbLivresCmdImage;
-        private System.Windows.Forms.TextBox txbLivresCmdRayon;
-        private System.Windows.Forms.TextBox txbLivresCmdPublic;
-        private System.Windows.Forms.TextBox txbLivresCmdGenre;
-        private System.Windows.Forms.TextBox txbLivresCmdCollection;
-        private System.Windows.Forms.TextBox txbLivresCmdAuteur;
-        private System.Windows.Forms.TextBox txbLivresCmdTitre;
-        private System.Windows.Forms.TextBox txbLivresCmdNumero;
+        private System.Windows.Forms.TextBox txbCmdLivresImage;
+        private System.Windows.Forms.TextBox txbCmdLivresRayon;
+        private System.Windows.Forms.TextBox txbCmdLivresPublic;
+        private System.Windows.Forms.TextBox txbCmdLivresGenre;
+        private System.Windows.Forms.TextBox txbCmdLivresCollection;
+        private System.Windows.Forms.TextBox txbCmdLivresAuteur;
+        private System.Windows.Forms.TextBox txbCmdLivresTitre;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.PictureBox pcbLivresCmdImage;
+        private System.Windows.Forms.PictureBox pcbCmdLivresImage;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label61;
@@ -2759,18 +2723,18 @@ namespace Mediatek86.vue
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.DataGridView dgvLivresCmdListe;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gpbNewCmdLivres;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.TextBox txbLivresNewCmdNumero;
         private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.NumericUpDown numLivresNewCmdNbExemplaire;
-        private System.Windows.Forms.NumericUpDown numLivresNewCmdMontant;
+        private System.Windows.Forms.NumericUpDown numNewCmdLivresNbExemplaire;
+        private System.Windows.Forms.NumericUpDown numNewCmdLivresMontant;
         private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.DateTimePicker dtpnumLivresNewCmdDate;
+        private System.Windows.Forms.DateTimePicker dtpNewCmdLivresDate;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.DataGridView dgvLivresCmdListe;
+        private System.Windows.Forms.TextBox txbCmdLivresIsbn;
+        private System.Windows.Forms.Label label66;
     }
 }
 

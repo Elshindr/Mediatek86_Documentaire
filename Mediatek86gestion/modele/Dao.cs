@@ -20,22 +20,21 @@ namespace Mediatek86.modele
 
         public static int GetLastIdCommande()
         {
-            int maxId = 1;
 
-            string req = "select MAX(id) from commande;";
+            string strnbId = "";
+            string req = "select MAX(id) as id from commande;";
 
             BddMySql curs = BddMySql.GetInstance(connectionString);
             curs.ReqSelect(req, null);
 
             while (curs.Read())
             {
-                maxId += Int32.Parse((string)curs.Field("id"));
+                strnbId = (string)curs.Field("id");
 
             }
             curs.Close();
 
-
-            return maxId;
+            return 1 + Int32.Parse(strnbId);
         }
 
 
