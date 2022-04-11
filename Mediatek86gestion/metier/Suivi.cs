@@ -1,11 +1,12 @@
 ﻿namespace Mediatek86.metier
 {
-    public class Suivi
+    public class Suivi : Categorie
     {
+
         private readonly string id;
         private readonly string libelle;
 
-        public Suivi(string id, string libelle)
+        public Suivi(string id, string libelle) : base(id, libelle)
         {
             this.id = id;
             this.libelle = libelle;

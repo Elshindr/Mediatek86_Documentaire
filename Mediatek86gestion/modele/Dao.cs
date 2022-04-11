@@ -17,7 +17,46 @@ namespace Mediatek86.modele
         private static readonly string database = "mediatek86";
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
+        public static bool SupprimerCmdLivres(string idCommande)
+        {
+            try
+            {
+                string req1 = " DELETE FROM commandedocument WHERE id = @id;";
+                Dictionary<string, object> parameters1 = new Dictionary<string, object>
+                {
+                    { "@id", idCommande}
+                };
+                BddMySql curs1 = BddMySql.GetInstance(connectionString);
+                curs1.ReqUpdate(req1, parameters1);
+                curs1.Close();
 
+
+                string req = "delete from commande where id = @id";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@id", idCommande},
+                };
+                BddMySql curs = BddMySql.GetInstance(connectionString);
+                curs.ReqUpdate(req, parameters);
+                curs.Close();
+
+
+
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Methode permettant de récupérer le dernier id de la table commande 
+        /// Ajoute 1 à sa valeur
+        /// </summary>
+        /// <returns>Retoune la valeur int de l'id de la nouvelle commande</returns>
         public static int GetLastIdCommande()
         {
 
@@ -37,12 +76,42 @@ namespace Mediatek86.modele
             return 1 + Int32.Parse(strnbId);
         }
 
+        /// <summary>
+        /// Methode qui envoi une requete update SQL de mise à jour du status de suivi d'une commande
+        /// </summary>
+        /// <param name="idCommande"></param>
+        /// <param name="idSuivi"></param>
+        /// <returns>Retoune vrai si la mise à jour à réussi</returns>
+        public static bool UpdateCmdLivres(string idCommande, string idSuivi)
+        {
+            try
+            {
+
+                string req = "UPDATE commande SET idSuivi = @idSui  WHERE id = @id";
+
+
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@id", idCommande},
+                    { "@idSui", Int32.Parse(idSuivi)}
+                };
+                BddMySql curs = BddMySql.GetInstance(connectionString);
+                curs.ReqUpdate(req, parameters);
+                curs.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         /// <summary>
         /// Methode d'insertion d'une nouvelle commande dans la table commande, puis dans commandedocument 
         /// </summary>
-        /// <param name="commande"></param>
-        /// <returns></returns>
+        /// <param name="commande">une commande</param>
+        /// <returns>Renvoie vrai si la création a réussi</returns>
         public static bool CreerCommande(Commande commande)
         {
             try
@@ -80,13 +149,14 @@ namespace Mediatek86.modele
             }
         }
 
+
         /// <summary>
         /// Retourne tous les suivis à partir de la BDD
         /// </summary>
         /// <returns>Liste d'objets de Suivi</returns>
-        public static List<Suivi> GetAllSuivis()
+        public static List<Categorie> GetAllSuivis()
         {
-            List<Suivi> lesSuivis = new List<Suivi>();
+            List<Categorie> lesSuivis = new List<Categorie>();
             string req = "Select * from suivi order by label";
 
             BddMySql curs = BddMySql.GetInstance(connectionString);
@@ -167,6 +237,7 @@ namespace Mediatek86.modele
             curs.Close();
             return lesGenres;
         }
+
 
         /// <summary>
         /// Retourne tous les rayons à partir de la BDD

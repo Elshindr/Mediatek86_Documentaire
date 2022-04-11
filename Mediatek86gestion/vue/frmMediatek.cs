@@ -18,6 +18,7 @@ namespace Mediatek86.vue
 
 
         private readonly BindingSource bdgLivresCmdListe = new BindingSource();
+        private readonly BindingSource bdgSuivis = new BindingSource();
         private readonly BindingSource bdgLivresListe = new BindingSource();
         private readonly BindingSource bdgDvdListe = new BindingSource();
         private readonly BindingSource bdgGenres = new BindingSource();
@@ -31,7 +32,6 @@ namespace Mediatek86.vue
         private List<Dvd> lesDvd = new List<Dvd>();
         private List<Revue> lesRevues = new List<Revue>();
         private List<Exemplaire> lesExemplaires = new List<Exemplaire>();
-
         #endregion
 
 
@@ -57,6 +57,7 @@ namespace Mediatek86.vue
         {
             videCmdLivresInfos();
             accesNewCmdLivresGroupBox(false);
+            RemplirComboCategorie(controle.GetAllSuivis(), bdgSuivis, cbxModifCmdLivresSuivi);
         }
 
 
@@ -90,8 +91,8 @@ namespace Mediatek86.vue
 
         /// <summary>
         /// Evenement sur le changement de valeur saisie dans le champs de recherche de numero de livre dans l'onglet Commande de livre
-        /// Bloque l'accès au bloc de commande de livres
-        /// Vide les champs des infos
+        /// - Bloque l'accès au bloc de commande de livres
+        /// - Vide les champs des infos
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -103,7 +104,7 @@ namespace Mediatek86.vue
 
 
         /// <summary>
-        /// Evenement sur le clique du bouton valider une nouvelle commande 
+        /// Evenement sur le clic du bouton valider une nouvelle commande 
         /// dans l'onglet Commande de livre 
         /// Appelle Methode d'insertion de la nouvelle commande
         /// Vide l'affichage de la nouvelle commande 
@@ -158,6 +159,100 @@ namespace Mediatek86.vue
 
 
         /// <summary>
+        /// Evenement sur le clic du bouton Modifier Suivi de l'onglet Commande de Livre
+        /// - Modifie le status du suivi de la commande du livre sélectionné par requete UPDATE vers la base de données
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnModifCmdLivresModifier_Click(object sender, EventArgs e)
+        {
+            if (dgvLivresCmdListe.RowCount != 0)
+            {
+                string idCommande = dgvLivresCmdListe.CurrentRow.Cells["id"].Value.ToString();
+
+                int tabIdSuivi = Int32.Parse(dgvLivresCmdListe.CurrentRow.Cells["idSuivi"].Value.ToString());
+                int cbxIdSuivi = cbxModifCmdLivresSuivi.SelectedIndex;
+
+                if (tabIdSuivi != 2 && cbxIdSuivi == 2)
+                {
+                    MessageBox.Show("Commande non livrée", "Information");
+                }
+                else if ((tabIdSuivi == 2 || tabIdSuivi == 3) && (cbxIdSuivi == 0 || cbxIdSuivi == 3))
+                {
+                    MessageBox.Show("Commande déjà livrée ou réglée", "Information");
+                }
+                else
+                {
+                    UpdateCmdLivres(idCommande, (cbxIdSuivi + 1).ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nombre de ligne selectionné incorrecte ", "Erreur");
+            }
+        }
+
+
+        /// <summary>
+        /// Evenement sur le clic du bouton Supprimer Commande de l'onglet Commande de Livre
+        /// Supprimer une commande du livre sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnModifCmdLivresSuppr_Click(object sender, EventArgs e)
+        {
+            if (dgvLivresCmdListe.RowCount != 0)
+            {
+                if (dgvLivresCmdListe.CurrentRow.Cells["idSuivi"].Value.ToString() != "2" && dgvLivresCmdListe.CurrentRow.Cells["idSuivi"].Value.ToString() != "3")
+                {
+                    string idCommande = dgvLivresCmdListe.CurrentRow.Cells["id"].Value.ToString();
+                    if (controle.SupprimerCmdLivres(idCommande))
+                    {
+                        lesCmdLivres = controle.GetAllCommandesLivre(txbCmdLivresNumRecherche.Text);
+                        remplirCmdLivresListe(lesCmdLivres);
+                        videNewCmdLivresInfos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur dans la suppresion de commande", "Erreur");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Commande déjà livrée", "Erreur");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nombre de ligne selectionné incorrecte ", "Erreur");
+            }
+        }
+
+
+        /// <summary>
+        /// Methode de mise à jour de commande de livres 
+        /// Appelle les methodes pour remplir la liste des commandes
+        /// Vides les informations de la commande
+        /// </summary>
+        /// <param name="idCommande"></param>
+        /// <param name="idSuivi"></param>
+        public void UpdateCmdLivres(string idCommande, string idSuivi)
+        {
+            if (controle.UpdateCmdLivres(idCommande, idSuivi))
+            {
+                lesCmdLivres = controle.GetAllCommandesLivre(txbCmdLivresNumRecherche.Text);
+                remplirCmdLivresListe(lesCmdLivres);
+                videNewCmdLivresInfos();
+            }
+            else
+            {
+                MessageBox.Show("Erreur dans la creation de commande", "Erreur");
+            }
+
+        }
+
+
+        /// <summary>
         /// Methode d'affichage des informations du livre sélectionné dans l'onglet des commandes de livre
         /// </summary>
         /// <param name="livre"></param>
@@ -186,6 +281,7 @@ namespace Mediatek86.vue
             remplirCmdLivresListe(lesCmdLivres);
             accesNewCmdLivresGroupBox(true);
         }
+
 
         /// <summary>
         /// Methode qui remplit le datagridview avec la liste des commandes de livre reçue en paramètre
@@ -217,7 +313,9 @@ namespace Mediatek86.vue
         {
             videNewCmdLivresInfos();
             gpbNewCmdLivres.Enabled = acces;
+            gpbModifCmdLivres.Enabled = acces;
         }
+
 
         /// <summary>
         /// Methode qui vide les zones d'affichage des informations du bloc de commandes de livres
@@ -228,6 +326,7 @@ namespace Mediatek86.vue
             numNewCmdLivresMontant.Value = 0;
             dtpNewCmdLivresDate.Value = DateTime.Now;
         }
+
 
         /// <summary>
         /// Methode qui vide les zones d'affichage des informations du bloc de livre à commander
@@ -1325,10 +1424,13 @@ namespace Mediatek86.vue
             accesReceptionExemplaireGroupBox(true);
         }
 
+        /// <summary>
+        /// Methode qui affiche la liste des Exemplaires d'une Revue
+        /// </summary>
         private void afficheReceptionExemplairesRevue()
         {
-            string idDocuement = txbReceptionRevueNumero.Text;
-            lesExemplaires = controle.GetExemplairesRevue(idDocuement);
+            string idDocument = txbReceptionRevueNumero.Text;
+            lesExemplaires = controle.GetExemplairesRevue(idDocument);
             RemplirReceptionExemplairesListe(lesExemplaires);
         }
 
@@ -1373,6 +1475,7 @@ namespace Mediatek86.vue
             grpReceptionExemplaire.Enabled = acces;
         }
 
+
         /// <summary>
         /// Recherche image sur disque (pour l'exemplaire)
         /// </summary>
@@ -1398,6 +1501,7 @@ namespace Mediatek86.vue
                 pcbReceptionExemplaireImage.Image = null;
             }
         }
+
 
         /// <summary>
         /// Enregistrement du nouvel exemplaire
@@ -1438,6 +1542,7 @@ namespace Mediatek86.vue
                 MessageBox.Show("numéro de parution obligatoire", "Information");
             }
         }
+
 
         /// <summary>
         /// Tri sur une colonne
@@ -1489,28 +1594,9 @@ namespace Mediatek86.vue
             }
         }
 
+
+
         #endregion
-
-
-        private void tabOngletsApplication_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbLivresNumRecherche_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
 
 
     }

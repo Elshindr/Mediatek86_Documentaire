@@ -14,7 +14,7 @@ namespace Mediatek86.controleur
         private readonly List<Categorie> lesRayons;
         private readonly List<Categorie> lesPublics;
         private readonly List<Categorie> lesGenres;
-        private readonly List<Suivi> lesSuivis;
+        private readonly List<Categorie> lesSuivis;
 
         /// <summary>
         /// Constructeur de la classe Controle
@@ -35,7 +35,22 @@ namespace Mediatek86.controleur
             frmMediatek.ShowDialog();
         }
 
+        public bool SupprimerCmdLivres(string idCommande)
+        {
+            return Dao.SupprimerCmdLivres(idCommande);
+        }
 
+        /// <summary>
+        /// Methode du controleur accedant à la méthode UpdateCmdLivre
+        /// Permet la mise à jours du suivi de commande de livre
+        /// </summary>
+        /// <param name="idCommande"></param>
+        /// <param name="idSuivi"></param>
+        /// <returns></returns>
+        public bool UpdateCmdLivres(string idCommande, string idSuivi)
+        {
+            return Dao.UpdateCmdLivres(idCommande, idSuivi);
+        }
 
         /// <summary>
         /// Methode de controle de création d'une commande
@@ -70,7 +85,7 @@ namespace Mediatek86.controleur
         /// getter sur la liste des genres
         /// </summary>
         /// <returns>Collection d'objets Genre</returns>
-        public List<Suivi> GetAllSuivis()
+        public List<Categorie> GetAllSuivis()
         {
             return lesSuivis;
         }
