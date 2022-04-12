@@ -17,6 +17,11 @@ namespace Mediatek86.modele
         private static readonly string database = "mediatek86";
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
+        /// <summary>
+        /// MEthode permettant de suprimmer les lignes de commande dans commande et commandedocument
+        /// </summary>
+        /// <param name="idCommande"></param>
+        /// <returns></returns>
         public static bool SupprimerCmdLivres(string idCommande)
         {
             try
@@ -59,21 +64,21 @@ namespace Mediatek86.modele
         /// <returns>Retoune la valeur int de l'id de la nouvelle commande</returns>
         public static int GetLastIdCommande()
         {
-
+            string data = "x";
             string strnbId = "";
             string req = "select MAX(id) as id from commande;";
-
+            DBNull fsd = null;
             BddMySql curs = BddMySql.GetInstance(connectionString);
             curs.ReqSelect(req, null);
 
             while (curs.Read())
             {
-                strnbId = (string)curs.Field("id");
+                data = (curs.Field("id") is DBNull) ? "0" : (string)curs.Field("id");
 
             }
             curs.Close();
 
-            return 1 + Int32.Parse(strnbId);
+            return 1 + Int32.Parse(data);
         }
 
         /// <summary>

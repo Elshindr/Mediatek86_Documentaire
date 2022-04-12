@@ -98,8 +98,13 @@ namespace Mediatek86.vue
         /// <param name="e"></param>
         private void txbCmdLivresNumRecherche_TextChanged(object sender, EventArgs e)
         {
+
             accesNewCmdLivresGroupBox(false);
             videNewCmdLivresInfos();
+            if (txbCmdLivresNumRecherche.Text == "")
+            {
+                videCmdLivresInfos();
+            }
         }
 
 
@@ -118,8 +123,18 @@ namespace Mediatek86.vue
             {
                 try
                 {
-                    string strId = "0000";
-                    string strMaxId = controle.GetLastIdCommande().ToString();
+                    string strId = "00000";
+                    string strMaxId = "";
+                    if (controle.GetLastIdCommande().ToString() == null)
+                    {
+                        strMaxId = "1";
+                    }
+                    else
+                    {
+                        strMaxId = controle.GetLastIdCommande().ToString();
+                    }
+
+
                     int lenMaxId = strMaxId.Length;
 
                     string idCommande = strId.Remove(0, lenMaxId) + strMaxId;
@@ -137,7 +152,6 @@ namespace Mediatek86.vue
                         lesCmdLivres = controle.GetAllCommandesLivre(idDocument);
                         remplirCmdLivresListe(lesCmdLivres);
                         videNewCmdLivresInfos();
-
                     }
                     else
                     {
@@ -146,7 +160,7 @@ namespace Mediatek86.vue
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Erreur");
+                    MessageBox.Show(ex.Message, "merde");
                     numNewCmdLivresNbExemplaire.Focus();
                 }
             }
@@ -180,6 +194,10 @@ namespace Mediatek86.vue
                 else if ((tabIdSuivi == 2 || tabIdSuivi == 3) && (cbxIdSuivi == 0 || cbxIdSuivi == 3))
                 {
                     MessageBox.Show("Commande déjà livrée ou réglée", "Information");
+                }
+                else if (tabIdSuivi == 3 && cbxIdSuivi <= 3)
+                {
+                    MessageBox.Show("Commande déjà réglée", "Information");
                 }
                 else
                 {
@@ -246,7 +264,7 @@ namespace Mediatek86.vue
             }
             else
             {
-                MessageBox.Show("Erreur dans la creation de commande", "Erreur");
+                MessageBox.Show("Erreur dans la update de suivi commande", "Erreur");
             }
 
         }
@@ -1323,7 +1341,6 @@ namespace Mediatek86.vue
         }
 
         #endregion
-
 
         #region Réception Exemplaire de presse
         //-----------------------------------------------------------
