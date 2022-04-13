@@ -35,22 +35,29 @@ namespace Mediatek86.controleur
             frmMediatek.ShowDialog();
         }
 
-        public bool SupprimerCmdLivres(string idCommande)
+        /// <summary>
+        /// Methode du controleur accedant à la methode SupprimerCmdDocument
+        /// </summary>
+        /// <param name="idCommande"></param>
+        /// <returns></returns>
+        public bool SupprimerCmdDocument(string idCommande)
         {
-            return Dao.SupprimerCmdLivres(idCommande);
+            return Dao.SupprimerCmdDocument(idCommande);
         }
 
+
         /// <summary>
-        /// Methode du controleur accedant à la méthode UpdateCmdLivre
-        /// Permet la mise à jours du suivi de commande de livre
+        /// Methode du controleur accedant à la méthode UpdateCmdDocument
+        /// Permet la mise à jours du suivi de commande d'un document
         /// </summary>
         /// <param name="idCommande"></param>
         /// <param name="idSuivi"></param>
         /// <returns></returns>
-        public bool UpdateCmdLivres(string idCommande, string idSuivi)
+        public bool UpdateCmdDocument(string idCommande, string idSuivi)
         {
-            return Dao.UpdateCmdLivres(idCommande, idSuivi);
+            return Dao.UpdateCmdDocument(idCommande, idSuivi);
         }
+
 
         /// <summary>
         /// Methode de controle de création d'une commande
@@ -62,27 +69,29 @@ namespace Mediatek86.controleur
             return Dao.CreerCommande(commande);
         }
 
+
         /// <summary>
         /// Methode de controle de récupération de id Max de la table commande
         /// </summary>
         /// <returns></returns>
         public int GetLastIdCommande()
         {
-
             return Dao.GetLastIdCommande();
         }
+
+
         /// <summary>
-        /// getter sur la liste commande d'un livre
+        /// Getter sur la liste commande d'un document
         /// </summary>
         /// <returns>Collection d'objets Livre</returns>
-        public List<Commande> GetAllCommandesLivre(string idDocumentlivreDvd)
+        public List<Commande> GetAllCommandesDocument(string idDocument)
         {
-            return Dao.GetAllCommandesLivre(idDocumentlivreDvd);
+            return Dao.GetAllCommandesDocument(idDocument);
         }
 
 
         /// <summary>
-        /// getter sur la liste des genres
+        /// Getter sur la liste des Suivis
         /// </summary>
         /// <returns>Collection d'objets Genre</returns>
         public List<Categorie> GetAllSuivis()
@@ -92,7 +101,7 @@ namespace Mediatek86.controleur
 
 
         /// <summary>
-        /// getter sur la liste des genres
+        /// Getter sur la liste des Genres
         /// </summary>
         /// <returns>Collection d'objets Genre</returns>
         public List<Categorie> GetAllGenres()
@@ -100,8 +109,9 @@ namespace Mediatek86.controleur
             return lesGenres;
         }
 
+
         /// <summary>
-        /// getter sur la liste des livres
+        /// Getter sur la liste des livres
         /// </summary>
         /// <returns>Collection d'objets Livre</returns>
         public List<Livre> GetAllLivres()
@@ -109,14 +119,16 @@ namespace Mediatek86.controleur
             return lesLivres;
         }
 
+
         /// <summary>
-        /// getter sur la liste des Dvd
+        /// Getter sur la liste des Dvd
         /// </summary>
         /// <returns>Collection d'objets dvd</returns>
         public List<Dvd> GetAllDvd()
         {
             return lesDvd;
         }
+
 
         /// <summary>
         /// getter sur la liste des revues
@@ -127,6 +139,7 @@ namespace Mediatek86.controleur
             return lesRevues;
         }
 
+
         /// <summary>
         /// getter sur les rayons
         /// </summary>
@@ -135,6 +148,7 @@ namespace Mediatek86.controleur
         {
             return lesRayons;
         }
+
 
         /// <summary>
         /// getter sur les publics
@@ -145,6 +159,7 @@ namespace Mediatek86.controleur
             return lesPublics;
         }
 
+
         /// <summary>
         /// récupère les exemplaires d'une revue
         /// </summary>
@@ -153,6 +168,7 @@ namespace Mediatek86.controleur
         {
             return Dao.GetExemplairesRevue(idDocuement);
         }
+
 
         /// <summary>
         /// Crée un exemplaire d'une revue dans la bdd

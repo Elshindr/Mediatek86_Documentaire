@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Mediatek86.modele
 {
     /// <summary>
-    /// Classe public récupérant les informations de la base de données mediatek86
+    /// Classe public executant les opérations SQL sur la base de données mediatek86
     /// </summary>
     public static class Dao
     {
@@ -18,35 +18,37 @@ namespace Mediatek86.modele
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
         /// <summary>
-        /// MEthode permettant de suprimmer les lignes de commande dans commande et commandedocument
+        /// Methode permettant de lancer une requete SQL DELETE
+        /// - Suppression d'une ligne de commande dans les tables commande et commandedocument
         /// </summary>
         /// <param name="idCommande"></param>
-        /// <returns></returns>
-        public static bool SupprimerCmdLivres(string idCommande)
+        /// <returns>Retoune vrai si la suppression a réussi</returns>
+        public static bool SupprimerCmdDocument(string idCommande)
         {
             try
             {
-                string req1 = " DELETE FROM commandedocument WHERE id = @id;";
-                Dictionary<string, object> parameters1 = new Dictionary<string, object>
+                //
+                // Requete de suppression dans la table commandedocument
+                string req_cd = "DELETE FROM commandedocument WHERE id = @id;";
+                Dictionary<string, object> parameters_cd = new Dictionary<string, object>
                 {
                     { "@id", idCommande}
                 };
-                BddMySql curs1 = BddMySql.GetInstance(connectionString);
-                curs1.ReqUpdate(req1, parameters1);
-                curs1.Close();
+                BddMySql curs_cd = BddMySql.GetInstance(connectionString);
+                curs_cd.ReqUpdate(req_cd, parameters_cd);
+                curs_cd.Close();
 
 
-                string req = "delete from commande where id = @id";
-                Dictionary<string, object> parameters = new Dictionary<string, object>
+                //
+                // Requete de suppression dans la table commande
+                string req_c = "DELETE FROM commande WHERE id = @id";
+                Dictionary<string, object> parameters_c = new Dictionary<string, object>
                 {
                     { "@id", idCommande},
                 };
-                BddMySql curs = BddMySql.GetInstance(connectionString);
-                curs.ReqUpdate(req, parameters);
-                curs.Close();
-
-
-
+                BddMySql curs_c = BddMySql.GetInstance(connectionString);
+                curs_c.ReqUpdate(req_c, parameters_c);
+                curs_c.Close();
 
 
                 return true;
@@ -58,16 +60,16 @@ namespace Mediatek86.modele
         }
 
         /// <summary>
-        /// Methode permettant de récupérer le dernier id de la table commande 
-        /// Ajoute 1 à sa valeur
+        /// Methode permettant de lancer une requete SQL SELECT
+        /// - Récupération du dernier id de la table commande 
+        /// - Ajoute 1 à sa valeur pour créer le nouvel idCommande
         /// </summary>
-        /// <returns>Retoune la valeur int de l'id de la nouvelle commande</returns>
+        /// <returns>Retoune la valeur en int de l'id de la nouvelle commande</returns>
         public static int GetLastIdCommande()
         {
             string data = "x";
-            string strnbId = "";
-            string req = "select MAX(id) as id from commande;";
-            DBNull fsd = null;
+            string req = "SELECT MAX(id) as id FROM commande;";
+
             BddMySql curs = BddMySql.GetInstance(connectionString);
             curs.ReqSelect(req, null);
 
@@ -82,23 +84,22 @@ namespace Mediatek86.modele
         }
 
         /// <summary>
-        /// Methode qui envoi une requete update SQL de mise à jour du status de suivi d'une commande
+        /// Methode permettant de lancer une requete SQL UPDATE
+        /// - Mise à jour du status de suivi d'une commande
         /// </summary>
         /// <param name="idCommande"></param>
         /// <param name="idSuivi"></param>
-        /// <returns>Retoune vrai si la mise à jour à réussi</returns>
-        public static bool UpdateCmdLivres(string idCommande, string idSuivi)
+        /// <returns>Retoune vrai si la mise à jour a réussi</returns>
+        public static bool UpdateCmdDocument(string idCommande, string idSuivi)
         {
             try
             {
-
-                string req = "UPDATE commande SET idSuivi = @idSui  WHERE id = @id";
-
+                string req = "UPDATE commande SET idSuivi = @idSuivi WHERE id = @id";
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
                     { "@id", idCommande},
-                    { "@idSui", Int32.Parse(idSuivi)}
+                    { "@idSuivi", Int32.Parse(idSuivi)}
                 };
                 BddMySql curs = BddMySql.GetInstance(connectionString);
                 curs.ReqUpdate(req, parameters);
@@ -111,9 +112,9 @@ namespace Mediatek86.modele
             }
         }
 
-
         /// <summary>
-        /// Methode d'insertion d'une nouvelle commande dans la table commande, puis dans commandedocument 
+        /// Methode permettant de lancer une requete SQL INSERT
+        /// - Insertion d'une ligne de commande dans les tables commande et commandedocument
         /// </summary>
         /// <param name="commande">une commande</param>
         /// <returns>Renvoie vrai si la création a réussi</returns>
@@ -121,30 +122,33 @@ namespace Mediatek86.modele
         {
             try
             {
-                string req = "insert into commande values (@id, @dateCommande, @montant, @idSuivi) ";
-                Dictionary<string, object> parameters = new Dictionary<string, object>
+                //
+                // Requete d'insertion dans la table commande
+                string req_c = "insert into commande values (@id, @dateCommande, @montant, @idSuivi) ";
+                Dictionary<string, object> parameters_c = new Dictionary<string, object>
                 {
                     { "@id", commande.Id},
                     { "@dateCommande", commande.DateCommande},
                     { "@montant", commande.Montant},
                     { "@idSuivi", commande.IdSuivi}
                 };
-                BddMySql curs = BddMySql.GetInstance(connectionString);
-                curs.ReqUpdate(req, parameters);
-                curs.Close();
+                BddMySql curs_c = BddMySql.GetInstance(connectionString);
+                curs_c.ReqUpdate(req_c, parameters_c);
+                curs_c.Close();
 
 
-                string req1 = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd)  ";
-                Dictionary<string, object> parameters1 = new Dictionary<string, object>
+                //
+                // Requete d'insertion dans la table commandedocument
+                string req_cd = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd)  ";
+                Dictionary<string, object> parameters_cd = new Dictionary<string, object>
                 {
                     { "@id", commande.Id},
                     { "@nbExemplaire", commande.NbExemplaire},
                     { "@idLivreDvd", commande.IdLivreDvd}
                 };
-                BddMySql curs1 = BddMySql.GetInstance(connectionString);
-                curs1.ReqUpdate(req1, parameters1);
-                curs1.Close();
-
+                BddMySql curs_cd = BddMySql.GetInstance(connectionString);
+                curs_cd.ReqUpdate(req_cd, parameters_cd);
+                curs_cd.Close();
 
                 return true;
             }
@@ -181,7 +185,7 @@ namespace Mediatek86.modele
         /// Retourne toutes les commandes livres à partir de la BDD
         /// </summary>
         /// <returns>Liste d'objets Livre</returns>
-        public static List<Commande> GetAllCommandesLivre(string idDocument)
+        public static List<Commande> GetAllCommandesDocument(string idDocument)
         {
 
             List<Commande> lesCmdLivres = new List<Commande>();
@@ -199,7 +203,6 @@ namespace Mediatek86.modele
 
             BddMySql curs = BddMySql.GetInstance(connectionString);
             curs.ReqSelect(req, parameters);
-
 
 
             while (curs.Read())
