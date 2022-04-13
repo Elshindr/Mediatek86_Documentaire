@@ -17,6 +17,53 @@ namespace Mediatek86.modele
         private static readonly string database = "mediatek86";
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
+        /// Récupération toutes les abonnements de revue  de la BDD
+        /// </summary>
+        /// <param name="idRevue"></param>
+        /// <returns>Liste des abonnements</returns>
+        public static List<Abonnement> GetAllAbonnemmentRevue(string idRevue)
+        {
+            List<Abonnement> lesAboRevue = new List<Abonnement>();
+            string req = "Select c.id, c.dateCommande, c.montant, c.idSuivi, a.dateFinAbonnement, a.idRevue, s.label";
+            req += " from commande c join suivi s on c.idSuivi = s.idSuivi";
+            req += " join abonnement a on c.id = a.id";
+            req += " where a.idRevue = @idRevue";
+            req += " order by c.dateCommande DESC;";
+
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+              {
+                 { "@idRevue", idRevue}
+              };
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, parameters);
+
+
+            while (curs.Read())
+            {
+                string idCommande = (string)curs.Field("id");
+                DateTime dateCommande = (DateTime)curs.Field("dateCommande");
+                double montant = (double)curs.Field("montant");
+                int idSuivi = (int)curs.Field("idSuivi");
+                string label = (string)curs.Field("label");
+
+                string idrevue = (string)curs.Field("idLivreDvd");
+                DateTime dateFinAbonnement = (DateTime)curs.Field("dateFinAbonnement");
+
+                Abonnement abonnement = new Abonnement(idCommande, dateCommande, montant, idSuivi.ToString(), label, idrevue, dateFinAbonnement);
+                lesAboRevue.Add(abonnement);
+            }
+            curs.Close();
+
+            return lesAboRevue;
+        }
+
+
+
         /// <summary>
         /// Methode permettant de lancer une requete SQL DELETE
         /// - Suppression d'une ligne de commande dans les tables commande et commandedocument
@@ -118,7 +165,7 @@ namespace Mediatek86.modele
         /// </summary>
         /// <param name="commande">une commande</param>
         /// <returns>Renvoie vrai si la création a réussi</returns>
-        public static bool CreerCommande(Commande commande)
+        public static bool CreerCommande(CommandeDocument commande)
         {
             try
             {
@@ -127,7 +174,7 @@ namespace Mediatek86.modele
                 string req_c = "insert into commande values (@id, @dateCommande, @montant, @idSuivi) ";
                 Dictionary<string, object> parameters_c = new Dictionary<string, object>
                 {
-                    { "@id", commande.Id},
+                    { "@id", commande.IdCommande},
                     { "@dateCommande", commande.DateCommande},
                     { "@montant", commande.Montant},
                     { "@idSuivi", commande.IdSuivi}
@@ -142,7 +189,7 @@ namespace Mediatek86.modele
                 string req_cd = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd)  ";
                 Dictionary<string, object> parameters_cd = new Dictionary<string, object>
                 {
-                    { "@id", commande.Id},
+                    { "@id", commande.IdCommande},
                     { "@nbExemplaire", commande.NbExemplaire},
                     { "@idLivreDvd", commande.IdLivreDvd}
                 };
@@ -160,35 +207,15 @@ namespace Mediatek86.modele
 
 
         /// <summary>
-        /// Retourne tous les suivis à partir de la BDD
+        /// Retourne toutes les commandes livres ou de DVD à partir de la BDD
         /// </summary>
-        /// <returns>Liste d'objets de Suivi</returns>
-        public static List<Categorie> GetAllSuivis()
-        {
-            List<Categorie> lesSuivis = new List<Categorie>();
-            string req = "Select * from suivi order by label";
-
-            BddMySql curs = BddMySql.GetInstance(connectionString);
-            curs.ReqSelect(req, null);
-
-            while (curs.Read())
-            {
-
-                Suivi suivi = new Suivi(((int)curs.Field("idSuivi")).ToString(), (string)curs.Field("label"));
-                lesSuivis.Add(suivi);
-            }
-            curs.Close();
-            return lesSuivis;
-        }
-
-        /// <summary>
-        /// Retourne toutes les commandes livres à partir de la BDD
-        /// </summary>
+        /// <param name="idDocument"></param>
         /// <returns>Liste d'objets Livre</returns>
-        public static List<Commande> GetAllCommandesDocument(string idDocument)
+        public static List<CommandeDocument> GetAllCommandesDocument(string idDocument)
         {
 
-            List<Commande> lesCmdLivres = new List<Commande>();
+            List<CommandeDocument> lesCmdDoc = new List<CommandeDocument>();
+
             string req = "Select c.id, c.dateCommande, c.montant, c.idSuivi, cd.nbExemplaire, cd.idLivreDvd, s.label";
             req += " from commande c join suivi s on c.idSuivi = s.idSuivi";
             req += " join commandedocument cd on c.id = cd.id";
@@ -216,12 +243,35 @@ namespace Mediatek86.modele
                 string idLivreDvd = (string)curs.Field("idLivreDvd");
                 int nbExemplaire = (int)curs.Field("nbExemplaire");
 
-                Commande commande = new Commande(idCommande, idLivreDvd, nbExemplaire, dateCommande, montant, idSuivi.ToString(), label);
-                lesCmdLivres.Add(commande);
+                CommandeDocument commande = new CommandeDocument(idCommande, dateCommande, montant, idSuivi.ToString(), label, idLivreDvd, nbExemplaire);
+                lesCmdDoc.Add(commande);
             }
             curs.Close();
 
-            return lesCmdLivres;
+            return lesCmdDoc;
+        }
+
+
+        /// <summary>
+        /// Retourne tous les suivis à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets de Suivi</returns>
+        public static List<Categorie> GetAllSuivis()
+        {
+            List<Categorie> lesSuivis = new List<Categorie>();
+            string req = "Select * from suivi order by label";
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, null);
+
+            while (curs.Read())
+            {
+
+                Suivi suivi = new Suivi(((int)curs.Field("idSuivi")).ToString(), (string)curs.Field("label"));
+                lesSuivis.Add(suivi);
+            }
+            curs.Close();
+            return lesSuivis;
         }
 
 

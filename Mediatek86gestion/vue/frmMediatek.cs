@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace Mediatek86.vue
 {
+    /// <summary>
+    /// Classe de gestion des fonctionnalités graphiques 
+    /// Herite de la Classe Form
+    /// </summary>
     public partial class FrmMediatek : Form
     {
 
@@ -17,8 +21,10 @@ namespace Mediatek86.vue
         const string ETATNEUF = "00001";
 
 
-        private readonly BindingSource bdgLivresCmdListe = new BindingSource();
+        private readonly BindingSource bdgLivreCmdListe = new BindingSource();
         private readonly BindingSource bdgDvdCmdListe = new BindingSource();
+        private readonly BindingSource bdgRevueCmdListe = new BindingSource();
+
         private readonly BindingSource bdgSuivis = new BindingSource();
         private readonly BindingSource bdgLivresListe = new BindingSource();
         private readonly BindingSource bdgDvdListe = new BindingSource();
@@ -28,8 +34,9 @@ namespace Mediatek86.vue
         private readonly BindingSource bdgRevuesListe = new BindingSource();
         private readonly BindingSource bdgExemplairesListe = new BindingSource();
 
-        private List<Commande> lesCmdLivres = new List<Commande>();
-        private List<Commande> lesCmdDvd = new List<Commande>();
+        private List<CommandeDocument> lesCmdLivre = new List<CommandeDocument>();
+        private List<CommandeDocument> lesCmdDvd = new List<CommandeDocument>();
+        private List<Abonnement> lesCmdRevue = new List<Abonnement>();
 
         private List<Livre> lesLivres = new List<Livre>();
         private List<Dvd> lesDvd = new List<Dvd>();
@@ -38,12 +45,120 @@ namespace Mediatek86.vue
         #endregion
 
 
+        /// <summary>
+        /// Constructeur de la Classe
+        /// Récupére l'instance du controleur de la Classe Controle
+        /// </summary>
+        /// <param name="controle"></param>
         internal FrmMediatek(Controle controle)
         {
             InitializeComponent();
             this.controle = controle;
         }
 
+
+        #region RevuesCommandes
+        //-----------------------------------------------------------
+        // ONGLET "COMMANDES D'UNE REVUE"
+        //-----------------------------------------------------------
+
+        /// <summary>
+        /// Evenement sur le clic d'entrée dans l'onglet commande de revue
+        /// Bloque l'accés à la saisie d'une nouvelle commmande
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabCmdRevue_Enter(object sender, EventArgs e)
+        {
+            //videCmdDvdInfos();
+            //accesNewCmdDvdGroupBox(false);
+            //RemplirComboCategorie(controle.GetAllSuivis(), bdgSuivis, cbxModifCmdDvd);
+        }
+
+        /// <summary>
+        /// Evenement de clic sur le bouton de recherche
+        /// Permet l'affichage d'une revue dont le numéro est saisi.
+        /// Si non trouvé, affichage d'un MessageBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCmdRevueRechercher_Click(object sender, EventArgs e)
+        {
+            if (!txbCmdRevueNumero.Text.Equals(""))
+            {
+
+                Revue revue = lesRevues.Find(x => x.Id.Equals(txbCmdRevueNumero.Text));
+
+                if (revue != null)
+                {
+                    afficheCmdRevueInfos(revue);
+                }
+                else
+                {
+                    MessageBox.Show("Numéro de revue introuvable");
+                    txbCmdRevueNumero.Text = "";
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Methode d'affichage des informations du livre sélectionné dans l'onglet des commandes de revue
+        /// </summary>
+        /// <param name="revue"></param>
+        private void afficheCmdRevueInfos(Revue revue)
+        {
+            txbCmdRevueNumero.Text = revue.Id;
+            txbCmdRevueTitre.Text = revue.Titre;
+            txbCmdRevuePeriodicite.Text = revue.Periodicite;
+            txbCmdRevueDelaiMiseADispo.Text = revue.DelaiMiseADispo.ToString();
+
+            txbCmdRevueGenre.Text = revue.Genre;
+            txbCmdRevuePublic.Text = revue.Public;
+            txbCmdRevueRayon.Text = revue.Rayon;
+
+            chkCmdRevueEmpruntable.Checked = revue.Empruntable;
+            pcbCmdRevueImage.Text = revue.Image;
+
+
+            string image = revue.Image;
+            try
+            {
+                pcbCmdRevueImage.Image = Image.FromFile(image);
+            }
+            catch
+            {
+                pcbCmdRevueImage.Image = null;
+            }
+            string idRevue = txbCmdRevueNumero.Text;
+            lesCmdRevue = controle.GetAllAbonnemmentRevue(idRevue);
+            remplirCmdRevueListe(lesCmdRevue);
+            //accesNewCmdRevueGroupBox(true);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commandes"></param>
+        private void remplirCmdRevueListe(List<Abonnement> abonn)
+        {
+            bdgRevueCmdListe.DataSource = abonn;
+            dgvCmdRevueListe.DataSource = bdgRevueCmdListe;
+            dgvCmdRevueListe.Columns["idCommande"].Visible = false;
+            dgvCmdRevueListe.Columns["idSuivi"].Visible = false;
+
+            dgvCmdRevueListe.Columns["label"].Visible = false;
+            dgvCmdRevueListe.Columns["idRevue"].Visible = false;
+            dgvCmdRevueListe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            dgvCmdRevueListe.Columns["dateCommande"].DisplayIndex = 0;
+            dgvCmdRevueListe.Columns["montant"].DisplayIndex = 1;
+            dgvCmdRevueListe.Columns["datefinAbonnement"].DisplayIndex = 2;
+
+        }
+        #endregion
 
         #region DVDCommandes
 
@@ -129,7 +244,7 @@ namespace Mediatek86.vue
                     DateTime dateCommande = dtpNewCmdDvdDate.Value;
                     double montant = (double)numNewCmdDvdMontant.Value;
 
-                    Commande commande = new Commande(idCommande, idDocument, nbExemplaire, dateCommande, montant, "1", "en cours");
+                    CommandeDocument commande = new CommandeDocument(idCommande, dateCommande, montant, "1", "en cours", idDocument, nbExemplaire);
 
                     if (controle.CreerCommande(commande))
                     {
@@ -166,7 +281,7 @@ namespace Mediatek86.vue
         {
             if (dgvCmdDvdListe.RowCount != 0)
             {
-                string idCommande = dgvCmdDvdListe.CurrentRow.Cells["id"].Value.ToString();
+                string idCommande = dgvCmdDvdListe.CurrentRow.Cells["idCommande"].Value.ToString();
 
                 int tabIdSuivi = Int32.Parse(dgvCmdDvdListe.CurrentRow.Cells["idSuivi"].Value.ToString());
                 int cbxIdSuivi = cbxModifCmdDvd.SelectedIndex;
@@ -206,7 +321,7 @@ namespace Mediatek86.vue
             {
                 if (dgvCmdDvdListe.CurrentRow.Cells["idSuivi"].Value.ToString() != "2" && dgvCmdDvdListe.CurrentRow.Cells["idSuivi"].Value.ToString() != "3")
                 {
-                    string idCommande = dgvCmdDvdListe.CurrentRow.Cells["id"].Value.ToString();
+                    string idCommande = dgvCmdDvdListe.CurrentRow.Cells["idCommande"].Value.ToString();
                     if (controle.SupprimerCmdDocument(idCommande))
                     {
                         lesCmdDvd = controle.GetAllCommandesDocument(txbCmdDvdNumero.Text);
@@ -260,7 +375,7 @@ namespace Mediatek86.vue
         {
             if (dgvCmdDvdListe.RowCount != 0)
             {
-                txbModifCmdDvdIdCommande.Text = dgvCmdDvdListe.CurrentRow.Cells["id"].Value.ToString();
+                txbModifCmdDvdIdCommande.Text = dgvCmdDvdListe.CurrentRow.Cells["idCommande"].Value.ToString();
                 txbModifCmdDvdIdDvd.Text = dgvCmdDvdListe.CurrentRow.Cells["idLivreDvd"].Value.ToString();
                 dtpModifCmdDvdDateCmd.Value = (DateTime)dgvCmdDvdListe.CurrentRow.Cells["dateCommande"].Value;
                 txbModifCmdDvdNbExemplaire.Text = dgvCmdDvdListe.CurrentRow.Cells["nbExemplaire"].Value.ToString();
@@ -280,11 +395,11 @@ namespace Mediatek86.vue
         {
             videNewCmdLivresInfos();
             string titreColonne = dgvCmdDvdListe.Columns[e.ColumnIndex].HeaderText;
-            List<Commande> sortedList = new List<Commande>();
+            List<CommandeDocument> sortedList = new List<CommandeDocument>();
             switch (titreColonne)
             {
-                case "Id":
-                    sortedList = lesCmdDvd.OrderBy(o => o.Id).ToList();
+                case "IdCommande":
+                    sortedList = lesCmdDvd.OrderBy(o => o.IdCommande).ToList();
                     break;
                 case "DateCommande":
                     sortedList = lesCmdDvd.OrderBy(o => o.DateCommande).ToList();
@@ -329,7 +444,7 @@ namespace Mediatek86.vue
         /// <summary>
         /// Methode d'affichage des informations du livre sélectionné dans l'onglet des commandes de DVD
         /// </summary>
-        /// <param name="livre"></param>
+        /// <param name="dvd"></param>
         private void afficheCmdDvdInfos(Dvd dvd)
         {
             txbCmdDvdNumero.Text = dvd.Id;
@@ -361,12 +476,12 @@ namespace Mediatek86.vue
         /// <summary>
         /// Methode qui remplit le datagridview avec la liste des commandes de DVD reçues en paramètre
         /// </summary>
-        /// <param name="commandes">Liste des commandes du document</param>
-        private void remplirCmdDvdListe(List<Commande> commandes)
+        /// <param name="commandes">Liste des commandes de livres</param>
+        private void remplirCmdDvdListe(List<CommandeDocument> commandes)
         {
             bdgDvdCmdListe.DataSource = commandes;
             dgvCmdDvdListe.DataSource = bdgDvdCmdListe;
-            dgvCmdDvdListe.Columns["id"].Visible = false;
+            dgvCmdDvdListe.Columns["idCommande"].Visible = false;
             dgvCmdDvdListe.Columns["idSuivi"].Visible = false;
             dgvCmdDvdListe.Columns["idLivreDvd"].Visible = false;
 
@@ -444,7 +559,7 @@ namespace Mediatek86.vue
             pcbCmdDvdImage.Image = null;
 
             // Vide le datagridview
-            lesCmdDvd = new List<Commande>();
+            lesCmdDvd = new List<CommandeDocument>();
             remplirCmdDvdListe(lesCmdDvd);
         }
 
@@ -510,11 +625,11 @@ namespace Mediatek86.vue
             {
                 if (dgvCmdLivresListe.CurrentRow.Cells["idSuivi"].Value.ToString() != "2" && dgvCmdLivresListe.CurrentRow.Cells["idSuivi"].Value.ToString() != "3")
                 {
-                    string idCommande = dgvCmdLivresListe.CurrentRow.Cells["id"].Value.ToString();
+                    string idCommande = dgvCmdLivresListe.CurrentRow.Cells["idCommande"].Value.ToString();
                     if (controle.SupprimerCmdDocument(idCommande))
                     {
-                        lesCmdLivres = controle.GetAllCommandesDocument(txbCmdLivresNumero.Text);
-                        remplirCmdLivresListe(lesCmdLivres);
+                        lesCmdLivre = controle.GetAllCommandesDocument(txbCmdLivresNumero.Text);
+                        remplirCmdLivresListe(lesCmdLivre);
                         videNewCmdLivresInfos();
                     }
                     else
@@ -570,12 +685,12 @@ namespace Mediatek86.vue
                     double montant = (double)numNewCmdLivresMontant.Value;
 
                     string idDocument = txbCmdLivresNumero.Text;
-                    Commande commande = new Commande(idCommande, idLivre, nbExemplaire, dateCommande, montant, "1", "en cours");
+                    CommandeDocument commande = new CommandeDocument(idCommande, dateCommande, montant, "1", "en cours", idLivre, nbExemplaire);
 
                     if (controle.CreerCommande(commande))
                     {
-                        lesCmdLivres = controle.GetAllCommandesDocument(idDocument);
-                        remplirCmdLivresListe(lesCmdLivres);
+                        lesCmdLivre = controle.GetAllCommandesDocument(idDocument);
+                        remplirCmdLivresListe(lesCmdLivre);
                         videNewCmdLivresInfos();
                     }
                     else
@@ -607,7 +722,7 @@ namespace Mediatek86.vue
         {
             if (dgvCmdLivresListe.RowCount != 0)
             {
-                string idCommande = dgvCmdLivresListe.CurrentRow.Cells["id"].Value.ToString();
+                string idCommande = dgvCmdLivresListe.CurrentRow.Cells["idCommande"].Value.ToString();
 
                 int tabIdSuivi = Int32.Parse(dgvCmdLivresListe.CurrentRow.Cells["idSuivi"].Value.ToString());
                 int cbxIdSuivi = cbxModifCmdLivresSuivi.SelectedIndex;
@@ -665,7 +780,7 @@ namespace Mediatek86.vue
         {
             if (dgvCmdLivresListe.RowCount != 0)
             {
-                txbModifCmdLivresIdCmd.Text = dgvCmdLivresListe.CurrentRow.Cells["id"].Value.ToString();
+                txbModifCmdLivresIdCmd.Text = dgvCmdLivresListe.CurrentRow.Cells["idCommande"].Value.ToString();
                 txbModifCmdIdLivre.Text = dgvCmdLivresListe.CurrentRow.Cells["idLivreDvd"].Value.ToString();
                 dtpModifCmdLivresDateComd.Value = (DateTime)dgvCmdLivresListe.CurrentRow.Cells["dateCommande"].Value;
                 txbModifCmdLivresNbExemplaire.Text = dgvCmdLivresListe.CurrentRow.Cells["nbExemplaire"].Value.ToString();
@@ -686,8 +801,8 @@ namespace Mediatek86.vue
         {
             if (controle.UpdateCmdDocument(idCommande, idSuivi))
             {
-                lesCmdLivres = controle.GetAllCommandesDocument(txbCmdLivresNumero.Text);
-                remplirCmdLivresListe(lesCmdLivres);
+                lesCmdLivre = controle.GetAllCommandesDocument(txbCmdLivresNumero.Text);
+                remplirCmdLivresListe(lesCmdLivre);
                 videNewCmdLivresInfos();
             }
             else
@@ -723,8 +838,8 @@ namespace Mediatek86.vue
                 pcbCmdLivresImage.Image = null;
             }
             string idDocument = txbCmdLivresNumero.Text;
-            lesCmdLivres = controle.GetAllCommandesDocument(idDocument);
-            remplirCmdLivresListe(lesCmdLivres);
+            lesCmdLivre = controle.GetAllCommandesDocument(idDocument);
+            remplirCmdLivresListe(lesCmdLivre);
             accesNewCmdLivresGroupBox(true);
         }
 
@@ -733,11 +848,11 @@ namespace Mediatek86.vue
         /// Methode qui remplit le datagridview avec la liste des commandes de livre reçue en paramètre
         /// </summary>
         /// <param name="commandes">Liste des commandes du document</param>
-        private void remplirCmdLivresListe(List<Commande> commandes)
+        private void remplirCmdLivresListe(List<CommandeDocument> commandes)
         {
-            bdgLivresCmdListe.DataSource = commandes;
-            dgvCmdLivresListe.DataSource = bdgLivresCmdListe;
-            dgvCmdLivresListe.Columns["id"].Visible = false;
+            bdgLivreCmdListe.DataSource = commandes;
+            dgvCmdLivresListe.DataSource = bdgLivreCmdListe;
+            dgvCmdLivresListe.Columns["idCommande"].Visible = false;
             dgvCmdLivresListe.Columns["idSuivi"].Visible = false;
             dgvCmdLivresListe.Columns["idLivreDvd"].Visible = false;
 
@@ -793,8 +908,8 @@ namespace Mediatek86.vue
             pcbCmdLivresImage.Image = null;
 
             // Vide le datagridview
-            lesCmdLivres = new List<Commande>();
-            remplirCmdLivresListe(lesCmdLivres);
+            lesCmdLivre = new List<CommandeDocument>();
+            remplirCmdLivresListe(lesCmdLivre);
         }
 
         /// <summary>
@@ -808,23 +923,23 @@ namespace Mediatek86.vue
 
             videNewCmdLivresInfos();
             string titreColonne = dgvCmdLivresListe.Columns[e.ColumnIndex].HeaderText;
-            List<Commande> sortedList = new List<Commande>();
+            List<CommandeDocument> sortedList = new List<CommandeDocument>();
             switch (titreColonne)
             {
                 case "Id":
-                    sortedList = lesCmdLivres.OrderBy(o => o.Id).ToList();
+                    sortedList = lesCmdLivre.OrderBy(o => o.IdCommande).ToList();
                     break;
                 case "DateCommande":
-                    sortedList = lesCmdLivres.OrderBy(o => o.DateCommande).ToList();
+                    sortedList = lesCmdLivre.OrderBy(o => o.DateCommande).ToList();
                     break;
                 case "Montant":
-                    sortedList = lesCmdLivres.OrderBy(o => o.Montant).ToList();
+                    sortedList = lesCmdLivre.OrderBy(o => o.Montant).ToList();
                     break;
                 case "NbExemplaire":
-                    sortedList = lesCmdLivres.OrderBy(o => o.NbExemplaire).ToList();
+                    sortedList = lesCmdLivre.OrderBy(o => o.NbExemplaire).ToList();
                     break;
                 case "Label":
-                    sortedList = lesCmdLivres.OrderBy(o => o.Label).ToList();
+                    sortedList = lesCmdLivre.OrderBy(o => o.Label).ToList();
                     break;
 
             }
@@ -2074,6 +2189,8 @@ namespace Mediatek86.vue
                 pcbReceptionExemplaireRevueImage.Image = null;
             }
         }
+
+
 
 
 

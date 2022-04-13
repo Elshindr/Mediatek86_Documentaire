@@ -1,18 +1,29 @@
-﻿namespace Mediatek86.metier
+﻿using System;
+
+namespace Mediatek86.metier
 {
-    public abstract class CommandeDocument
+    /// <summary>
+    /// Classe CommandeDocument de gestion des Commandes de documents
+    /// Hérite de la Classe Commande
+    /// </summary>
+    public class CommandeDocument : Commande
     {
-        private string id;
         private string idLivreDvd;
         private int nbExemplaire;
-        public CommandeDocument(string id, string idLivreDvd, int nbExemplaire)
+
+        /// <summary>
+        /// Constructeur de la classe CommandeDocument
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="idLivreDvd"></param>
+        /// <param name="nbExemplaire"></param>
+        public CommandeDocument(string idCommande, DateTime dateCommande, double montant, string idSuivi, string label, string idLivreDvd, int nbExemplaire)
+            : base(idCommande, dateCommande, montant, idSuivi, label)
         {
-            this.Id = id;
             this.IdLivreDvd = idLivreDvd;
             this.NbExemplaire = nbExemplaire;
         }
 
-        public string Id { get => id; set => id = value; }
         public string IdLivreDvd { get => idLivreDvd; set => idLivreDvd = value; }
         public int NbExemplaire { get => nbExemplaire; set => nbExemplaire = value; }
     }

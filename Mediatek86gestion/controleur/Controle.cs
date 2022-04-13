@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace Mediatek86.controleur
 {
+    /// <summary>
+    /// Classe d'instance du Controleur
+    /// </summary>
     internal class Controle
     {
         private readonly List<Livre> lesLivres;
@@ -36,6 +39,17 @@ namespace Mediatek86.controleur
         }
 
         /// <summary>
+        /// Methode du controleur accédant à la méthode GetAllCommandesRevue
+        /// </summary>
+        /// <param name="idRevue">un identifiant de revue</param>
+        /// <returns>La liste des abonnements d'une revue</returns>
+        public List<Abonnement> GetAllAbonnemmentRevue(string idRevue)
+        {
+            return Dao.GetAllAbonnemmentRevue(idRevue);
+        }
+
+
+        /// <summary>
         /// Methode du controleur accedant à la methode SupprimerCmdDocument
         /// </summary>
         /// <param name="idCommande"></param>
@@ -64,7 +78,7 @@ namespace Mediatek86.controleur
         /// </summary>
         /// <param name="commande"></param>
         /// <returns>True si la commande est executée</returns>
-        public bool CreerCommande(Commande commande)
+        public bool CreerCommande(CommandeDocument commande)
         {
             return Dao.CreerCommande(commande);
         }
@@ -84,7 +98,7 @@ namespace Mediatek86.controleur
         /// Getter sur la liste commande d'un document
         /// </summary>
         /// <returns>Collection d'objets Livre</returns>
-        public List<Commande> GetAllCommandesDocument(string idDocument)
+        public List<CommandeDocument> GetAllCommandesDocument(string idDocument)
         {
             return Dao.GetAllCommandesDocument(idDocument);
         }

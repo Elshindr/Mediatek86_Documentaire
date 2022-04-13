@@ -1,6 +1,9 @@
 ﻿
 namespace Mediatek86.metier
 {
+    /// <summary>
+    /// Classe Mére Document qui définie l'ensemble des propriétés de ses Classe Filles LivresDvd et Revue
+    /// </summary>
     public class Document
     {
 
@@ -14,7 +17,19 @@ namespace Mediatek86.metier
         private readonly string idRayon;
         private readonly string rayon;
 
-        public Document(string id, string titre, string image, string idGenre, string genre, 
+        /// <summary>
+        /// Constructeur de la classe Mére Document
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="titre"></param>
+        /// <param name="image"></param>
+        /// <param name="idGenre"></param>
+        /// <param name="genre"></param>
+        /// <param name="idPublic"></param>
+        /// <param name="lePublic"></param>
+        /// <param name="idRayon"></param>
+        /// <param name="rayon"></param>
+        public Document(string id, string titre, string image, string idGenre, string genre,
             string idPublic, string lePublic, string idRayon, string rayon)
         {
             this.id = id;
