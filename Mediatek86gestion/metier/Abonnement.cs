@@ -29,7 +29,7 @@ namespace Mediatek86.metier
             base(idCommande, dateCommande, montant, idSuivi, label)
         {
             this.IdRevue = idRevue;
-            this.DateFinAbonnement = DateFinAbonnement;
+            this.DateFinAbonnement = dateFinAbonnement;
         }
 
 

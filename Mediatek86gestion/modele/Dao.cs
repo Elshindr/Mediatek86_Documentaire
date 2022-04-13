@@ -18,199 +18,15 @@ namespace Mediatek86.modele
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
 
-        /// <summary>
-        /// Methode permettant de lancer une requete SQL SELECT
-        /// Récupération toutes les abonnements de revue  de la BDD
-        /// </summary>
-        /// <param name="idRevue"></param>
-        /// <returns>Liste des abonnements</returns>
-        public static List<Abonnement> GetAllAbonnemmentRevue(string idRevue)
-        {
-            List<Abonnement> lesAboRevue = new List<Abonnement>();
-            string req = "Select c.id, c.dateCommande, c.montant, c.idSuivi, a.dateFinAbonnement, a.idRevue, s.label";
-            req += " from commande c join suivi s on c.idSuivi = s.idSuivi";
-            req += " join abonnement a on c.id = a.id";
-            req += " where a.idRevue = @idRevue";
-            req += " order by c.dateCommande DESC;";
 
-
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-              {
-                 { "@idRevue", idRevue}
-              };
-
-            BddMySql curs = BddMySql.GetInstance(connectionString);
-            curs.ReqSelect(req, parameters);
-
-
-            while (curs.Read())
-            {
-                string idCommande = (string)curs.Field("id");
-                DateTime dateCommande = (DateTime)curs.Field("dateCommande");
-                double montant = (double)curs.Field("montant");
-                int idSuivi = (int)curs.Field("idSuivi");
-                string label = (string)curs.Field("label");
-
-                string idrevue = (string)curs.Field("idLivreDvd");
-                DateTime dateFinAbonnement = (DateTime)curs.Field("dateFinAbonnement");
-
-                Abonnement abonnement = new Abonnement(idCommande, dateCommande, montant, idSuivi.ToString(), label, idrevue, dateFinAbonnement);
-                lesAboRevue.Add(abonnement);
-            }
-            curs.Close();
-
-            return lesAboRevue;
-        }
-
-
-
-        /// <summary>
-        /// Methode permettant de lancer une requete SQL DELETE
-        /// - Suppression d'une ligne de commande dans les tables commande et commandedocument
-        /// </summary>
-        /// <param name="idCommande"></param>
-        /// <returns>Retoune vrai si la suppression a réussi</returns>
-        public static bool SupprimerCmdDocument(string idCommande)
-        {
-            try
-            {
-                //
-                // Requete de suppression dans la table commandedocument
-                string req_cd = "DELETE FROM commandedocument WHERE id = @id;";
-                Dictionary<string, object> parameters_cd = new Dictionary<string, object>
-                {
-                    { "@id", idCommande}
-                };
-                BddMySql curs_cd = BddMySql.GetInstance(connectionString);
-                curs_cd.ReqUpdate(req_cd, parameters_cd);
-                curs_cd.Close();
-
-
-                //
-                // Requete de suppression dans la table commande
-                string req_c = "DELETE FROM commande WHERE id = @id";
-                Dictionary<string, object> parameters_c = new Dictionary<string, object>
-                {
-                    { "@id", idCommande},
-                };
-                BddMySql curs_c = BddMySql.GetInstance(connectionString);
-                curs_c.ReqUpdate(req_c, parameters_c);
-                curs_c.Close();
-
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        #region Documents: Livres Dvd
 
         /// <summary>
         /// Methode permettant de lancer une requete SQL SELECT
-        /// - Récupération du dernier id de la table commande 
-        /// - Ajoute 1 à sa valeur pour créer le nouvel idCommande
+        /// Retourne toutes les commandes livres ou de DVD de la BDD
         /// </summary>
-        /// <returns>Retoune la valeur en int de l'id de la nouvelle commande</returns>
-        public static int GetLastIdCommande()
-        {
-            string data = "x";
-            string req = "SELECT MAX(id) as id FROM commande;";
-
-            BddMySql curs = BddMySql.GetInstance(connectionString);
-            curs.ReqSelect(req, null);
-
-            while (curs.Read())
-            {
-                data = (curs.Field("id") is DBNull) ? "0" : (string)curs.Field("id");
-
-            }
-            curs.Close();
-
-            return 1 + Int32.Parse(data);
-        }
-
-        /// <summary>
-        /// Methode permettant de lancer une requete SQL UPDATE
-        /// - Mise à jour du status de suivi d'une commande
-        /// </summary>
-        /// <param name="idCommande"></param>
-        /// <param name="idSuivi"></param>
-        /// <returns>Retoune vrai si la mise à jour a réussi</returns>
-        public static bool UpdateCmdDocument(string idCommande, string idSuivi)
-        {
-            try
-            {
-                string req = "UPDATE commande SET idSuivi = @idSuivi WHERE id = @id";
-
-                Dictionary<string, object> parameters = new Dictionary<string, object>
-                {
-                    { "@id", idCommande},
-                    { "@idSuivi", Int32.Parse(idSuivi)}
-                };
-                BddMySql curs = BddMySql.GetInstance(connectionString);
-                curs.ReqUpdate(req, parameters);
-                curs.Close();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Methode permettant de lancer une requete SQL INSERT
-        /// - Insertion d'une ligne de commande dans les tables commande et commandedocument
-        /// </summary>
-        /// <param name="commande">une commande</param>
-        /// <returns>Renvoie vrai si la création a réussi</returns>
-        public static bool CreerCommande(CommandeDocument commande)
-        {
-            try
-            {
-                //
-                // Requete d'insertion dans la table commande
-                string req_c = "insert into commande values (@id, @dateCommande, @montant, @idSuivi) ";
-                Dictionary<string, object> parameters_c = new Dictionary<string, object>
-                {
-                    { "@id", commande.IdCommande},
-                    { "@dateCommande", commande.DateCommande},
-                    { "@montant", commande.Montant},
-                    { "@idSuivi", commande.IdSuivi}
-                };
-                BddMySql curs_c = BddMySql.GetInstance(connectionString);
-                curs_c.ReqUpdate(req_c, parameters_c);
-                curs_c.Close();
-
-
-                //
-                // Requete d'insertion dans la table commandedocument
-                string req_cd = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd)  ";
-                Dictionary<string, object> parameters_cd = new Dictionary<string, object>
-                {
-                    { "@id", commande.IdCommande},
-                    { "@nbExemplaire", commande.NbExemplaire},
-                    { "@idLivreDvd", commande.IdLivreDvd}
-                };
-                BddMySql curs_cd = BddMySql.GetInstance(connectionString);
-                curs_cd.ReqUpdate(req_cd, parameters_cd);
-                curs_cd.Close();
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-
-        /// <summary>
-        /// Retourne toutes les commandes livres ou de DVD à partir de la BDD
-        /// </summary>
-        /// <param name="idDocument"></param>
-        /// <returns>Liste d'objets Livre</returns>
+        /// <param name="idDocument">Identifiant d'un livre ou Dvd</param>
+        /// <returns>Liste d'objets Livre ou Dvd</returns>
         public static List<CommandeDocument> GetAllCommandesDocument(string idDocument)
         {
 
@@ -253,6 +69,325 @@ namespace Mediatek86.modele
 
 
         /// <summary>
+        /// Methode permettant de lancer une requete SQL INSERT
+        /// Insertion d'une ligne de commande dans les tables commande et commandedocument
+        /// </summary>
+        /// <param name="commande">Objet d'une commande</param>
+        /// <returns>Vrai si la création a réussi</returns>
+        public static bool CreerCommande(CommandeDocument commande)
+        {
+            try
+            {
+                //
+                // Requete d'insertion dans la table commande
+                string req_c = "insert into commande values (@id, @dateCommande, @montant, @idSuivi);";
+                Dictionary<string, object> parameters_c = new Dictionary<string, object>
+                {
+                    { "@id", commande.IdCommande},
+                    { "@dateCommande", commande.DateCommande},
+                    { "@montant", commande.Montant},
+                    { "@idSuivi", commande.IdSuivi}
+                };
+                BddMySql curs_c = BddMySql.GetInstance(connectionString);
+                curs_c.ReqUpdate(req_c, parameters_c);
+                curs_c.Close();
+
+
+                //
+                // Requete d'insertion dans la table commandedocument
+                string req_cd = "insert into commandedocument values (@id, @nbExemplaire, @idLivreDvd);";
+                Dictionary<string, object> parameters_cd = new Dictionary<string, object>
+                {
+                    { "@id", commande.IdCommande},
+                    { "@nbExemplaire", commande.NbExemplaire},
+                    { "@idLivreDvd", commande.IdLivreDvd}
+                };
+                BddMySql curs_cd = BddMySql.GetInstance(connectionString);
+                curs_cd.ReqUpdate(req_cd, parameters_cd);
+                curs_cd.Close();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL DELETE
+        /// Suppression d'une ligne de commande dans les tables commande et commandedocument
+        /// </summary>
+        /// <param name="idCommande">Identifiant d'une commande de livre ou de Dvd</param>
+        /// <returns>Vrai si la suppression a réussi</returns>
+        public static bool SupprimerCmdDocument(string idCommande)
+        {
+            try
+            {
+                //
+                // Requete de suppression dans la table commandedocument
+                string req_cd = "DELETE FROM commandedocument WHERE id = @id;";
+                Dictionary<string, object> parameters_cd = new Dictionary<string, object>
+                {
+                    { "@id", idCommande}
+                };
+                BddMySql curs_cd = BddMySql.GetInstance(connectionString);
+                curs_cd.ReqUpdate(req_cd, parameters_cd);
+                curs_cd.Close();
+
+
+                //
+                // Requete de suppression dans la table commande
+                string req_c = "DELETE FROM commande WHERE id = @id";
+                Dictionary<string, object> parameters_c = new Dictionary<string, object>
+                {
+                    { "@id", idCommande},
+                };
+                BddMySql curs_c = BddMySql.GetInstance(connectionString);
+                curs_c.ReqUpdate(req_c, parameters_c);
+                curs_c.Close();
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL UPDATE
+        /// Mise à jour du statut de suivi d'une commande de livre ou Dvd
+        /// </summary>
+        /// <param name="idCommande">Identifiant d'une commande de livre ou de Dvd</param>
+        /// <param name="idSuivi">Identifiant du suivi d'une commande de livre ou de Dvd</param>
+        /// <returns>Vrai si la mise à jour a réussi</returns>
+        public static bool UpdateCmdDocument(string idCommande, string idSuivi)
+        {
+            try
+            {
+                string req = "UPDATE commande SET idSuivi = @idSuivi WHERE id = @id";
+
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@id", idCommande},
+                    { "@idSuivi", Int32.Parse(idSuivi)}
+                };
+                BddMySql curs = BddMySql.GetInstance(connectionString);
+                curs.ReqUpdate(req, parameters);
+                curs.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
+        /// Récupération du dernier id de la table commande 
+        /// Ajoute 1 à sa valeur pour créer le nouvel idCommande
+        /// </summary>
+        /// <returns>Identifiant de la nouvelle commande</returns>
+        public static int GetLastIdCommande()
+        {
+            string data = "x";
+            string req = "SELECT MAX(id) as id FROM commande;";
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, null);
+
+            while (curs.Read())
+            {
+                data = (curs.Field("id") is DBNull) ? "0" : (string)curs.Field("id");
+
+            }
+            curs.Close();
+
+            return 1 + Int32.Parse(data);
+        }
+
+        #endregion
+
+
+        #region Revue
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
+        /// Récupération toutes les abonnements de revues de la BDD
+        /// </summary>
+        /// <param name="idRevue">Identifiant d'une revue</param>
+        /// <returns>Liste des abonnements</returns>
+        public static List<Abonnement> GetAllAbonnemmentRevue(string idRevue)
+        {
+            List<Abonnement> lesAboRevue = new List<Abonnement>();
+            string req = "Select c.id, c.dateCommande, c.montant, c.idSuivi, a.dateFinAbonnement, a.idRevue, s.label";
+            req += " from commande c join suivi s on c.idSuivi = s.idSuivi";
+            req += " join abonnement a on c.id = a.id";
+            req += " where a.idRevue = @idRevue";
+            req += " order by c.dateCommande DESC;";
+
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+              {
+                 { "@idRevue", idRevue}
+              };
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, parameters);
+
+
+            while (curs.Read())
+            {
+                string idCommande = (string)curs.Field("id");
+                DateTime dateCommande = (DateTime)curs.Field("dateCommande");
+                double montant = (double)curs.Field("montant");
+                int idSuivi = (int)curs.Field("idSuivi");
+                string label = (string)curs.Field("label");
+
+                string idrevue = (string)curs.Field("idLivreDvd");
+                DateTime dateFinAbonnement = (DateTime)curs.Field("dateFinAbonnement");
+
+                Abonnement abonnement = new Abonnement(idCommande, dateCommande, montant, idSuivi.ToString(), label, idrevue, dateFinAbonnement);
+                lesAboRevue.Add(abonnement);
+            }
+            curs.Close();
+
+            return lesAboRevue;
+        }
+
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL INSERT
+        /// Insertion d'une ligne de commande dans les tables commande et abonnement
+        /// </summary>
+        /// <param name="abo">Objet abonnement</param>
+        /// <returns>Vrai si la création a réussi</returns>
+        public static bool CreerAbonnement(Abonnement abo)
+        {
+            try
+            {
+                //
+                // Requete d'insertion dans la table commande
+                string req_c = "insert into commande values (@id, @dateCommande, @montant, @idSuivi);";
+                Dictionary<string, object> parameters_c = new Dictionary<string, object>
+                {
+                    { "@id", abo.IdCommande},
+                    { "@dateCommande", abo.DateCommande},
+                    { "@montant", abo.Montant},
+                    { "@idSuivi", abo.IdSuivi}
+                };
+                BddMySql curs_c = BddMySql.GetInstance(connectionString);
+                curs_c.ReqUpdate(req_c, parameters_c);
+                curs_c.Close();
+
+
+                //
+                // Requete d'insertion dans la table abonnemment
+                string req_ab = "insert into abonnement values (@id, @DateFin, @idRevue);";
+                Dictionary<string, object> parameters_ab = new Dictionary<string, object>
+                {
+                    { "@id", abo.IdCommande},
+                    { "@DateFin", abo.DateFinAbonnement},
+                    { "@idRevue", abo.IdRevue}
+                };
+                BddMySql curs_ab = BddMySql.GetInstance(connectionString);
+                curs_ab.ReqUpdate(req_ab, parameters_ab);
+                curs_ab.Close();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL DELETE
+        /// Suppression d'une ligne de commande dans les tables commande et abonnement
+        /// </summary>
+        /// <param name="idCommande">Identifiant d'une commande de revue</param>
+        /// <returns>Vrai si la suppression a réussi</returns>
+        public static bool SupprimerAboRevue(string idCommande)
+        {
+            try
+            {
+                //
+                // Requete de suppression dans la table abonnement
+                string req_ab = "DELETE FROM abonnement WHERE id = @id;";
+                Dictionary<string, object> parameters_ab = new Dictionary<string, object>
+                {
+                    { "@id", idCommande}
+                };
+                BddMySql curs_ab = BddMySql.GetInstance(connectionString);
+                curs_ab.ReqUpdate(req_ab, parameters_ab);
+                curs_ab.Close();
+
+
+                //
+                // Requete de suppression dans la table commande
+                string req_c = "DELETE FROM commande WHERE id = @id";
+                Dictionary<string, object> parameters_c = new Dictionary<string, object>
+                {
+                    { "@id", idCommande},
+                };
+                BddMySql curs_c = BddMySql.GetInstance(connectionString);
+                curs_c.ReqUpdate(req_c, parameters_c);
+                curs_c.Close();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
+        /// Récupération de la dernière date de parution de la table exemplaire d'une revue 
+        /// </summary>
+        /// <param name="idRevue">Identifiant d'une revue</param>
+        /// <returns>Date de parution d'un abonnement</returns>
+        public static DateTime GetDateParution(String idRevue)
+        {
+            DateTime data = DateTime.MinValue;
+            string req = "SELECT Max(dateAchat) as date FROM exemplaire WHERE id=@idRevue;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@idRevue", idRevue}
+                };
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, parameters);
+
+            while (curs.Read())
+            {
+                data = (curs.Field("date") is DBNull) ? DateTime.MinValue : (DateTime)curs.Field("date");
+
+            }
+            curs.Close();
+
+            return data;
+        }
+
+
+        #endregion
+
+
+        #region Categorie
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
         /// Retourne tous les suivis à partir de la BDD
         /// </summary>
         /// <returns>Liste d'objets de Suivi</returns>
@@ -276,6 +411,7 @@ namespace Mediatek86.modele
 
 
         /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
         /// Retourne tous les genres à partir de la BDD
         /// </summary>
         /// <returns>Liste d'objets Genre</returns>
@@ -298,6 +434,7 @@ namespace Mediatek86.modele
 
 
         /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
         /// Retourne tous les rayons à partir de la BDD
         /// </summary>
         /// <returns>Collection d'objets Rayon</returns>
@@ -319,6 +456,7 @@ namespace Mediatek86.modele
         }
 
         /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
         /// Retourne toutes les catégories de public à partir de la BDD
         /// </summary>
         /// <returns>Collection d'objets Public</returns>
@@ -339,7 +477,12 @@ namespace Mediatek86.modele
             return lesPublics;
         }
 
+        #endregion
+
+
+        #region Getter Documents
         /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
         /// Retourne toutes les livres à partir de la BDD
         /// </summary>
         /// <returns>Liste d'objets Livre</returns>
@@ -381,6 +524,7 @@ namespace Mediatek86.modele
         }
 
         /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
         /// Retourne toutes les dvd à partir de la BDD
         /// </summary>
         /// <returns>Liste d'objets Dvd</returns>
@@ -422,6 +566,7 @@ namespace Mediatek86.modele
         }
 
         /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
         /// Retourne toutes les revues à partir de la BDD
         /// </summary>
         /// <returns>Liste d'objets Revue</returns>
@@ -463,6 +608,7 @@ namespace Mediatek86.modele
         }
 
         /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
         /// Retourne les exemplaires d'une revue
         /// </summary>
         /// <returns>Liste d'objets Exemplaire</returns>
@@ -483,12 +629,12 @@ namespace Mediatek86.modele
 
             while (curs.Read())
             {
-                string idDocuement = (string)curs.Field("id");
+                string idDoc = (string)curs.Field("id");
                 int numero = (int)curs.Field("numero");
                 DateTime dateAchat = (DateTime)curs.Field("dateAchat");
                 string photo = (string)curs.Field("photo");
                 string idEtat = (string)curs.Field("idEtat");
-                Exemplaire exemplaire = new Exemplaire(numero, dateAchat, photo, idEtat, idDocuement);
+                Exemplaire exemplaire = new Exemplaire(numero, dateAchat, photo, idEtat, idDoc);
                 lesExemplaires.Add(exemplaire);
             }
             curs.Close();
@@ -497,9 +643,10 @@ namespace Mediatek86.modele
         }
 
         /// <summary>
-        /// ecriture d'un exemplaire en base de données
+        /// Methode permettant de lancer une requete SQL INSERT
+        /// Création d'un exemplaire dans la base de données
         /// </summary>
-        /// <param name="exemplaire"></param>
+        /// <param name="exemplaire">Objet exemplaire</param>
         /// <returns>true si l'insertion a pu se faire</returns>
         public static bool CreerExemplaire(Exemplaire exemplaire)
         {
@@ -524,6 +671,6 @@ namespace Mediatek86.modele
                 return false;
             }
         }
-
+        #endregion
     }
 }
