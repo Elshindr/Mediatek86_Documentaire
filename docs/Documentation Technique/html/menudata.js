@@ -23,33 +23,66 @@
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var menudata={children:[
-{text:"Main Page",url:"index.html"},
-{text:"Related Pages",url:"pages.html"},
-{text:"Packages",url:"namespaces.html",children:[
-{text:"Packages",url:"namespaces.html"}]},
-{text:"Classes",url:"annotated.html",children:[
-{text:"Class List",url:"annotated.html"},
-{text:"Class Index",url:"classes.html"},
-{text:"Class Hierarchy",url:"hierarchy.html"},
-{text:"Class Members",url:"functions.html",children:[
-{text:"All",url:"functions.html",children:[
+{text:"Page principale",url:"index.html"},
+{text:"Pages associées",url:"pages.html"},
+{text:"Paquetages",url:"namespaces.html",children:[
+{text:"Paquetages",url:"namespaces.html"}]},
+{text:"Structures de données",url:"annotated.html",children:[
+{text:"Structures de données",url:"annotated.html"},
+{text:"Index des structures de données",url:"classes.html"},
+{text:"Hiérarchie des classes",url:"hierarchy.html"},
+{text:"Champs de donnée",url:"functions.html",children:[
+{text:"Tout",url:"functions.html",children:[
 {text:"a",url:"functions.html#index_a"},
-{text:"c",url:"functions.html#index_c"},
-{text:"d",url:"functions.html#index_d"},
-{text:"e",url:"functions.html#index_e"},
-{text:"f",url:"functions.html#index_f"},
-{text:"g",url:"functions.html#index_g"},
-{text:"i",url:"functions.html#index_i"},
-{text:"l",url:"functions.html#index_l"},
-{text:"m",url:"functions.html#index_m"},
-{text:"n",url:"functions.html#index_n"},
-{text:"p",url:"functions.html#index_p"},
-{text:"r",url:"functions.html#index_r"},
-{text:"s",url:"functions.html#index_s"},
-{text:"t",url:"functions.html#index_t"},
-{text:"u",url:"functions.html#index_u"}]},
-{text:"Functions",url:"functions_func.html"},
-{text:"Properties",url:"functions_prop.html",children:[
+{text:"b",url:"functions_b.html#index_b"},
+{text:"c",url:"functions_c.html#index_c"},
+{text:"d",url:"functions_d.html#index_d"},
+{text:"e",url:"functions_e.html#index_e"},
+{text:"f",url:"functions_f.html#index_f"},
+{text:"g",url:"functions_g.html#index_g"},
+{text:"i",url:"functions_i.html#index_i"},
+{text:"l",url:"functions_l.html#index_l"},
+{text:"m",url:"functions_m.html#index_m"},
+{text:"n",url:"functions_n.html#index_n"},
+{text:"p",url:"functions_p.html#index_p"},
+{text:"r",url:"functions_r.html#index_r"},
+{text:"s",url:"functions_s.html#index_s"},
+{text:"t",url:"functions_t.html#index_t"},
+{text:"u",url:"functions_u.html#index_u"},
+{text:"v",url:"functions_v.html#index_v"}]},
+{text:"Fonctions",url:"functions_func.html",children:[
+{text:"a",url:"functions_func.html#index_a"},
+{text:"b",url:"functions_func.html#index_b"},
+{text:"c",url:"functions_func.html#index_c"},
+{text:"d",url:"functions_func.html#index_d"},
+{text:"e",url:"functions_func.html#index_e"},
+{text:"f",url:"functions_func.html#index_f"},
+{text:"g",url:"functions_func.html#index_g"},
+{text:"i",url:"functions_func.html#index_i"},
+{text:"l",url:"functions_func.html#index_l"},
+{text:"m",url:"functions_func.html#index_m"},
+{text:"p",url:"functions_func.html#index_p"},
+{text:"r",url:"functions_func.html#index_r"},
+{text:"s",url:"functions_func.html#index_s"},
+{text:"t",url:"functions_func.html#index_t"},
+{text:"u",url:"functions_func.html#index_u"},
+{text:"v",url:"functions_func.html#index_v"}]},
+{text:"Variables",url:"functions_vars.html",children:[
+{text:"a",url:"functions_vars.html#index_a"},
+{text:"b",url:"functions_vars_b.html#index_b"},
+{text:"c",url:"functions_vars_c.html#index_c"},
+{text:"d",url:"functions_vars_d.html#index_d"},
+{text:"e",url:"functions_vars_e.html#index_e"},
+{text:"g",url:"functions_vars_g.html#index_g"},
+{text:"i",url:"functions_vars_i.html#index_i"},
+{text:"l",url:"functions_vars_l.html#index_l"},
+{text:"n",url:"functions_vars_n.html#index_n"},
+{text:"p",url:"functions_vars_p.html#index_p"},
+{text:"r",url:"functions_vars_r.html#index_r"},
+{text:"s",url:"functions_vars_s.html#index_s"},
+{text:"t",url:"functions_vars_t.html#index_t"},
+{text:"u",url:"functions_vars_u.html#index_u"}]},
+{text:"Propriétés",url:"functions_prop.html",children:[
 {text:"a",url:"functions_prop.html#index_a"},
 {text:"c",url:"functions_prop.html#index_c"},
 {text:"d",url:"functions_prop.html#index_d"},
@@ -63,5 +96,5 @@ var menudata={children:[
 {text:"r",url:"functions_prop.html#index_r"},
 {text:"s",url:"functions_prop.html#index_s"},
 {text:"t",url:"functions_prop.html#index_t"}]}]}]},
-{text:"Files",url:"files.html",children:[
-{text:"File List",url:"files.html"}]}]}
+{text:"Fichiers",url:"files.html",children:[
+{text:"Liste des fichiers",url:"files.html"}]}]}
