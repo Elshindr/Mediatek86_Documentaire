@@ -13,8 +13,13 @@ namespace Mediatek86.metier
 
         /// <summary>
         /// Constructeur de la classe CommandeDocument
+        /// Herite des propriétés de la classe Commande
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="idCommande"></param>
+        /// <param name="dateCommande"></param>
+        /// <param name="montant"></param>
+        /// <param name="idSuivi"></param>
+        /// <param name="label"></param>
         /// <param name="idLivreDvd"></param>
         /// <param name="nbExemplaire"></param>
         public CommandeDocument(string idCommande, DateTime dateCommande, double montant, string idSuivi, string label, string idLivreDvd, int nbExemplaire)
@@ -23,8 +28,14 @@ namespace Mediatek86.metier
             this.IdLivreDvd = idLivreDvd;
             this.NbExemplaire = nbExemplaire;
         }
-
+        /// <summary>
+        /// Getter et Setter de la propriété IdLivreDvd autogénérés
+        /// </summary>
         public string IdLivreDvd { get => idLivreDvd; set => idLivreDvd = value; }
+
+        /// <summary>
+        /// Getter et Setter de la propriété NbExemplaire autogénérés
+        /// </summary>
         public int NbExemplaire { get => nbExemplaire; set => nbExemplaire = value; }
     }
 }

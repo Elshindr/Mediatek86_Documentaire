@@ -33,9 +33,19 @@ namespace Mediatek86.metier
             DelaiMiseADispo = delaiMiseADispo;
         }
 
-
+        /// <summary>
+        /// Getter et Setter de la propriété periodicite
+        /// </summary>
         public string Periodicite { get; set; }
+
+        /// <summary>
+        /// Getter et Setter de la propriété empruntable
+        /// </summary>
         public bool Empruntable { get; set; }
+
+        /// <summary>
+        /// Getter et Setter de la propriété delaiMiseADispo
+        /// </summary>
         public int DelaiMiseADispo { get; set; }
     }
 }

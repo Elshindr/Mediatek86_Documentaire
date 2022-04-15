@@ -20,6 +20,8 @@ namespace Mediatek86.controleur
         private readonly List<Categorie> lesGenres;
         private readonly List<Categorie> lesSuivis;
 
+        private readonly String lesFinAbo;
+
         /// <summary>
         /// Constructeur de la classe Controle
         /// Ouverture de la fenêtre 
@@ -34,13 +36,46 @@ namespace Mediatek86.controleur
             lesRayons = Dao.GetAllRayons();
             lesPublics = Dao.GetAllPublics();
             lesSuivis = Dao.GetAllSuivis();
+            lesFinAbo = Dao.GetEndingAbonnement();
 
             FrmMediatek frmMediatek = new FrmMediatek(this);
             frmMediatek.ShowDialog();
+
         }
 
 
         #region Abonnement
+
+        /// <summary>
+        /// Methode du controleur d'appel de la methode GetAllRevues
+        /// Getter sur la chaine lesFinAbo
+        /// </summary>
+        /// <returns>Chaine de liste d'idRevue</returns>
+        public String GetEndingAbonnement()
+        {
+            return lesFinAbo;
+        }
+
+        /// <summary>
+        /// Methode du controleur accédant à la méthode GetEndingTitleDate
+        /// Permet la récupération de la liste des revues en fin d'abonnements
+        /// </summary>
+        /// <returns>La chaine d'alerte à afficher</returns>
+        public String GetEndingTitleDate()
+        {
+
+            Dictionary<String, String> dictFinAbo = Dao.GetEndingTitleDate(lesFinAbo);
+            string strList = "";
+
+            foreach (var item in dictFinAbo)
+            {
+                strList += item.Key + " termine le : " + item.Value + ".\n";
+            }
+
+            return strList;
+
+        }
+
         /// <summary>
         /// Methode du controleur accédant à la méthode GetAllCommandesRevue
         /// Permet la récupération de la liste des abonnements d'une revue

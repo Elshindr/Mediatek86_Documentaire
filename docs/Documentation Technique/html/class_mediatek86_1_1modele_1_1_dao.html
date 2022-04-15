@@ -79,6 +79,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Fonctions membres publiques statiques</h2></td></tr>
+<tr class="memitem:a178d474af5dce13cd7b80e9a55e7e6c3"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mediatek86_1_1modele_1_1_dao.html#a178d474af5dce13cd7b80e9a55e7e6c3">GetEndingAbonnement</a> ()</td></tr>
+<tr class="memdesc:a178d474af5dce13cd7b80e9a55e7e6c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methode permettant de lancer une requete SQL SELECT d'appel de fonction stockée  <a href="class_mediatek86_1_1modele_1_1_dao.html#a178d474af5dce13cd7b80e9a55e7e6c3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a178d474af5dce13cd7b80e9a55e7e6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00da98087c84572eef1ad1cc4c106e42"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; String, String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mediatek86_1_1modele_1_1_dao.html#a00da98087c84572eef1ad1cc4c106e42">GetEndingTitleDate</a> (String strIdRevues)</td></tr>
+<tr class="memdesc:a00da98087c84572eef1ad1cc4c106e42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methode permettant de lancer une requete SQL SELECT Retourne toutes les commandes livres ou de DVD de la BDD  <a href="class_mediatek86_1_1modele_1_1_dao.html#a00da98087c84572eef1ad1cc4c106e42">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a00da98087c84572eef1ad1cc4c106e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a830003f952b295f206ce7a838aaa7db4"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="class_mediatek86_1_1metier_1_1_commande_document.html">CommandeDocument</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mediatek86_1_1modele_1_1_dao.html#a830003f952b295f206ce7a838aaa7db4">GetAllCommandesDocument</a> (string idDocument)</td></tr>
 <tr class="memdesc:a830003f952b295f206ce7a838aaa7db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methode permettant de lancer une requete SQL SELECT Retourne toutes les commandes livres ou de DVD de la BDD  <a href="class_mediatek86_1_1modele_1_1_dao.html#a830003f952b295f206ce7a838aaa7db4">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a830003f952b295f206ce7a838aaa7db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -553,6 +559,69 @@ Attributs privés statiques</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Date de parution d'un abonnement</dd></dl>
+
+</div>
+</div>
+<a id="a178d474af5dce13cd7b80e9a55e7e6c3" name="a178d474af5dce13cd7b80e9a55e7e6c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a178d474af5dce13cd7b80e9a55e7e6c3">&#9670;&nbsp;</a></span>GetEndingAbonnement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static String Mediatek86.modele.Dao.GetEndingAbonnement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Methode permettant de lancer une requete SQL SELECT d'appel de fonction stockée </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Chaine d'idRevues des revues en fin d'abonnement </dd></dl>
+
+</div>
+</div>
+<a id="a00da98087c84572eef1ad1cc4c106e42" name="a00da98087c84572eef1ad1cc4c106e42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00da98087c84572eef1ad1cc4c106e42">&#9670;&nbsp;</a></span>GetEndingTitleDate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Dictionary&lt; String, String &gt; Mediatek86.modele.Dao.GetEndingTitleDate </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>strIdRevues</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Methode permettant de lancer une requete SQL SELECT Retourne toutes les commandes livres ou de DVD de la BDD </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">strIdRevues</td><td>Chaine d'identifiant de revue </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Dictonnaire de chaines </dd></dl>
 
 </div>
 </div>

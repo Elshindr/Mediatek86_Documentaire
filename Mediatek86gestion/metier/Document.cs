@@ -43,14 +43,49 @@ namespace Mediatek86.metier
             this.rayon = rayon;
         }
 
+        /// <summary>
+        /// Getter de la propriété id autogénéré
+        /// </summary>
         public string Id { get => id; }
+
+        /// <summary>
+        /// Getter de la propriété titre autogénéré
+        /// </summary>
         public string Titre { get => titre; }
+
+        /// <summary>
+        /// Getter de la propriété image autogénéré
+        /// </summary>
         public string Image { get => image; }
+
+        /// <summary>
+        /// Getter de la propriété idGenre autogénéré
+        /// </summary>
         public string IdGenre { get => idGenre; }
+
+        /// <summary>
+        /// Getter de la propriété genre autogénéré
+        /// </summary>
         public string Genre { get => genre; }
+
+        /// <summary>
+        /// Getter de la propriété idPublic autogénéré
+        /// </summary>
         public string IdPublic { get => idPublic; }
+
+        /// <summary>
+        /// Getter de la propriété lePublic autogénéré
+        /// </summary>
         public string Public { get => lePublic; }
+
+        /// <summary>
+        /// Getter de la propriété idRayon autogénéré
+        /// </summary>
         public string IdRayon { get => idRayon; }
+
+        /// <summary>
+        /// Getter de la propriété rayon autogénéré
+        /// </summary>
         public string Rayon { get => rayon; }
 
     }

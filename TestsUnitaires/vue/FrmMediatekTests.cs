@@ -35,6 +35,7 @@ namespace Mediatek86.vue.Tests
         public void ParutionDansAbonnementTest()
         {
 
+            ParutionDansAbonnement(dateCommande, dateFin, dateParu);
             Assert.AreEqual(true, ParutionDansAbonnement(dateCommande, dateFin, dateParu));
             Assert.AreEqual(false, ParutionDansAbonnement(dateParu, dateFin, dateCommande));
             Assert.AreEqual(false, ParutionDansAbonnement(dateCommande, dateParu, dateFin));

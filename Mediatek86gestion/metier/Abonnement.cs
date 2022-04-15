@@ -22,9 +22,14 @@ namespace Mediatek86.metier
         /// <summary>
         /// Constructeur de la classe Abonnement
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="idCommande"></param>
+        /// <param name="dateCommande"></param>
+        /// <param name="montant"></param>
+        /// <param name="idSuivi"></param>
+        /// <param name="label"></param>
         /// <param name="idRevue"></param>
         /// <param name="dateFinAbonnement"></param>
+
         public Abonnement(string idCommande, DateTime dateCommande, double montant, string idSuivi, string label, string idRevue, DateTime dateFinAbonnement) :
             base(idCommande, dateCommande, montant, idSuivi, label)
         {

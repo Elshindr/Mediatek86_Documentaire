@@ -52,7 +52,10 @@ namespace Mediatek86.vue
         internal FrmMediatek(Controle controle)
         {
             InitializeComponent();
+
             this.controle = controle;
+            MessageBox.Show(controle.GetEndingTitleDate(), "Information: Fins Abonnements");
+
         }
 
 
@@ -400,8 +403,6 @@ namespace Mediatek86.vue
             remplirCmdRevueListe(lesCmdRevue);
         }
         #endregion
-
-
 
         #region DVDCommandes
 

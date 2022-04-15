@@ -18,6 +18,75 @@ namespace Mediatek86.modele
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
 
+        #region alerte abo
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT d'appel de fonction stockée
+        /// </summary>
+        /// <returns>Chaine d'idRevues des revues en fin d'abonnement </returns>
+        public static String GetEndingAbonnement()
+        {
+            string strFinAbo = "";
+
+            string req = "SELECT fctEndingAbo() as id;";
+
+            BddMySql curs = BddMySql.GetInstance(connectionString);
+            curs.ReqSelect(req, null);
+
+
+            while (curs.Read())
+            {
+
+                strFinAbo += (string)curs.Field("id");
+            }
+            curs.Close();
+
+            return strFinAbo;
+        }
+
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
+        /// Retourne toutes les commandes livres ou de DVD de la BDD 
+        /// </summary>
+        /// <param name="strIdRevues">Chaine d'identifiant de revue </param>
+        /// <returns>Dictonnaire de chaines </returns>
+        public static Dictionary<String, String> GetEndingTitleDate(String strIdRevues)
+        {
+            string[] lstlesRevues = strIdRevues.Split(',');
+            DateTime dateFinAbonnement = DateTime.MinValue;
+
+            Dictionary<String, String> dictFinAbo = new Dictionary<String, String>();
+
+            foreach (var item in lstlesRevues)
+            {
+                string req = "SELECT Distinct titre, dateFinAbonnement FROM abonnement a JOIN document d ON (d.id = a.idRevue) WHERE idRevue = @liste GROUP BY titre ";
+
+
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+              {
+                 { "@liste", item}
+              };
+
+
+                BddMySql curs = BddMySql.GetInstance(connectionString);
+                curs.ReqSelect(req, parameters);
+
+
+                while (curs.Read())
+                {
+                    string titre = (string)curs.Field("titre");
+                    dateFinAbonnement = (DateTime)curs.Field("dateFinAbonnement");
+
+                    dictFinAbo.Add(titre, dateFinAbonnement.ToShortDateString());
+                }
+                curs.Close();
+            }
+
+            return dictFinAbo;
+
+        }
+        #endregion
+
 
         #region Documents: Livres Dvd
 
@@ -272,6 +341,7 @@ namespace Mediatek86.modele
         {
             try
             {
+
                 //
                 // Requete d'insertion dans la table commande
                 string req_c = "insert into commande values (@id, @dateCommande, @montant, @idSuivi);";
