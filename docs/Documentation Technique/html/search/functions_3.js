@@ -14,7 +14,7 @@ var searchData=
   ['dgvreceptionexemplairesliste_5fselectionchanged_11',['dgvReceptionExemplairesListe_SelectionChanged',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#ad235a83b39fcccc3a7c0db53f2885ae5',1,'Mediatek86::vue::FrmMediatek']]],
   ['dgvrevuesliste_5fcolumnheadermouseclick_12',['dgvRevuesListe_ColumnHeaderMouseClick',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a97d965aaac2558edc12083d60d950fc3',1,'Mediatek86::vue::FrmMediatek']]],
   ['dgvrevuesliste_5fselectionchanged_13',['dgvRevuesListe_SelectionChanged',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#ac01a72dfac3ef5de86de6d4d23a72d03',1,'Mediatek86::vue::FrmMediatek']]],
-  ['dispose_14',['Dispose',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a67592e2d60dd411aeae67bdba1f61259',1,'Mediatek86::vue::FrmMediatek']]],
+  ['dispose_14',['Dispose',['../class_mediatek86_1_1_frm_authentification.html#a101977d28272d9625b616c116ff2787d',1,'Mediatek86.FrmAuthentification.Dispose()'],['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a67592e2d60dd411aeae67bdba1f61259',1,'Mediatek86.vue.FrmMediatek.Dispose()']]],
   ['document_15',['Document',['../class_mediatek86_1_1metier_1_1_document.html#ab2c494ae02f2f02186571ab89c60728a',1,'Mediatek86::metier::Document']]],
   ['dvd_16',['Dvd',['../class_mediatek86_1_1metier_1_1_dvd.html#ae02386443410200eebb84c56d4b6abf1',1,'Mediatek86::metier::Dvd']]]
 ];

@@ -7,5 +7,8 @@ var searchData=
   ['updatecmddvdtest_4',['UpdateCmdDvdTest',['../class_mediatek86_1_1vue_1_1_tests_1_1_frm_mediatek_tests.html#a329e08fdd78b5ba02ecb96643bc7d25b',1,'Mediatek86::vue::Tests::FrmMediatekTests']]],
   ['updatecmdlivres_5',['UpdateCmdLivres',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a3bbbe267bc663c81ddc4f70dbb8e328a',1,'Mediatek86::vue::FrmMediatek']]],
   ['updatecmdlivrestest_6',['UpdateCmdLivresTest',['../class_mediatek86_1_1vue_1_1_tests_1_1_frm_mediatek_tests.html#a7e156c0848b666cc965b3a9ded957046',1,'Mediatek86::vue::Tests::FrmMediatekTests']]],
-  ['userid_7',['userid',['../class_mediatek86_1_1modele_1_1_dao.html#a5288ef58aa6e9f00b36b16049511b891',1,'Mediatek86::modele::Dao']]]
+  ['user_7',['user',['../class_mediatek86_1_1controleur_1_1_controle.html#a6b25e0c774e0acca3e01d30f834ed181',1,'Mediatek86::controleur::Controle']]],
+  ['userid_8',['userid',['../class_mediatek86_1_1modele_1_1_dao.html#a5288ef58aa6e9f00b36b16049511b891',1,'Mediatek86::modele::Dao']]],
+  ['utilisateur_9',['Utilisateur',['../class_mediatek86_1_1metier_1_1_utilisateur.html',1,'Mediatek86.metier.Utilisateur'],['../class_mediatek86_1_1metier_1_1_utilisateur.html#a5a1c352d705f32b2f4b4ae71c656fe15',1,'Mediatek86.metier.Utilisateur.Utilisateur()']]],
+  ['utilisateur_2ecs_10',['Utilisateur.cs',['../_utilisateur_8cs.html',1,'']]]
 ];

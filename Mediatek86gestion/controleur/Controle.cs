@@ -21,6 +21,13 @@ namespace Mediatek86.controleur
         private readonly List<Categorie> lesSuivis;
 
         private readonly String lesFinAbo;
+        private Utilisateur user;
+
+        /// <summary>
+        /// fenetre de connexion
+        /// </summary>
+        private readonly FrmAuthentification frmAuth;
+        private FrmMediatek frmMediatek;
 
         /// <summary>
         /// Constructeur de la classe Controle
@@ -29,6 +36,7 @@ namespace Mediatek86.controleur
         /// </summary>
         public Controle()
         {
+
             lesLivres = Dao.GetAllLivres();
             lesDvd = Dao.GetAllDvd();
             lesRevues = Dao.GetAllRevues();
@@ -38,10 +46,71 @@ namespace Mediatek86.controleur
             lesSuivis = Dao.GetAllSuivis();
             lesFinAbo = Dao.GetEndingAbonnement();
 
-            FrmMediatek frmMediatek = new FrmMediatek(this);
-            frmMediatek.ShowDialog();
+            frmAuth = new FrmAuthentification(this);
+            frmAuth.ShowDialog();
 
         }
+
+
+        #region Connexion
+        /// <summary>
+        /// Methode de vérification de connexion, si vrai,
+        /// ouverture de la fenetre FrmGestion
+        /// </summary>
+        /// <param name="log"></param>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
+        public Boolean Authentification(string login, string pwd)
+        {
+            user = Dao.Authentification(login, pwd);
+
+            if (user != null)
+            {
+                frmAuth.Hide();
+
+                frmMediatek = new FrmMediatek(this);
+                AccesServices();
+
+                return true;
+            }
+
+            return false;
+
+        }
+
+        /// <summary>
+        /// Methode de gestion des acces aux onglets de l'application selon le service de l'utilisateur 
+        /// </summary>
+        private void AccesServices()
+        {
+            frmMediatek.Text = "Gestion Médiathèque: " + user.Label;
+            switch (user.IdService)
+            {
+                case 4: //Admin            
+                case 1: //Administratif  
+                    frmMediatek.AfficheFinAbo();
+                    frmMediatek.ShowDialog();
+
+                    break;
+
+                case 2: //Prêts
+                    frmMediatek.AccesServicePrets();
+                    frmMediatek.ShowDialog();
+                    break;
+
+                case 3: //Culture
+                    frmMediatek.AfficheServiceCulture();
+                    frmMediatek.Close();
+                    break;
+
+                default: //None
+                    frmMediatek.AfficheServiceNone();
+                    frmMediatek.Close();
+                    break;
+            }
+
+        }
+        #endregion 
 
 
         #region Abonnement
@@ -63,7 +132,6 @@ namespace Mediatek86.controleur
         /// <returns>La chaine d'alerte à afficher</returns>
         public String GetEndingTitleDate()
         {
-
             Dictionary<String, String> dictFinAbo = Dao.GetEndingTitleDate(lesFinAbo);
             string strList = "";
 
@@ -71,9 +139,7 @@ namespace Mediatek86.controleur
             {
                 strList += item.Key + " termine le : " + item.Value + ".\n";
             }
-
             return strList;
-
         }
 
         /// <summary>

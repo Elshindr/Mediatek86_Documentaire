@@ -1,12 +1,21 @@
 var searchData=
 [
-  ['id_0',['id',['../class_mediatek86_1_1metier_1_1_categorie.html#a60469be70a05a9345b44e21e4bd512f7',1,'Mediatek86.metier.Categorie.id()'],['../class_mediatek86_1_1metier_1_1_document.html#a5942fb177bd34d790fd4c572f00c33ac',1,'Mediatek86.metier.Document.id()'],['../class_mediatek86_1_1metier_1_1_suivi.html#abe1323cdf2574555e4e485b7ec0f3606',1,'Mediatek86.metier.Suivi.id()']]],
-  ['idgenre_1',['idGenre',['../class_mediatek86_1_1metier_1_1_document.html#a5e0170aa7e417bbc4b8eef6c33dc2312',1,'Mediatek86::metier::Document']]],
-  ['idlivredvd_2',['idLivreDvd',['../class_mediatek86_1_1metier_1_1_commande_document.html#a5e2eee2ff37c379277a3e1582bc84659',1,'Mediatek86::metier::CommandeDocument']]],
-  ['idpublic_3',['idPublic',['../class_mediatek86_1_1metier_1_1_document.html#ac3173db922ec91e7cb12d68b0ab7f8e5',1,'Mediatek86::metier::Document']]],
-  ['idrayon_4',['idRayon',['../class_mediatek86_1_1metier_1_1_document.html#a2a5f1e140146ede1cb4016b0b5671175',1,'Mediatek86::metier::Document']]],
-  ['idrevue_5',['idRevue',['../class_mediatek86_1_1metier_1_1_abonnement.html#aaec3478c524085d4423d1ecfc50bda30',1,'Mediatek86::metier::Abonnement']]],
-  ['image_6',['image',['../class_mediatek86_1_1metier_1_1_document.html#af9afef9c1e8a58b41e6a794a7561e719',1,'Mediatek86::metier::Document']]],
-  ['instance_7',['instance',['../class_mediatek86_1_1bdd_1_1_bdd_my_sql.html#a40d260ad086d339d61c50619b395428c',1,'Mediatek86::bdd::BddMySql']]],
-  ['isbn_8',['isbn',['../class_mediatek86_1_1metier_1_1_livre.html#a06618ca70fc8681e8f9491dfafa1ee05',1,'Mediatek86::metier::Livre']]]
+  ['genre_0',['genre',['../class_mediatek86_1_1metier_1_1_document.html#a91dadd8a367597320f4cb67c94e33b22',1,'Mediatek86::metier::Document']]],
+  ['gpbmodifaborevue_1',['gpbModifAboRevue',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a180fc4c2fa3085dcde7480fdf1cfef37',1,'Mediatek86::vue::FrmMediatek']]],
+  ['gpbmodifcmddvd_2',['gpbModifCmdDvd',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a8ea9d788e67f55e80841a19e91d61ef8',1,'Mediatek86::vue::FrmMediatek']]],
+  ['gpbmodifcmdlivres_3',['gpbModifCmdLivres',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a6ffcc063abd122cf1708584912f94a6a',1,'Mediatek86::vue::FrmMediatek']]],
+  ['gpbnewaborevue_4',['gpbNewAboRevue',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#af81de4aac26e7e7c4187d5c4ef6e87b1',1,'Mediatek86::vue::FrmMediatek']]],
+  ['gpbnewcmddvd_5',['gpbNewCmdDvd',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a1dd0bad77ee5de9d4b4658c21edc9475',1,'Mediatek86::vue::FrmMediatek']]],
+  ['gpbnewcmdlivres_6',['gpbNewCmdLivres',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a0aa74fd4aa53456b2fad6059ede429f9',1,'Mediatek86::vue::FrmMediatek']]],
+  ['groupbox1_7',['groupBox1',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a6296169fba11dc23a07cefa501d58a7c',1,'Mediatek86::vue::FrmMediatek']]],
+  ['groupbox2_8',['groupBox2',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#ad4512ebf93cd4f13e66b46c7e9ea5067',1,'Mediatek86::vue::FrmMediatek']]],
+  ['groupbox3_9',['groupBox3',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a9842fd0b166b3feafdce35914b3695fd',1,'Mediatek86::vue::FrmMediatek']]],
+  ['grpdvdinfos_10',['grpDvdInfos',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a3ffd6800e381fca6d22b8181ef6565b1',1,'Mediatek86::vue::FrmMediatek']]],
+  ['grpdvdrecherche_11',['grpDvdRecherche',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a32ff1041a8368fd5c662c2c78542cb7c',1,'Mediatek86::vue::FrmMediatek']]],
+  ['grplivresinfos_12',['grpLivresInfos',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a9f653483adc8b1c24b5bd7be056aa02d',1,'Mediatek86::vue::FrmMediatek']]],
+  ['grplivresrecherche_13',['grpLivresRecherche',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a08c92ed4d09def84e42a4a03b4b5808f',1,'Mediatek86::vue::FrmMediatek']]],
+  ['grpreceptionexemplaire_14',['grpReceptionExemplaire',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a43e4e5a22eec7392669b10592726a3a2',1,'Mediatek86::vue::FrmMediatek']]],
+  ['grpreceptionrevue_15',['grpReceptionRevue',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a4feb526b060e9b5dc82a35bba7a3624f',1,'Mediatek86::vue::FrmMediatek']]],
+  ['grprevuesinfos_16',['grpRevuesInfos',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#a4b4fc78fb2c48aea560d46dcc3c5edfc',1,'Mediatek86::vue::FrmMediatek']]],
+  ['grprevuesrecherche_17',['grpRevuesRecherche',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html#ade9e62abbf3bd38b42ac80dd20028644',1,'Mediatek86::vue::FrmMediatek']]]
 ];

@@ -18,6 +18,70 @@ namespace Mediatek86.modele
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
 
+        #region connexion
+
+        /// <summary>
+        /// Methode permettant de lancer une requete SQL SELECT
+        /// Retourne les informations d'utilisateur selon les informations de connexion fournies (login et pwd)
+        /// </summary>
+        /// <param name="login">un login</param>
+        /// <param name="pwd"> un password</param>
+        /// <returns>Objet type Utilisateur ou null</returns>
+        public static Utilisateur Authentification(string login, string pwd)
+        {
+            try
+            {
+                string label = "";
+                int idUser = 0;
+                int idSuivi = 0;
+
+
+                string req = "Select u.idUser, u.idService, s.label";
+                req += " from utilisateur u join service s on u.idService = s.idService";
+                req += " where u.pwd = @pwd AND u.login = @login;";
+
+                Dictionary<string, object> parameters = new Dictionary<string, object>() {
+                    { "@pwd", pwd},
+                    { "@login", login}
+              };
+
+
+
+                BddMySql curs = BddMySql.GetInstance(connectionString);
+                curs.ReqSelect(req, parameters);
+
+                while (curs.Read())
+                {
+                    idUser = curs.Field("idUser") is DBNull ? 0 : (int)curs.Field("idUser");
+
+                    idSuivi = curs.Field("idService") is DBNull ? 0 : (int)curs.Field("idService");
+
+                    label = curs.Field("label") is DBNull ? "" : (string)curs.Field("label");
+
+                }
+                curs.Close();
+
+                if (idUser != 0 && idSuivi != 0 && label != "")
+                {
+                    Utilisateur user = new Utilisateur(idUser, idSuivi, label);
+                    return user;
+
+                }
+                return null;
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message, "Echec connexion");
+                return null;
+            }
+
+        }
+
+        #endregion
+
+
         #region alerte abo
         /// <summary>
         /// Methode permettant de lancer une requete SQL SELECT d'appel de fonction stockée
@@ -53,24 +117,21 @@ namespace Mediatek86.modele
         public static Dictionary<String, String> GetEndingTitleDate(String strIdRevues)
         {
             string[] lstlesRevues = strIdRevues.Split(',');
-            DateTime dateFinAbonnement = DateTime.MinValue;
-
+            DateTime dateFinAbonnement;
             Dictionary<String, String> dictFinAbo = new Dictionary<String, String>();
 
             foreach (var item in lstlesRevues)
             {
-                string req = "SELECT Distinct titre, dateFinAbonnement FROM abonnement a JOIN document d ON (d.id = a.idRevue) WHERE idRevue = @liste GROUP BY titre ";
-
+                string req = "SELECT Distinct titre, dateFinAbonnement FROM abonnement a JOIN document d ON (d.id = a.idRevue) ";
+                req += " WHERE idRevue = @liste GROUP BY titre ";
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>
               {
                  { "@liste", item}
               };
 
-
                 BddMySql curs = BddMySql.GetInstance(connectionString);
                 curs.ReqSelect(req, parameters);
-
 
                 while (curs.Read())
                 {
@@ -81,9 +142,7 @@ namespace Mediatek86.modele
                 }
                 curs.Close();
             }
-
             return dictFinAbo;
-
         }
         #endregion
 

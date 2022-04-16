@@ -9,7 +9,9 @@ var searchData=
   ['idpublic_6',['IdPublic',['../class_mediatek86_1_1metier_1_1_document.html#a49fc9a0bc542e7d8707b32f28e35be6e',1,'Mediatek86::metier::Document']]],
   ['idrayon_7',['IdRayon',['../class_mediatek86_1_1metier_1_1_document.html#aa76b06d0256b890acfc6279070998b4d',1,'Mediatek86::metier::Document']]],
   ['idrevue_8',['IdRevue',['../class_mediatek86_1_1metier_1_1_abonnement.html#a6460b44ccecc6f700f70e9d270cc73b4',1,'Mediatek86::metier::Abonnement']]],
-  ['idsuivi_9',['IdSuivi',['../class_mediatek86_1_1metier_1_1_commande.html#a0a0da5b1507f8604ff7fbb8b7851e3ad',1,'Mediatek86::metier::Commande']]],
-  ['image_10',['Image',['../class_mediatek86_1_1metier_1_1_document.html#a17b757a6000eaccc9dfaaf7329d1cc3a',1,'Mediatek86::metier::Document']]],
-  ['isbn_11',['Isbn',['../class_mediatek86_1_1metier_1_1_livre.html#acf81a20c44ee9d7c3379b21c51ac7557',1,'Mediatek86::metier::Livre']]]
+  ['idservice_9',['IdService',['../class_mediatek86_1_1metier_1_1_utilisateur.html#adf628d2839b54922d9c3df56ff07784d',1,'Mediatek86::metier::Utilisateur']]],
+  ['idsuivi_10',['IdSuivi',['../class_mediatek86_1_1metier_1_1_commande.html#a0a0da5b1507f8604ff7fbb8b7851e3ad',1,'Mediatek86::metier::Commande']]],
+  ['iduser_11',['IdUser',['../class_mediatek86_1_1metier_1_1_utilisateur.html#ae31fd75f3cd3e53f637ba8b3566d1797',1,'Mediatek86::metier::Utilisateur']]],
+  ['image_12',['Image',['../class_mediatek86_1_1metier_1_1_document.html#a17b757a6000eaccc9dfaaf7329d1cc3a',1,'Mediatek86::metier::Document']]],
+  ['isbn_13',['Isbn',['../class_mediatek86_1_1metier_1_1_livre.html#acf81a20c44ee9d7c3379b21c51ac7557',1,'Mediatek86::metier::Livre']]]
 ];

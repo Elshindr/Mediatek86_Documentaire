@@ -11,6 +11,7 @@ namespace Mediatek86.vue
     /// <summary>
     /// Classe de gestion des fonctionnalités graphiques 
     /// Herite de la Classe Form
+    /// Permet l'affichage de la fenêtre de l'application
     /// </summary>
     public partial class FrmMediatek : Form
     {
@@ -48,16 +49,44 @@ namespace Mediatek86.vue
         /// Constructeur de la Classe
         /// Récupére l'instance du controleur de la Classe Controle
         /// </summary>
-        /// <param name="controle"></param>
+        /// <param name="controle">Instance du controleur</param>
         internal FrmMediatek(Controle controle)
         {
             InitializeComponent();
-
             this.controle = controle;
-            MessageBox.Show(controle.GetEndingTitleDate(), "Information: Fins Abonnements");
-
         }
 
+        #region Acces
+        /// <summary>
+        /// Methode de supression d'access aux onglets de commandes
+        /// </summary>
+        public void AccesServicePrets()
+        {
+            tabOngletsApplication.TabPages.Remove(tabCmdRevue);
+            tabOngletsApplication.TabPages.Remove(tabCmdDvd);
+            tabOngletsApplication.TabPages.Remove(tabCmdLivre);
+            tabOngletsApplication.TabPages.Remove(tabReceptionRevue);
+        }
+
+        /// <summary>
+        /// Methode d'affichage des fin abonnements
+        /// </summary>
+        public void AfficheFinAbo()
+        {
+            MessageBox.Show(controle.GetEndingTitleDate(), "Information: Fins Abonnements");
+        }
+
+        public void AfficheServiceCulture()
+        {
+            MessageBox.Show("Application indisponible pour le service Culture", "Informations");
+        }
+
+        public void AfficheServiceNone()
+        {
+            MessageBox.Show("Application indisponible: service non détecté", "Erreur!");
+        }
+
+        #endregion
 
         #region RevuesCommandes
         //-----------------------------------------------------------

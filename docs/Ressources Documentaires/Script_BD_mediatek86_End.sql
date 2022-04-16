@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 15 avr. 2022 à 13:17
+-- Généré le : sam. 16 avr. 2022 à 18:09
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.4.9
 
@@ -626,6 +626,29 @@ INSERT INTO `revue` (`id`, `empruntable`, `periodicite`, `delaiMiseADispo`) VALU
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `service`
+--
+
+DROP TABLE IF EXISTS `service`;
+CREATE TABLE IF NOT EXISTS `service` (
+  `idService` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(15) NOT NULL,
+  PRIMARY KEY (`idService`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `service`
+--
+
+INSERT INTO `service` (`idService`, `label`) VALUES
+(1, 'administratif'),
+(2, 'prêts'),
+(3, 'culture'),
+(4, 'administrateur');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `suivi`
 --
 
@@ -645,6 +668,36 @@ INSERT INTO `suivi` (`idSuivi`, `label`) VALUES
 (2, 'livrée'),
 (3, 'réglée'),
 (4, 'relancée');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `idUser` int(11) NOT NULL AUTO_INCREMENT,
+  `idService` int(3) NOT NULL,
+  `pwd` varchar(50) NOT NULL,
+  `login` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`idUser`),
+  KEY ` commande_ibfk_1` (`idService`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`idUser`, `idService`, `pwd`, `login`) VALUES
+(1, 1, 'pwd1', 'admf1'),
+(2, 2, 'rts3fdsfhtrt', 'prt1'),
+(3, 3, 'pZpfgsfhtrts3', 'cltlog1'),
+(4, 4, 'ppfdsfhtrts3', 'adminlog1'),
+(5, 1, '3Eh63Gfe4htC', 'adflog2'),
+(6, 2, '5gsfhdemGT5G', 'prtlog2'),
+(7, 3, 'r4gfpfdsfht', 'cltlog2'),
+(8, 4, 'slogr4gfdgdA', 'adminlog2');
 
 --
 -- Contraintes pour les tables déchargées
@@ -708,6 +761,12 @@ ALTER TABLE `livres_dvd`
 --
 ALTER TABLE `revue`
   ADD CONSTRAINT `revue_ibfk_1` FOREIGN KEY (`id`) REFERENCES `document` (`id`);
+
+--
+-- Contraintes pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD CONSTRAINT ` commande_ibfk_1` FOREIGN KEY (`idService`) REFERENCES `service` (`idService`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
