@@ -48,10 +48,9 @@ namespace Mediatek86.modele
                 int idUser = 0;
                 int idSuivi = 0;
 
-
                 string req = "Select u.idUser, u.idService, s.label";
                 req += " from utilisateur u join service s on u.idService = s.idService";
-                req += " where u.pwd = @pwd AND u.login = @login;";
+                req += " where u.pwd = SHA2(@pwd, 256) AND u.login = SHA2(@login, 256) ;";
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>() {
                     { "@pwd", pwd},
@@ -98,6 +97,7 @@ namespace Mediatek86.modele
         #region alerte abo
         /// <summary>
         /// Methode permettant de lancer une requete SQL SELECT d'appel de fonction stockée
+        /// Récupére la liste des revues en fin d'abonnements
         /// </summary>
         /// <returns>Chaine d'idRevues des revues en fin d'abonnement </returns>
         public static String GetEndingAbonnement()

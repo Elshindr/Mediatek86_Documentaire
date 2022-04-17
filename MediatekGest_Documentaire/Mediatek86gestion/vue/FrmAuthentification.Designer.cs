@@ -41,6 +41,7 @@ namespace Mediatek86
             this.txbPwd.Location = new System.Drawing.Point(205, 70);
             this.txbPwd.Margin = new System.Windows.Forms.Padding(4);
             this.txbPwd.Name = "txbPwd";
+            this.txbPwd.PasswordChar = 'x';
             this.txbPwd.Size = new System.Drawing.Size(115, 22);
             this.txbPwd.TabIndex = 32;
             // 
