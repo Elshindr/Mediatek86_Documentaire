@@ -28,12 +28,10 @@ L’application bureau de MediaTek86 est écrite en C#. Actuellement, elle perme
   <a href="https://github.com/Elshindr/Mediatek86_Documentaire">
   <img src="https://elshindr.github.io/Mediatek86_Documentaire/assets//Bouton2.PNG" alt="Dépot Github"/></a>
    
-  <a href="https://github.com/Elshindr/Mediatek86_Documentaire/blob/main/docs/Ressources%20Documentaires/Script_BD_mediatek86.sql">
+  <a href="https://github.com/Elshindr/Mediatek86_Documentaire/blob/main/docs/Ressources%20Documentaires/Script_BD_mediatek86_End.sql">
   <img src="https://elshindr.github.io/Mediatek86_Documentaire/assets/Bouton3.PNG" alt="Script SQL"/></a>
-   
-
-  
-  <a href="https://elshindr.github.io/Mediatek86_Documentaire/Documentation Technique/html/index.html">
+    
+  <a href="https://elshindr.github.io/Mediatek86_Documentaire/Documentation%20Technique/html/namespaces.html">
   <img src="https://elshindr.github.io/Mediatek86_Documentaire/assets/Bouton4.PNG" alt="Documentation Technique"/></a>
   
   <a href="https://github.com/Elshindr/Mediatek86_Documentaire/blob/main/docs/Ressources%20Documentaires/Rapport_BureauC%23_MediatekGestion.odt">
@@ -56,5 +54,10 @@ L’application bureau de MediaTek86 est écrite en C#. Actuellement, elle perme
 
 ### Tester l'application!
 
-[En cours]
+Il est possible de tester l’application si vous possèdez un appareil Windows
+- Pour cela il suffit de télécharger la release de l'exe à ce [lien](https://github.com/Elshindr/Mediatek86_Documentaire/releases/tag/MediaTek86Gest_Documentaire_v1)
+- Une fois sur votre appareil, rendez-vous dans les fichiers de téléchargement! Un dossier fichier msi devrait s'y trouver!
+- Cliquer sur ce fichier msi afin que l'installation se lance.
+- Puis profiter enfin de votre nouvelle application !
+
 
