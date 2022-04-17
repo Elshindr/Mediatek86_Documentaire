@@ -11,10 +11,22 @@ namespace Mediatek86.modele
     public static class Dao
     {
 
+        //
+        /// Connection Locale
+        /*
         private static readonly string server = "localhost";
         private static readonly string userid = "root";
         private static readonly string password = "";
         private static readonly string database = "mediatek86";
+        private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
+        */
+
+        //
+        /// Connection Distante
+        private static readonly string server = "spryrr1myu6oalwl.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";
+        private static readonly string userid = "cswkbtn1802d4lkm";
+        private static readonly string password = "yfpsqkelshpl639s";
+        private static readonly string database = "ec2o4y6j8xapjqk4";
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
 
