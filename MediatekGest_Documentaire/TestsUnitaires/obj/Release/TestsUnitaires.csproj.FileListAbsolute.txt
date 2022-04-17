@@ -78,3 +78,10 @@ C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Document
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\obj\Release\TestsUnitaires.csproj.CopyComplete
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\obj\Release\TestsUnitaires.dll
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\obj\Release\TestsUnitaires.pdb
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\bin\Release\fr\Microsoft.TestPlatform.AdapterUtilities.resources.dll
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\bin\Release\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\bin\Release\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\bin\Release\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\bin\Release\TestsUnitaires.dll.config
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\bin\Release\System.Runtime.CompilerServices.Unsafe.xml

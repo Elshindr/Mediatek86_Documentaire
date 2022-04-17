@@ -210,6 +210,7 @@ namespace Mediatek86.vue
 
                 if (ParutionDansAbonnement(dateCommande, dateFin, dateParution))
                 {
+
                     string idCommande = dgvCmdRevueListe.CurrentRow.Cells["idCommande"].Value.ToString();
                     if (controle.SupprimerAboRevue(idCommande))
                     {
@@ -224,7 +225,7 @@ namespace Mediatek86.vue
                 }
                 else
                 {
-                    MessageBox.Show(dateParution.ToString(), "Erreur");
+                    MessageBox.Show("Abonnement non supprimable.\nDate de Commande:" + dateCommande.ToShortDateString() + "\nDate de parution: " + dateParution.ToShortDateString() + "\nDate de fin d'abonnement: " + dateFin.ToShortDateString(), "Erreur");
                 }
             }
             else
@@ -316,11 +317,10 @@ namespace Mediatek86.vue
 
             if ((dateCommande < dateParution && dateParution < dateFin) || dateParution == DateTime.MinValue)
             {
-                return true;
+                return false;
             }
 
-
-            return false;
+            return true;
         }
 
 

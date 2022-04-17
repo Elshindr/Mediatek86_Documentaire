@@ -8,9 +8,10 @@ namespace Mediatek86.vue.Tests
     {
 
         // Varibles test ParutionDansAbonnement
-        private DateTime dateFin = DateTime.Parse("14/03/2008");
-        private DateTime dateParu = DateTime.Parse("12/03/2008");
-        private DateTime dateCommande = DateTime.Parse("10/03/2008");
+        private DateTime dateParu = DateTime.Parse("11/04/2022");
+        private DateTime dateCommande = DateTime.Parse("01/04/2022");
+        private DateTime dateFin = DateTime.Parse("03/04/2022");
+
 
         /// <summary>
         /// Methode qui vérifie si la date d'achat de l'exemplaire est comprise entre la date de la commande et la date de fin d'abonnement
@@ -23,9 +24,9 @@ namespace Mediatek86.vue.Tests
         {
             if ((dateCommande < dateParution && dateParution < dateFin) || dateParution == DateTime.MinValue)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         /// <summary>

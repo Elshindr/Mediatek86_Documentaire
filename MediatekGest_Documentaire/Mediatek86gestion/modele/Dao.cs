@@ -11,15 +11,16 @@ namespace Mediatek86.modele
     public static class Dao
     {
 
+        /* 
         //
         /// Connection Locale
-        /*
+
         private static readonly string server = "localhost";
         private static readonly string userid = "root";
         private static readonly string password = "";
         private static readonly string database = "mediatek86";
         private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
-        */
+         */
 
         //
         /// Connection Distante
@@ -112,7 +113,7 @@ namespace Mediatek86.modele
             while (curs.Read())
             {
 
-                strFinAbo += (string)curs.Field("id");
+                strFinAbo = (curs.Field("id") is DBNull) ? "" : (string)curs.Field("id");
             }
             curs.Close();
 
