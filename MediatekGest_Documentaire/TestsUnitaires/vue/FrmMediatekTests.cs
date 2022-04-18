@@ -20,7 +20,9 @@ namespace Mediatek86.vue.Tests
         /// <param name="dateFin">Date de fin d'abonnement</param>
         /// <param name="dateParution">Date de parution d'un nuemro de revue</param>
         /// <returns>Vrai si dateParution est entre les 2 autres dates</returns>
+#pragma warning disable S1172 // Unused method parameters should be removed
         private bool ParutionDansAbonnement(DateTime dateCommande, DateTime dateFin, DateTime dateParution)
+#pragma warning restore S1172 // Unused method parameters should be removed
         {
             if ((dateCommande < dateParution && dateParution < dateFin) || dateParution == DateTime.MinValue)
             {
@@ -41,11 +43,15 @@ namespace Mediatek86.vue.Tests
             Assert.AreEqual(false, ParutionDansAbonnement(dateParu, dateFin, dateCommande));
             Assert.AreEqual(false, ParutionDansAbonnement(dateCommande, dateParu, dateFin));
         }
+        public void UpdateCmdDvd(string idCommande, string idSuivi)
+        {
+
+
+        }
 
         [TestMethod()]
         public void UpdateCmdDVDTest()
         {
-
         }
 
 

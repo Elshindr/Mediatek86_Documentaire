@@ -1,7 +1,7 @@
 ﻿using Mediatek86.controleur;
 using System.Windows.Forms;
 
-namespace Mediatek86
+namespace Mediatek86.vue
 {
     /// <summary>
     /// Classe FrmAuthentification Windows Form

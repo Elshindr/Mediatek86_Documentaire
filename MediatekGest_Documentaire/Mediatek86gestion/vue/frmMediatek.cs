@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Mediatek86.vue
 {
     /// <summary>
-    /// Classe de gestion des fonctionnalités graphiques 
+    /// Classe Mediatek86 de gestion des fonctionnalités graphiques 
     /// Herite de la Classe Form
     /// Permet l'affichage de la fenêtre de l'application
     /// </summary>
@@ -101,7 +101,7 @@ namespace Mediatek86.vue
         /// <param name="e"></param>
         private void TabCmdRevue_Enter(object sender, EventArgs e)
         {
-            videAboRevueInfos();
+            VideAboRevueInfos();
             AccesNewAboRevueGroupBox(false);
 
         }
@@ -263,7 +263,7 @@ namespace Mediatek86.vue
             VideNewAboRevueInfos();
             if (txbCmdRevueNumero.Text == "")
             {
-                videAboRevueInfos();
+                VideAboRevueInfos();
             }
 
         }
@@ -424,7 +424,7 @@ namespace Mediatek86.vue
         /// Vide le datagridview associé
         /// Bloque l'accès aux prises de commandes.
         /// </summary>
-        private void videAboRevueInfos()
+        private void VideAboRevueInfos()
         {
 
             txbCmdRevueNumero.Text = "";
@@ -460,10 +460,10 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tabCmdDvd_Enter(object sender, EventArgs e)
+        private void TabCmdDvd_Enter(object sender, EventArgs e)
         {
-            videCmdDvdInfos();
-            accesNewCmdDvdGroupBox(false);
+            VideCmdDvdInfos();
+            AccesNewCmdDvdGroupBox(false);
             RemplirComboCategorie(controle.GetAllSuivis(), bdgSuivis, cbxModifCmdDvd);
         }
 
@@ -484,7 +484,7 @@ namespace Mediatek86.vue
 
                 if (dvd != null)
                 {
-                    afficheCmdDvdInfos(dvd);
+                    AfficheCmdDvdInfos(dvd);
                 }
                 else
                 {
@@ -544,8 +544,8 @@ namespace Mediatek86.vue
                         if (controle.CreerCommande(commande))
                         {
                             lesCmdDvd = controle.GetAllCommandesDocument(idDocument);
-                            remplirCmdDvdListe(lesCmdDvd);
-                            videNewCmdDvdInfos();
+                            RemplirCmdDvdListe(lesCmdDvd);
+                            VideNewCmdDvdInfos();
                         }
                         else
                         {
@@ -573,7 +573,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnModifCmdDvdModifier_Click(object sender, EventArgs e)
+        private void BtnModifCmdDvdModifier_Click(object sender, EventArgs e)
         {
             if (dgvCmdDvdListe.RowCount != 0)
             {
@@ -620,7 +620,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnModifCmdDvdSuppr_Click(object sender, EventArgs e)
+        private void BtnModifCmdDvdSuppr_Click(object sender, EventArgs e)
         {
             if (dgvCmdDvdListe.RowCount != 0)
             {
@@ -636,8 +636,8 @@ namespace Mediatek86.vue
                         if (controle.SupprimerCmdDocument(idCommande))
                         {
                             lesCmdDvd = controle.GetAllCommandesDocument(txbCmdDvdNumero.Text);
-                            remplirCmdDvdListe(lesCmdDvd);
-                            videNewCmdDvdInfos();
+                            RemplirCmdDvdListe(lesCmdDvd);
+                            VideNewCmdDvdInfos();
                         }
                         else
                         {
@@ -664,14 +664,14 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void txbCmdDvdNumRecherche_TextChanged(object sender, EventArgs e)
+        private void TxbCmdDvdNumRecherche_TextChanged(object sender, EventArgs e)
         {
 
-            accesNewCmdDvdGroupBox(false);
-            videNewCmdDvdInfos();
+            AccesNewCmdDvdGroupBox(false);
+            VideNewCmdDvdInfos();
             if (txbCmdDvdNumero.Text == "")
             {
-                videCmdDvdInfos();
+                VideCmdDvdInfos();
             }
         }
 
@@ -682,7 +682,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dgvCmdDvd_SelectionChanged(object sender, EventArgs e)
+        private void DgvCmdDvd_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvCmdDvdListe.RowCount != 0)
             {
@@ -702,7 +702,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dgvCmdDvdListe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void DgvCmdDvdListe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             VideNewCmdLivresInfos();
             string titreColonne = dgvCmdDvdListe.Columns[e.ColumnIndex].HeaderText;
@@ -726,7 +726,7 @@ namespace Mediatek86.vue
                     break;
 
             }
-            remplirCmdDvdListe(sortedList);
+            RemplirCmdDvdListe(sortedList);
         }
 
         /// <summary>
@@ -741,8 +741,8 @@ namespace Mediatek86.vue
             if (controle.UpdateCmdDocument(idCommande, idSuivi))
             {
                 lesCmdDvd = controle.GetAllCommandesDocument(txbCmdDvdNumero.Text);
-                remplirCmdDvdListe(lesCmdDvd);
-                videNewCmdDvdInfos();
+                RemplirCmdDvdListe(lesCmdDvd);
+                VideNewCmdDvdInfos();
             }
             else
             {
@@ -756,7 +756,7 @@ namespace Mediatek86.vue
         /// Methode d'affichage des informations du livre sélectionné dans l'onglet des commandes de DVD
         /// </summary>
         /// <param name="dvd"></param>
-        private void afficheCmdDvdInfos(Dvd dvd)
+        private void AfficheCmdDvdInfos(Dvd dvd)
         {
             txbCmdDvdNumero.Text = dvd.Id;
             txbCmdDvdTitre.Text = dvd.Titre;
@@ -779,8 +779,8 @@ namespace Mediatek86.vue
             }
             string idDocument = txbCmdDvdNumero.Text;
             lesCmdDvd = controle.GetAllCommandesDocument(idDocument);
-            remplirCmdDvdListe(lesCmdDvd);
-            accesNewCmdDvdGroupBox(true);
+            RemplirCmdDvdListe(lesCmdDvd);
+            AccesNewCmdDvdGroupBox(true);
         }
 
 
@@ -788,7 +788,7 @@ namespace Mediatek86.vue
         /// Methode qui remplit le datagridview avec la liste des commandes de DVD reçues en paramètre
         /// </summary>
         /// <param name="commandes">Liste des commandes de livres</param>
-        private void remplirCmdDvdListe(List<CommandeDocument> commandes)
+        private void RemplirCmdDvdListe(List<CommandeDocument> commandes)
         {
             bdgDvdCmdListe.DataSource = commandes;
             dgvCmdDvdListe.DataSource = bdgDvdCmdListe;
@@ -815,8 +815,8 @@ namespace Mediatek86.vue
             if (controle.UpdateCmdDocument(idCommande, idSuivi))
             {
                 lesCmdDvd = controle.GetAllCommandesDocument(txbCmdDvdNumero.Text);
-                remplirCmdDvdListe(lesCmdDvd);
-                videNewCmdDvdInfos();
+                RemplirCmdDvdListe(lesCmdDvd);
+                VideNewCmdDvdInfos();
             }
             else
             {
@@ -830,9 +830,9 @@ namespace Mediatek86.vue
         /// et vide les objets graphiques
         /// </summary>
         /// <param name="acces"></param>
-        private void accesNewCmdDvdGroupBox(bool acces)
+        private void AccesNewCmdDvdGroupBox(bool acces)
         {
-            videNewCmdDvdInfos();
+            VideNewCmdDvdInfos();
             gpbNewCmdDvd.Enabled = acces;
             gpbModifCmdDvd.Enabled = acces;
         }
@@ -841,7 +841,7 @@ namespace Mediatek86.vue
         /// <summary>
         /// Methode qui vide les zones d'affichage des informations du bloc de commandes de DVD
         /// </summary>
-        private void videNewCmdDvdInfos()
+        private void VideNewCmdDvdInfos()
         {
             numNewCmdDvdNbExemplaire.Value = 0;
             numNewCmdDvdMontant.Value = 0;
@@ -854,7 +854,7 @@ namespace Mediatek86.vue
         /// Vide le datagridview associé
         /// Bloque l'accès aux prises de commandes.
         /// </summary>
-        private void videCmdDvdInfos()
+        private void VideCmdDvdInfos()
         {
             txbCmdDvdNumero.Text = "";
             txbCmdDvdTitre.Text = "";
@@ -871,7 +871,7 @@ namespace Mediatek86.vue
 
             // Vide le datagridview
             lesCmdDvd = new List<CommandeDocument>();
-            remplirCmdDvdListe(lesCmdDvd);
+            RemplirCmdDvdListe(lesCmdDvd);
         }
 
 
@@ -889,7 +889,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tabCmdLivre_Enter(object sender, EventArgs e)
+        private void TabCmdLivre_Enter(object sender, EventArgs e)
         {
             VideCmdLivresInfos();
             AccesNewCmdLivresGroupBox(false);
@@ -1588,7 +1588,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dgvRevuesListe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void DgvRevuesListe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             VideRevuesZones();
             string titreColonne = dgvRevuesListe.Columns[e.ColumnIndex].HeaderText;
@@ -1951,7 +1951,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tabDvd_Enter(object sender, EventArgs e)
+        private void TabDvd_Enter(object sender, EventArgs e)
         {
             lesDvd = controle.GetAllDvd();
             RemplirComboCategorie(controle.GetAllGenres(), bdgGenres, cbxDvdGenres);
@@ -1983,7 +1983,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDvdNumRecherche_Click(object sender, EventArgs e)
+        private void BtnDvdNumRecherche_Click(object sender, EventArgs e)
         {
             if (!txbDvdNumRecherche.Text.Equals(""))
             {
@@ -2017,7 +2017,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void txbDvdTitreRecherche_TextChanged(object sender, EventArgs e)
+        private void TxbDvdTitreRecherche_TextChanged(object sender, EventArgs e)
         {
             if (!txbDvdTitreRecherche.Text.Equals(""))
             {
@@ -2088,7 +2088,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbxDvdGenres_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxDvdGenres_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxDvdGenres.SelectedIndex >= 0)
             {
@@ -2107,7 +2107,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbxDvdPublics_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxDvdPublics_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxDvdPublics.SelectedIndex >= 0)
             {
@@ -2126,7 +2126,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbxDvdRayons_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxDvdRayons_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxDvdRayons.SelectedIndex >= 0)
             {
@@ -2146,7 +2146,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dgvDvdListe_SelectionChanged(object sender, EventArgs e)
+        private void DgvDvdListe_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvDvdListe.CurrentCell != null)
             {
@@ -2171,7 +2171,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDvdAnnulPublics_Click(object sender, EventArgs e)
+        private void BtnDvdAnnulPublics_Click(object sender, EventArgs e)
         {
             RemplirDvdListeComplete();
         }
@@ -2181,7 +2181,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDvdAnnulRayons_Click(object sender, EventArgs e)
+        private void BtnDvdAnnulRayons_Click(object sender, EventArgs e)
         {
             RemplirDvdListeComplete();
         }
@@ -2191,7 +2191,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDvdAnnulGenres_Click(object sender, EventArgs e)
+        private void BtnDvdAnnulGenres_Click(object sender, EventArgs e)
         {
             RemplirDvdListeComplete();
         }
@@ -2223,7 +2223,7 @@ namespace Mediatek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dgvDvdListe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void DgvDvdListe_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             VideDvdZones();
             string titreColonne = dgvDvdListe.Columns[e.ColumnIndex].HeaderText;

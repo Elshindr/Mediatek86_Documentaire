@@ -77,6 +77,7 @@ var menudata={children:[
 {text:"g",url:"functions_vars_g.html#index_g"},
 {text:"i",url:"functions_vars_i.html#index_i"},
 {text:"l",url:"functions_vars_l.html#index_l"},
+{text:"m",url:"functions_vars_m.html#index_m"},
 {text:"n",url:"functions_vars_n.html#index_n"},
 {text:"p",url:"functions_vars_p.html#index_p"},
 {text:"r",url:"functions_vars_r.html#index_r"},

@@ -909,7 +909,7 @@ namespace Mediatek86.vue
             this.tabCmdDvd.TabIndex = 0;
             this.tabCmdDvd.Text = "Commande DVD";
             this.tabCmdDvd.UseVisualStyleBackColor = true;
-            this.tabCmdDvd.Enter += new System.EventHandler(this.tabCmdDvd_Enter);
+            this.tabCmdDvd.Enter += new System.EventHandler(this.TabCmdDvd_Enter);
             // 
             // gpbModifCmdDvd
             // 
@@ -1025,7 +1025,7 @@ namespace Mediatek86.vue
             this.button3.TabIndex = 28;
             this.button3.Text = "Supprimer Commande";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.btnModifCmdDvdSuppr_Click);
+            this.button3.Click += new System.EventHandler(this.BtnModifCmdDvdSuppr_Click);
             // 
             // cbxModifCmdDvd
             // 
@@ -1045,7 +1045,7 @@ namespace Mediatek86.vue
             this.button4.TabIndex = 17;
             this.button4.Text = "Modifier Suivi";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.btnModifCmdDvdModifier_Click);
+            this.button4.Click += new System.EventHandler(this.BtnModifCmdDvdModifier_Click);
             // 
             // label89
             // 
@@ -1245,8 +1245,8 @@ namespace Mediatek86.vue
             this.dgvCmdDvdListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCmdDvdListe.Size = new System.Drawing.Size(483, 164);
             this.dgvCmdDvdListe.TabIndex = 35;
-            this.dgvCmdDvdListe.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCmdDvdListe_ColumnHeaderMouseClick);
-            this.dgvCmdDvdListe.SelectionChanged += new System.EventHandler(this.dgvCmdDvd_SelectionChanged);
+            this.dgvCmdDvdListe.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvCmdDvdListe_ColumnHeaderMouseClick);
+            this.dgvCmdDvdListe.SelectionChanged += new System.EventHandler(this.DgvCmdDvd_SelectionChanged);
             // 
             // btnCmdDvdNumRechercher
             // 
@@ -1268,7 +1268,7 @@ namespace Mediatek86.vue
             this.txbCmdDvdNumero.Name = "txbCmdDvdNumero";
             this.txbCmdDvdNumero.Size = new System.Drawing.Size(147, 22);
             this.txbCmdDvdNumero.TabIndex = 33;
-            this.txbCmdDvdNumero.TextChanged += new System.EventHandler(this.txbCmdDvdNumRecherche_TextChanged);
+            this.txbCmdDvdNumero.TextChanged += new System.EventHandler(this.TxbCmdDvdNumRecherche_TextChanged);
             // 
             // txbCmdDvdDuree
             // 
@@ -1466,7 +1466,7 @@ namespace Mediatek86.vue
             this.tabCmdLivre.TabIndex = 5;
             this.tabCmdLivre.Text = "Commande Livre";
             this.tabCmdLivre.UseVisualStyleBackColor = true;
-            this.tabCmdLivre.Enter += new System.EventHandler(this.tabCmdLivre_Enter);
+            this.tabCmdLivre.Enter += new System.EventHandler(this.TabCmdLivre_Enter);
             // 
             // gpbModifCmdLivres
             // 
@@ -2877,7 +2877,7 @@ namespace Mediatek86.vue
             this.dgvRevuesListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRevuesListe.Size = new System.Drawing.Size(1125, 246);
             this.dgvRevuesListe.TabIndex = 4;
-            this.dgvRevuesListe.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRevuesListe_ColumnHeaderMouseClick);
+            this.dgvRevuesListe.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvRevuesListe_ColumnHeaderMouseClick);
             this.dgvRevuesListe.SelectionChanged += new System.EventHandler(this.DgvRevuesListe_SelectionChanged);
             // 
             // label34
@@ -2912,7 +2912,7 @@ namespace Mediatek86.vue
             this.tabDvd.TabIndex = 3;
             this.tabDvd.Text = "DVD";
             this.tabDvd.UseVisualStyleBackColor = true;
-            this.tabDvd.Enter += new System.EventHandler(this.tabDvd_Enter);
+            this.tabDvd.Enter += new System.EventHandler(this.TabDvd_Enter);
             // 
             // grpDvdInfos
             // 
@@ -3172,7 +3172,7 @@ namespace Mediatek86.vue
             this.btnDvdAnnulRayons.TabIndex = 16;
             this.btnDvdAnnulRayons.Text = "X";
             this.btnDvdAnnulRayons.UseVisualStyleBackColor = true;
-            this.btnDvdAnnulRayons.Click += new System.EventHandler(this.btnDvdAnnulRayons_Click);
+            this.btnDvdAnnulRayons.Click += new System.EventHandler(this.BtnDvdAnnulRayons_Click);
             // 
             // btnDvdAnnulPublics
             // 
@@ -3183,7 +3183,7 @@ namespace Mediatek86.vue
             this.btnDvdAnnulPublics.TabIndex = 15;
             this.btnDvdAnnulPublics.Text = "X";
             this.btnDvdAnnulPublics.UseVisualStyleBackColor = true;
-            this.btnDvdAnnulPublics.Click += new System.EventHandler(this.btnDvdAnnulPublics_Click);
+            this.btnDvdAnnulPublics.Click += new System.EventHandler(this.BtnDvdAnnulPublics_Click);
             // 
             // btnDvdNumRecherche
             // 
@@ -3195,7 +3195,7 @@ namespace Mediatek86.vue
             this.btnDvdNumRecherche.TabIndex = 14;
             this.btnDvdNumRecherche.Text = "Rechercher";
             this.btnDvdNumRecherche.UseVisualStyleBackColor = true;
-            this.btnDvdNumRecherche.Click += new System.EventHandler(this.btnDvdNumRecherche_Click);
+            this.btnDvdNumRecherche.Click += new System.EventHandler(this.BtnDvdNumRecherche_Click);
             // 
             // label38
             // 
@@ -3225,7 +3225,7 @@ namespace Mediatek86.vue
             this.btnDvdAnnulGenres.TabIndex = 11;
             this.btnDvdAnnulGenres.Text = "X";
             this.btnDvdAnnulGenres.UseVisualStyleBackColor = true;
-            this.btnDvdAnnulGenres.Click += new System.EventHandler(this.btnDvdAnnulGenres_Click);
+            this.btnDvdAnnulGenres.Click += new System.EventHandler(this.BtnDvdAnnulGenres_Click);
             // 
             // cbxDvdRayons
             // 
@@ -3235,7 +3235,7 @@ namespace Mediatek86.vue
             this.cbxDvdRayons.Name = "cbxDvdRayons";
             this.cbxDvdRayons.Size = new System.Drawing.Size(275, 24);
             this.cbxDvdRayons.TabIndex = 10;
-            this.cbxDvdRayons.SelectedIndexChanged += new System.EventHandler(this.cbxDvdRayons_SelectedIndexChanged);
+            this.cbxDvdRayons.SelectedIndexChanged += new System.EventHandler(this.CbxDvdRayons_SelectedIndexChanged);
             // 
             // label39
             // 
@@ -3256,7 +3256,7 @@ namespace Mediatek86.vue
             this.cbxDvdPublics.Name = "cbxDvdPublics";
             this.cbxDvdPublics.Size = new System.Drawing.Size(275, 24);
             this.cbxDvdPublics.TabIndex = 8;
-            this.cbxDvdPublics.SelectedIndexChanged += new System.EventHandler(this.cbxDvdPublics_SelectedIndexChanged);
+            this.cbxDvdPublics.SelectedIndexChanged += new System.EventHandler(this.CbxDvdPublics_SelectedIndexChanged);
             // 
             // label40
             // 
@@ -3277,7 +3277,7 @@ namespace Mediatek86.vue
             this.cbxDvdGenres.Name = "cbxDvdGenres";
             this.cbxDvdGenres.Size = new System.Drawing.Size(275, 24);
             this.cbxDvdGenres.TabIndex = 6;
-            this.cbxDvdGenres.SelectedIndexChanged += new System.EventHandler(this.cbxDvdGenres_SelectedIndexChanged);
+            this.cbxDvdGenres.SelectedIndexChanged += new System.EventHandler(this.CbxDvdGenres_SelectedIndexChanged);
             // 
             // label41
             // 
@@ -3331,8 +3331,8 @@ namespace Mediatek86.vue
             this.dgvDvdListe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDvdListe.Size = new System.Drawing.Size(1125, 246);
             this.dgvDvdListe.TabIndex = 4;
-            this.dgvDvdListe.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDvdListe_ColumnHeaderMouseClick);
-            this.dgvDvdListe.SelectionChanged += new System.EventHandler(this.dgvDvdListe_SelectionChanged);
+            this.dgvDvdListe.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvDvdListe_ColumnHeaderMouseClick);
+            this.dgvDvdListe.SelectionChanged += new System.EventHandler(this.DgvDvdListe_SelectionChanged);
             // 
             // label42
             // 
@@ -3353,7 +3353,7 @@ namespace Mediatek86.vue
             this.txbDvdTitreRecherche.Name = "txbDvdTitreRecherche";
             this.txbDvdTitreRecherche.Size = new System.Drawing.Size(252, 22);
             this.txbDvdTitreRecherche.TabIndex = 3;
-            this.txbDvdTitreRecherche.TextChanged += new System.EventHandler(this.txbDvdTitreRecherche_TextChanged);
+            this.txbDvdTitreRecherche.TextChanged += new System.EventHandler(this.TxbDvdTitreRecherche_TextChanged);
             // 
             // tabLivres
             // 

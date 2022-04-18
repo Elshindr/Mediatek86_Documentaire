@@ -1,5 +1,5 @@
 ﻿
-namespace Mediatek86
+namespace Mediatek86.vue
 {
     partial class FrmAuthentification
     {
