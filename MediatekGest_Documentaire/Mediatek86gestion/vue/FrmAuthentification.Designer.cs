@@ -105,8 +105,6 @@ namespace Mediatek86
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txbPwd;
         private System.Windows.Forms.TextBox txbLogin;
         private System.Windows.Forms.Label label22;

@@ -16,7 +16,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <!-- Project is not a test project -->
-    <SonarQubeTestProject>false</SonarQubeTestProject>
+    <SonarQubeTestProject>
+    </SonarQubeTestProject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
