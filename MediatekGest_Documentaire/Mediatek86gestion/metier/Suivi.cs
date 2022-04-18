@@ -6,9 +6,6 @@
     public class Suivi : Categorie
     {
 
-        private readonly string id;
-        private readonly string libelle;
-
         /// <summary>
         /// Constructeur de la Classe Suivi
         /// Herite de la Classe Catégorie
@@ -17,8 +14,6 @@
         /// <param name="libelle"></param>
         public Suivi(string id, string libelle) : base(id, libelle)
         {
-            this.id = id;
-            this.libelle = libelle;
         }
     }
 }

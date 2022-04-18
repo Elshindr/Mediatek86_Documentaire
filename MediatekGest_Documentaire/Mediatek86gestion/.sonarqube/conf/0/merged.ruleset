@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Rules for SonarQube" Description="This rule set was automatically generated from SonarQube" ToolsVersion="14.0">
-  <Include Path="C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\Mediatek86gestion\.sonarlint\mediatek86_documentairecsharp.ruleset" Action="Default" />
+  <Include Path="C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\.sonarlint\mediatek86_documentairecsharp.ruleset" Action="Default" />
   <Rules AnalyzerId="SonarAnalyzer.CSharp" RuleNamespace="SonarAnalyzer.CSharp">
     <Rule Id="S1134" Action="Warning" />
     <Rule Id="S1135" Action="Warning" />

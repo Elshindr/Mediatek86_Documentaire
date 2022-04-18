@@ -1,1 +1,1 @@
-C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\Mediatek86gestion\.sonarqube\out\0
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\.sonarqube\out\0
