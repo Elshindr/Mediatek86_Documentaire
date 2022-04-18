@@ -709,6 +709,7 @@ namespace Mediatek86.vue
             // 
             this.txbCmdRevueNumero.Location = new System.Drawing.Point(200, 25);
             this.txbCmdRevueNumero.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdRevueNumero.MaxLength = 6;
             this.txbCmdRevueNumero.Name = "txbCmdRevueNumero";
             this.txbCmdRevueNumero.Size = new System.Drawing.Size(132, 22);
             this.txbCmdRevueNumero.TabIndex = 33;
@@ -1263,6 +1264,7 @@ namespace Mediatek86.vue
             // 
             this.txbCmdDvdNumero.Location = new System.Drawing.Point(200, 25);
             this.txbCmdDvdNumero.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdDvdNumero.MaxLength = 6;
             this.txbCmdDvdNumero.Name = "txbCmdDvdNumero";
             this.txbCmdDvdNumero.Size = new System.Drawing.Size(147, 22);
             this.txbCmdDvdNumero.TabIndex = 33;
@@ -1653,11 +1655,6 @@ namespace Mediatek86.vue
             // 
             // numNewCmdLivresMontant
             // 
-            this.numNewCmdLivresMontant.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
             this.numNewCmdLivresMontant.Location = new System.Drawing.Point(200, 80);
             this.numNewCmdLivresMontant.Maximum = new decimal(new int[] {
             255,
@@ -1875,6 +1872,7 @@ namespace Mediatek86.vue
             // 
             this.txbCmdLivresNumero.Location = new System.Drawing.Point(200, 25);
             this.txbCmdLivresNumero.Margin = new System.Windows.Forms.Padding(4);
+            this.txbCmdLivresNumero.MaxLength = 6;
             this.txbCmdLivresNumero.Name = "txbCmdLivresNumero";
             this.txbCmdLivresNumero.Size = new System.Drawing.Size(147, 22);
             this.txbCmdLivresNumero.TabIndex = 16;
@@ -2096,6 +2094,7 @@ namespace Mediatek86.vue
             // 
             this.txbReceptionExemplaireNumero.Location = new System.Drawing.Point(200, 25);
             this.txbReceptionExemplaireNumero.Margin = new System.Windows.Forms.Padding(4);
+            this.txbReceptionExemplaireNumero.MaxLength = 6;
             this.txbReceptionExemplaireNumero.Name = "txbReceptionExemplaireNumero";
             this.txbReceptionExemplaireNumero.Size = new System.Drawing.Size(132, 22);
             this.txbReceptionExemplaireNumero.TabIndex = 3;
@@ -2320,6 +2319,7 @@ namespace Mediatek86.vue
             // 
             this.txbReceptionRevueNumero.Location = new System.Drawing.Point(200, 25);
             this.txbReceptionRevueNumero.Margin = new System.Windows.Forms.Padding(4);
+            this.txbReceptionRevueNumero.MaxLength = 6;
             this.txbReceptionRevueNumero.Name = "txbReceptionRevueNumero";
             this.txbReceptionRevueNumero.Size = new System.Drawing.Size(132, 22);
             this.txbReceptionRevueNumero.TabIndex = 43;
@@ -2757,6 +2757,7 @@ namespace Mediatek86.vue
             // 
             this.txbRevuesNumRecherche.Location = new System.Drawing.Point(293, 74);
             this.txbRevuesNumRecherche.Margin = new System.Windows.Forms.Padding(4);
+            this.txbRevuesNumRecherche.MaxLength = 6;
             this.txbRevuesNumRecherche.Name = "txbRevuesNumRecherche";
             this.txbRevuesNumRecherche.Size = new System.Drawing.Size(88, 22);
             this.txbRevuesNumRecherche.TabIndex = 12;
@@ -2894,6 +2895,7 @@ namespace Mediatek86.vue
             // 
             this.txbRevuesTitreRecherche.Location = new System.Drawing.Point(293, 22);
             this.txbRevuesTitreRecherche.Margin = new System.Windows.Forms.Padding(4);
+            this.txbRevuesTitreRecherche.MaxLength = 20;
             this.txbRevuesTitreRecherche.Name = "txbRevuesTitreRecherche";
             this.txbRevuesTitreRecherche.Size = new System.Drawing.Size(252, 22);
             this.txbRevuesTitreRecherche.TabIndex = 3;
@@ -3209,6 +3211,7 @@ namespace Mediatek86.vue
             // txbDvdNumRecherche
             // 
             this.txbDvdNumRecherche.Location = new System.Drawing.Point(293, 79);
+            this.txbDvdNumRecherche.MaxLength = 6;
             this.txbDvdNumRecherche.Name = "txbDvdNumRecherche";
             this.txbDvdNumRecherche.Size = new System.Drawing.Size(100, 22);
             this.txbDvdNumRecherche.TabIndex = 17;
@@ -3346,6 +3349,7 @@ namespace Mediatek86.vue
             // 
             this.txbDvdTitreRecherche.Location = new System.Drawing.Point(293, 22);
             this.txbDvdTitreRecherche.Margin = new System.Windows.Forms.Padding(4);
+            this.txbDvdTitreRecherche.MaxLength = 20;
             this.txbDvdTitreRecherche.Name = "txbDvdTitreRecherche";
             this.txbDvdTitreRecherche.Size = new System.Drawing.Size(252, 22);
             this.txbDvdTitreRecherche.TabIndex = 3;
@@ -3659,6 +3663,7 @@ namespace Mediatek86.vue
             // 
             this.txbLivresNumRecherche.Location = new System.Drawing.Point(293, 74);
             this.txbLivresNumRecherche.Margin = new System.Windows.Forms.Padding(4);
+            this.txbLivresNumRecherche.MaxLength = 6;
             this.txbLivresNumRecherche.Name = "txbLivresNumRecherche";
             this.txbLivresNumRecherche.Size = new System.Drawing.Size(88, 22);
             this.txbLivresNumRecherche.TabIndex = 12;
@@ -3796,6 +3801,7 @@ namespace Mediatek86.vue
             // 
             this.txbLivresTitreRecherche.Location = new System.Drawing.Point(293, 22);
             this.txbLivresTitreRecherche.Margin = new System.Windows.Forms.Padding(4);
+            this.txbLivresTitreRecherche.MaxLength = 25;
             this.txbLivresTitreRecherche.Name = "txbLivresTitreRecherche";
             this.txbLivresTitreRecherche.Size = new System.Drawing.Size(252, 22);
             this.txbLivresTitreRecherche.TabIndex = 3;
