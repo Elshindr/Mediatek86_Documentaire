@@ -1,8 +1,8 @@
 {
   "ServerUri": "http://localhost:9000/",
   "Organization": null,
-  "ProjectKey": "Mediatek86_Documentaire",
-  "ProjectName": "Mediatek86_Documentaire",
+  "ProjectKey": "MediaTek86-Documentaire",
+  "ProjectName": "MediaTek86-Documentaire",
   "Profiles": {
     "CSharp": {
       "ProfileKey": "AX46blTjG60V-epvqDty",

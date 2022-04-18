@@ -7,7 +7,7 @@
   <HasBeginStepCommandLineCredentials>true</HasBeginStepCommandLineCredentials>
   <SonarQubeHostUrl>http://localhost:9000</SonarQubeHostUrl>
   <SonarQubeVersion>9.2.4.50792</SonarQubeVersion>
-  <SonarProjectKey>MediaTek86_Doc</SonarProjectKey>
+  <SonarProjectKey>MediaTek86-Documentaire</SonarProjectKey>
   <AdditionalConfig>
     <ConfigSetting Id="BuildUri" />
     <ConfigSetting Id="TfsUri" />

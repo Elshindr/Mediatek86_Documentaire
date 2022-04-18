@@ -8,9 +8,9 @@ namespace Mediatek86.vue.Tests
     {
 
         // Varibles test ParutionDansAbonnement
-        private DateTime dateParu = DateTime.Parse("11/04/2022");
-        private DateTime dateCommande = DateTime.Parse("01/04/2022");
-        private DateTime dateFin = DateTime.Parse("03/04/2022");
+        private readonly DateTime dateParu = DateTime.Parse("11/04/2022");
+        private readonly DateTime dateCommande = DateTime.Parse("01/04/2022");
+        private readonly DateTime dateFin = DateTime.Parse("03/04/2022");
 
 
         /// <summary>
@@ -48,11 +48,6 @@ namespace Mediatek86.vue.Tests
 
         }
 
-        [TestMethod()]
-        public void UpdateCmdDvdTest()
-        {
-
-        }
 
         [TestMethod()]
         public void UpdateCmdLivresTest()

@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controleur\Controle.cs" />
+    <Compile Include="metier\Suivi.cs" />
     <Compile Include="metier\Utilisateur.cs" />
     <Compile Include="vue\FrmAuthentification.cs">
       <SubType>Form</SubType>
@@ -113,7 +114,6 @@
     <Compile Include="metier\LivreDvd.cs" />
     <Compile Include="metier\Public.cs" />
     <Compile Include="metier\Rayon.cs" />
-    <Compile Include="metier\Suivi.cs" />
     <Compile Include="modele\Dao.cs" />
     <Compile Include="bdd\BddMySql.cs" />
     <Compile Include="metier\Categorie.cs" />

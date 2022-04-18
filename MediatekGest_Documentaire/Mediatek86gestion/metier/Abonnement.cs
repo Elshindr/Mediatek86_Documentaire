@@ -10,16 +10,6 @@ namespace Mediatek86.metier
     {
 
         /// <summary>
-        /// Variable privée de type string de l'identifiant de la revue
-        /// </summary>
-        private string idRevue;
-
-        /// <summary>
-        /// Variable privée de type DateTime de la date de fin d'abonnement
-        /// </summary>
-        private DateTime dateFinAbonnement;
-
-        /// <summary>
         /// Constructeur de la classe Abonnement
         /// </summary>
         /// <param name="idCommande"></param>
@@ -41,11 +31,11 @@ namespace Mediatek86.metier
         /// <summary>
         /// Getter et Setter de la propriété idRevue autogénérés
         /// </summary>
-        public string IdRevue { get => idRevue; set => idRevue = value; }
+        public string IdRevue { get; set; }
 
         /// <summary>
         /// Getter et Setter de la propriété dateFinAbonnement autogénérés
         /// </summary>
-        public DateTime DateFinAbonnement { get => dateFinAbonnement; set => dateFinAbonnement = value; }
+        public DateTime DateFinAbonnement { get; set; }
     }
 }

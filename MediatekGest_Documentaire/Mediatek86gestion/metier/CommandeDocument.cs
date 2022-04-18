@@ -8,8 +8,6 @@ namespace Mediatek86.metier
     /// </summary>
     public class CommandeDocument : Commande
     {
-        private string idLivreDvd;
-        private int nbExemplaire;
 
         /// <summary>
         /// Constructeur de la classe CommandeDocument
@@ -31,11 +29,11 @@ namespace Mediatek86.metier
         /// <summary>
         /// Getter et Setter de la propriété IdLivreDvd autogénérés
         /// </summary>
-        public string IdLivreDvd { get => idLivreDvd; set => idLivreDvd = value; }
+        public string IdLivreDvd { get; set; }
 
         /// <summary>
         /// Getter et Setter de la propriété NbExemplaire autogénérés
         /// </summary>
-        public int NbExemplaire { get => nbExemplaire; set => nbExemplaire = value; }
+        public int NbExemplaire { get; set; }
     }
 }
