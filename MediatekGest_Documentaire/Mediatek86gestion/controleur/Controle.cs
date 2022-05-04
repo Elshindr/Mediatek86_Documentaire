@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace Mediatek86.controleur
 {
     /// <summary>
-    /// Classe d'instance du Controleur
+    /// Classe Controle d'instance du Controleur
     /// </summary>
     internal class Controle
     {
@@ -77,6 +77,7 @@ namespace Mediatek86.controleur
             return false;
 
         }
+
 
         /// <summary>
         /// Methode de gestion des acces aux onglets de l'application selon le service de l'utilisateur 
@@ -186,6 +187,20 @@ namespace Mediatek86.controleur
         public DateTime GetDateParution(string idRevue)
         {
             return Dao.GetDateParution(idRevue);
+        }
+
+
+        /// <summary>
+        /// Methode du controleur accedant à la methode ParutionDansAbonnement
+        /// Permet de vérifier si la date d'achat de l'exemplaire est comprise entre la date de la commande et la date de fin d'abonnement
+        /// </summary>
+        /// <param name="dateCommande">Date de la commande</param>
+        /// <param name="dateFin">Date de fin d'abonnement</param>
+        /// <param name="dateParution">Date de parution d'un nuemro de revue</param>
+        /// <returns>Vrai si dateParution est entre les 2 autres dates</returns>
+        public bool ParutionDansAbonnement(DateTime dateCommande, DateTime dateFin, DateTime dateParution)
+        {
+            return Dao.ParutionDansAbonnement(dateCommande, dateFin, dateParution);
         }
 
         #endregion

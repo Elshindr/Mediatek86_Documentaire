@@ -1,6 +1,7 @@
 ﻿namespace Mediatek86.bdd
 {
     using MySql.Data.MySqlClient;
+    using Serilog;
     using System;
     using System.Collections.Generic;
     using System.Windows.Forms;
@@ -33,12 +34,20 @@
         {
             try
             {
+                Log.Logger = new LoggerConfiguration()
+                   .MinimumLevel.Debug()
+                   .WriteTo.Console()
+                   .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+                   .WriteTo.File("logs/Error_log.txt", restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Error)
+                   .WriteTo.File("logs/Fatal_log.txt", restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Fatal)
+                   .CreateLogger();
+
                 connection = new MySqlConnection(stringConnect);
                 connection.Open();
             }
             catch (MySqlException e)
             {
-                ErreurGraveBddNonAccessible(e);
+                ErreurGraveBddNonAccessible(e, stringConnect);
             }
         }
 
@@ -81,10 +90,11 @@
             catch (MySqlException e)
             {
                 Console.WriteLine(e.Message);
+                Log.Error("BddMySql.ReqSelect catch stringQuery={0} erreur={1}", stringQuery, e.Message);
             }
             catch (InvalidOperationException e)
             {
-                ErreurGraveBddNonAccessible(e);
+                ErreurGraveBddNonAccessible(e, "");
             }
         }
 
@@ -142,8 +152,10 @@
                 command = new MySqlCommand(stringQuery, connection);
                 if (!(parameters is null))
                 {
+                    Log.Debug("BddMySql.ReqUpdate stringQuery={0}", stringQuery);
                     foreach (KeyValuePair<string, object> parameter in parameters)
                     {
+                        Log.Debug("BddMySql.ReqUpdate parameter.Key={0} parameter.value={1}", parameter.Key, parameter.Value);
                         command.Parameters.Add(new MySqlParameter(parameter.Key, parameter.Value));
                     }
                 }
@@ -152,14 +164,16 @@
             }
             catch (MySqlException e)
             {
+
                 Console.WriteLine(e.Message);
-                throw;
+                Log.Error("BddMySql.ReqUpdate catch stringQuery={0} erreur={1}", stringQuery, e.Message);
             }
             catch (InvalidOperationException e)
             {
-                ErreurGraveBddNonAccessible(e);
+                ErreurGraveBddNonAccessible(e, "");
             }
         }
+
 
         /// <summary>
         /// Fermeture du curseur.
@@ -176,8 +190,9 @@
         /// Pas d'accès à la BDD : arrêt de l'application.
         /// </summary>
         /// <param name="e">The e<see cref="Exception"/>.</param>
-        private void ErreurGraveBddNonAccessible(Exception e)
+        private void ErreurGraveBddNonAccessible(Exception e, String stringConnect)
         {
+            Log.Fatal("BddMySql.BddMySql catch stringConnect={0} erreur={1}", stringConnect, e.Message);
             MessageBox.Show("Base de données non accessibles", "Erreur grave");
             Console.WriteLine(e.Message);
             Environment.Exit(1);

@@ -10,17 +10,14 @@ namespace Mediatek86.modele
     /// </summary>
     public static class Dao
     {
-
-        /* 
         //
         /// Connection Locale
-
+        /*
         private static readonly string server = "localhost";
         private static readonly string userid = "root";
         private static readonly string password = "";
         private static readonly string database = "mediatek86";
-        private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
-         */
+        */
 
         //
         /// Connection Distante
@@ -28,8 +25,9 @@ namespace Mediatek86.modele
         private static readonly string userid = "cswkbtn1802d4lkm";
         private static readonly string password = "yfpsqkelshpl639s";
         private static readonly string database = "ec2o4y6j8xapjqk4";
-        private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
+
+        private static readonly string connectionString = "server=" + server + ";user id=" + userid + ";password=" + password + ";database=" + database + ";SslMode=none";
 
         #region connexion
 
@@ -95,6 +93,26 @@ namespace Mediatek86.modele
 
 
         #region alerte abo
+
+        /// <summary>
+        /// Methode qui vérifie si la date d'achat de l'exemplaire est comprise entre la date de parution la commande et la date de fin d'abonnement
+        /// </summary>
+        /// <param name="dateCommande">Date de la commande</param>
+        /// <param name="dateFin">Date de fin d'abonnement</param>
+        /// <param name="dateParution">Date de parution d'un nuemro de revue</param>
+        /// <returns>Vrai si dateParution est entre les 2 autres dates</returns>
+        public static bool ParutionDansAbonnement(DateTime dateCommande, DateTime dateFin, DateTime dateParution)
+        {
+
+            if ((dateCommande < dateParution && dateParution < dateFin) || dateParution == DateTime.MinValue)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
         /// <summary>
         /// Methode permettant de lancer une requete SQL SELECT d'appel de fonction stockée
         /// Récupére la liste des revues en fin d'abonnements
@@ -127,11 +145,11 @@ namespace Mediatek86.modele
         /// </summary>
         /// <param name="strIdRevues">Chaine d'identifiant de revue </param>
         /// <returns>Dictonnaire de chaines </returns>
-        public static Dictionary<String, String> GetEndingTitleDate(String strIdRevues)
+        public static Dictionary<string, string> GetEndingTitleDate(string strIdRevues)
         {
             string[] lstlesRevues = strIdRevues.Split(',');
             DateTime dateFinAbonnement;
-            Dictionary<String, String> dictFinAbo = new Dictionary<String, String>();
+            Dictionary<string, string> dictFinAbo = new Dictionary<string, string>();
 
             foreach (var item in lstlesRevues)
             {

@@ -1,5 +1,6 @@
 ﻿using Mediatek86.controleur;
 using Mediatek86.metier;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -52,6 +53,13 @@ namespace Mediatek86.vue
         /// <param name="controle">Instance du controleur</param>
         internal FrmMediatek(Controle controle)
         {
+            Log.Logger = new LoggerConfiguration()
+                  .MinimumLevel.Information()
+                  .WriteTo.Console()
+                  .WriteTo.File("logs/App_log.txt", rollingInterval: RollingInterval.Day)
+                  .WriteTo.File("logs/App_Error_log.txt", restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Error)
+                  .CreateLogger();
+
             InitializeComponent();
             this.controle = controle;
         }
@@ -182,11 +190,13 @@ namespace Mediatek86.vue
                         }
                         else
                         {
+                            Log.Information("Erreur dans la creation de l'abonnement : date='{0}' Document='{1}'", DateTime.Now.ToString(), txbCmdRevueNumero.Text);
                             MessageBox.Show("Erreur dans la creation de l'abonnement", "Erreur");
                         }
                     }
                     catch (Exception ex)
                     {
+                        Log.Error("Erreur dans la creation de l'abonnement : date='{0}' Document='{1}'", DateTime.Now.ToString(), txbCmdRevueNumero.Text);
                         MessageBox.Show(ex.Message);
                         dtpNewAboRevueDateFin.Focus();
                     }
@@ -221,7 +231,7 @@ namespace Mediatek86.vue
                     DateTime dateFin = (DateTime)dgvCmdRevueListe.CurrentRow.Cells["dateFinAbonnement"].Value;
                     DateTime dateParution = controle.GetDateParution(idRevue);
 
-                    if (ParutionDansAbonnement(dateCommande, dateFin, dateParution))
+                    if (controle.ParutionDansAbonnement(dateCommande, dateFin, dateParution))
                     {
 
                         string idCommande = dgvCmdRevueListe.CurrentRow.Cells["idCommande"].Value.ToString();
@@ -233,11 +243,13 @@ namespace Mediatek86.vue
                         }
                         else
                         {
-                            MessageBox.Show("Erreur dans la suppression de commande", "Erreur");
+                            Log.Information("Erreur dans la suppression de l'abonnement : date='{0}' Document='{1}'", DateTime.Now.ToString(), idRevue);
+                            MessageBox.Show("Erreur dans la suppression de l'abonnement ", "Erreur");
                         }
                     }
                     else
                     {
+                        Log.Error("Erreur dans la creation de l'abonnement : date='{0}' Document='{1}'", DateTime.Now.ToString(), idRevue);
                         MessageBox.Show("Abonnement non supprimable.\nDate de Commande:" + dateCommande.ToShortDateString() + "\nDate de parution: " + dateParution.ToShortDateString() + "\nDate de fin d'abonnement: " + dateFin.ToShortDateString(), "Erreur");
                     }
                 }
@@ -319,23 +331,7 @@ namespace Mediatek86.vue
         }
 
 
-        /// <summary>
-        /// Methode qui vérifie si la date d'achat de l'exemplaire est comprise entre la date de la commande et la date de fin d'abonnement
-        /// </summary>
-        /// <param name="dateCommande">Date de la commande</param>
-        /// <param name="dateFin">Date de fin d'abonnement</param>
-        /// <param name="dateParution">Date de parution d'un nuemro de revue</param>
-        /// <returns>Vrai si dateParution est entre les 2 autres dates</returns>
-        public bool ParutionDansAbonnement(DateTime dateCommande, DateTime dateFin, DateTime dateParution)
-        {
 
-            if ((dateCommande < dateParution && dateParution < dateFin) || dateParution == DateTime.MinValue)
-            {
-                return false;
-            }
-
-            return true;
-        }
 
 
         /// <summary>

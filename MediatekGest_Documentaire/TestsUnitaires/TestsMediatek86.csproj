@@ -50,8 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="metier\AbonnementTests.cs" />
+    <Compile Include="metier\UtilisateurTests.cs" />
+    <Compile Include="modele\DaoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="vue\FrmMediatekTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mediatek86gestion\Mediatek86.csproj">

@@ -9,7 +9,5 @@ var searchData=
   ['frmmediatek_6',['frmMediatek',['../class_mediatek86_1_1controleur_1_1_controle.html#a91f28732007d7018af521f419e4628f2',1,'Mediatek86::controleur::Controle']]],
   ['frmmediatek_7',['FrmMediatek',['../class_mediatek86_1_1vue_1_1_frm_mediatek.html',1,'Mediatek86::vue']]],
   ['frmmediatek_2ecs_8',['frmMediatek.cs',['../frm_mediatek_8cs.html',1,'']]],
-  ['frmmediatek_2edesigner_2ecs_9',['frmMediatek.Designer.cs',['../frm_mediatek_8_designer_8cs.html',1,'']]],
-  ['frmmediatektests_10',['FrmMediatekTests',['../class_mediatek86_1_1vue_1_1_tests_1_1_frm_mediatek_tests.html',1,'Mediatek86::vue::Tests']]],
-  ['frmmediatektests_2ecs_11',['FrmMediatekTests.cs',['../_frm_mediatek_tests_8cs.html',1,'']]]
+  ['frmmediatek_2edesigner_2ecs_9',['frmMediatek.Designer.cs',['../frm_mediatek_8_designer_8cs.html',1,'']]]
 ];

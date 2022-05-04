@@ -5,14 +5,9 @@ VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediatek86", "Mediatek86.csproj", "{810296AE-B290-4E67-A945-19806086CAFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsUnitaires", "..\TestsUnitaires\TestsUnitaires.csproj", "{915C4E12-94B9-4FAB-93F1-DD37FCE52A53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsMediatek86", "..\TestsUnitaires\TestsMediatek86.csproj", "{915C4E12-94B9-4FAB-93F1-DD37FCE52A53}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{E682B0EA-FEC4-43E6-A2A2-766231E5BA13}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8C714D64-D21D-43A5-BB3C-43261D48D474}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
