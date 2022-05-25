@@ -26,7 +26,7 @@ C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Document
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\Properties\Resources.resx
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\vue\FrmAuthentification.resx
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\vue\FrmMediatek.resx
-C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\.sonarlint\mediatek86_documentairecsharp.ruleset
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\.sonarlint\mediatek86-documentairecsharp.ruleset
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\packages.config
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\Properties\Settings.settings
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\App.config

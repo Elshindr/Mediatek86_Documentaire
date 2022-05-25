@@ -20,7 +20,8 @@ namespace Mediatek86.metier
         /// <param name="label"></param>
         /// <param name="idLivreDvd"></param>
         /// <param name="nbExemplaire"></param>
-        public CommandeDocument(string idCommande, DateTime dateCommande, double montant, string idSuivi, string label, string idLivreDvd, int nbExemplaire)
+        public CommandeDocument(string idCommande, DateTime dateCommande, double montant,
+            string idSuivi, string label, string idLivreDvd, int nbExemplaire)
             : base(idCommande, dateCommande, montant, idSuivi, label)
         {
             this.IdLivreDvd = idLivreDvd;

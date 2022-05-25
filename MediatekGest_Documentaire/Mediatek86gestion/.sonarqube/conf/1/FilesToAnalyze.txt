@@ -1,6 +1,7 @@
 ﻿C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\metier\AbonnementTests.cs
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\metier\UtilisateurTests.cs
+C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\modele\DaoTests.cs
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\Properties\AssemblyInfo.cs
-C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\TestsUnitaires\vue\FrmMediatekTests.cs
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\packages\MSTest.TestAdapter.2.2.9\build\_common\fr\Microsoft.TestPlatform.AdapterUtilities.resources.dll
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\packages\MSTest.TestAdapter.2.2.9\build\_common\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
 C:\Users\Ydrani\Programmation\Cshp\Mediatek86_Documentaire\MediatekGest_Documentaire\Mediatek86gestion\packages\MSTest.TestAdapter.2.2.9\build\_common\fr\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll

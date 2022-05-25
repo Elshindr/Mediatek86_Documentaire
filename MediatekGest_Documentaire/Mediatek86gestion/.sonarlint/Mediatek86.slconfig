@@ -1,5 +1,5 @@
 {
-  "ServerUri": "http://localhost:9000/",
+  "ServerUri": "http://192.168.1.30:9000",
   "Organization": null,
   "ProjectKey": "MediaTek86-Documentaire",
   "ProjectName": "MediaTek86-Documentaire",
