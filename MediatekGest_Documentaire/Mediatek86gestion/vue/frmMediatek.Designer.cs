@@ -580,7 +580,7 @@ namespace Mediatek86.vue
             this.btnNewAboRevueValider.TabIndex = 17;
             this.btnNewAboRevueValider.Text = "Valider la commande";
             this.btnNewAboRevueValider.UseVisualStyleBackColor = true;
-            this.btnNewAboRevueValider.Click += new System.EventHandler(this.BtnNewAboRevueValider_Click);
+            this.btnNewAboRevueValider.Click += new System.EventHandler(this.BtnNewAboRevueValid_Clic);
             // 
             // label108
             // 
